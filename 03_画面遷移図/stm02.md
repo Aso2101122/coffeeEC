@@ -20,7 +20,7 @@
 
 state ヘッダーからの遷移{
 [*]-right->トップページcopy
-[*]-left->商品一覧copy
+[*]-right->商品一覧copy
 [*]-->ログインcopy
 [*]-->新規会員登録copy
 

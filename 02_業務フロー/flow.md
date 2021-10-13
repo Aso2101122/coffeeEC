@@ -54,8 +54,6 @@ end
 end
 @enduml
 
-続き
-
 ```uml
 @startuml
 alt ログイン成功

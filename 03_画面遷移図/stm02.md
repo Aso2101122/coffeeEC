@@ -27,7 +27,7 @@ state ヘッダーからの遷移{
 
 
 }
-note left of ヘッダー : 全画面共通の遷移
+note left of ヘッダーからの遷移 : 全画面共通の遷移
 
 
 @enduml

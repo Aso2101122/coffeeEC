@@ -1,4 +1,4 @@
-# Beginners coffee(仮名称)
+# Beginners coffee
 
 ## コーヒー販売サイト
 ## 企画概要

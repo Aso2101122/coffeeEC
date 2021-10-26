@@ -44,6 +44,24 @@
 |password|varchar(100)||〇||
 |last_name|text||〇||
 |first_name|text||〇||
+|phone_number|int(11)||||
+|postcode|int(11)||||
+|prefecture_id|varchar(100)||||
+|city|varchar(100)||||
+|block|varchar(100)||||
+|building|varchar(100)|||||
+|owne_points|int(11)||〇||
+|signup_at|datetime|||||
+
+## t_order
+|項目名|型|PK|NN|FK|
+|--|--|--|--|--|
+|order_id|int(11)|〇|〇||
+|user_id|int(11)||〇||
+|order_at|datetime||〇||
+|postage|int(11)||〇||
+|total_fee|int(11)||〇||
+|point|int(11)||〇||
 
 
 

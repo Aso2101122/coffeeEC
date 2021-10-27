@@ -11,7 +11,7 @@ skinparam class {
 }
 
 !define MASTER_MARK_COLOR Orange 
-!define TRANSACTION_MARK_COLOR DeepSkyBlue
+!define TRANSACTION_MARK_COLOR SkyBlue
 
 package "Beginners Coffee" as target_system {
     /'

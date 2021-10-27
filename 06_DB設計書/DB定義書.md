@@ -17,6 +17,8 @@
 |point|int(11)||〇||
 |featured_flag|bit||||
 |Registered_date|datetime||〇||
+|delelte_flag|bit||||
+
 
 
 ## m_country

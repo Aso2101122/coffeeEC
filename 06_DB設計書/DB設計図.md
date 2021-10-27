@@ -56,7 +56,7 @@
 ## t_order
 |項目名|型|PK|NN|FK|
 |--|--|--|--|--|
-|order_id|int(11)|〇|〇|〇|
+|order_id|int(11)|〇|〇||
 |user_id|int(11)||〇|〇|
 |order_at|datetime||〇||
 |postage|int(11)||〇||

@@ -70,7 +70,7 @@ package "Beginners Coffee" as target_system {
         signup_at
     }
     
-    entity "注文テーブル" as order <t_order> <<TRANSACTION_MARK_COLOR>> {
+    entity "注文テーブル" as order <t_order> <<T,TRANSACTION_MARK_COLOR>> {
         +  order_id[PK]
         --
         user_id[FK]
@@ -81,7 +81,7 @@ package "Beginners Coffee" as target_system {
         use_point
     }
     
-    entity "注文詳細テーブル" as order_detail <t_order_detail> <<TRANSACTION_MARK_COLOR>> {
+    entity "注文詳細テーブル" as order_detail <t_order_detail> <<T,TRANSACTION_MARK_COLOR>> {
         +  order_detail_id[PK]
         --
         order_id[FK]
@@ -91,7 +91,7 @@ package "Beginners Coffee" as target_system {
         price
     }
     
-    entity "お気に入りテーブル" as favorite_item <t_favorite_item> <<TRANSACTION_MARK_COLOR>> {
+    entity "お気に入りテーブル" as favorite_item <t_favorite_item> <<T,TRANSACTION_MARK_COLOR>> {
         +  favorite_id[PK]
         --
         user_id[FK]

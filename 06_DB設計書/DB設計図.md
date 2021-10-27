@@ -68,7 +68,7 @@
 |項目名|型|PK|NN|FK|
 |--|--|--|--|--|
 |order_detail_id|int(11)|〇|〇||
-|order_id|int(11)|〇|〇||
+|order_id|int(11)|〇|〇|〇|
 |item_id|int(11)|〇|〇|〇|
 |amount|int(11)||〇||
 |quantity|int(11)||〇||

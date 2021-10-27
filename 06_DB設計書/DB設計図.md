@@ -34,7 +34,7 @@
 |項目名|型|PK|NN|FK|
 |--|--|--|--|--|
 |category_id|int(11)|〇|〇||
-|category_name|varchar(30)|〇|〇||
+|category_name|varchar(30)||〇||
 
 ## m_user
 |項目名|型|PK|NN|FK|

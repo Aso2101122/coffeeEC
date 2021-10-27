@@ -19,7 +19,7 @@
 ## m_country
 
 |論理名|物理名|型|PK|NN|FK|
-||--|--|--|--|--|--|
+|--|--|--|--|--|--|
 ||country_id|int(11)|〇|〇||
 ||country_name|varchar(100)||〇||
 ||country_img_url|text||〇||

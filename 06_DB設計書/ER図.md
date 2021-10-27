@@ -99,7 +99,7 @@ package "Beginners Coffee" as target_system {
         register_at
     }
     
-    items -r- order_detail
+    items ||-r-o{ order_detail
     items -l- favorite_items
     items -d- country
     country -r- area

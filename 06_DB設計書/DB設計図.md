@@ -4,7 +4,7 @@
 
 |項目名|型|PK|NN|FK|
 |--|--|--|--|--|
-|item_id|int(11)|〇|〇|〇|
+|item_id|int(11)|〇|〇||
 |item_name|varchar(50)||〇||
 |price|int(11)||〇||
 |item_description|text||〇|||

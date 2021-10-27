@@ -73,7 +73,7 @@
 |amount|int(11)||〇||
 |quantity|int(11)||〇||
 |price|int(11)||〇||
-## t_favorite
+## t_favorite_item
 |項目名|型|PK|NN|FK|
 |--|--|--|--|--|
 |favorite_id|int(11)|〇|〇||

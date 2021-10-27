@@ -104,7 +104,9 @@ package "Beginners Coffee" as target_system {
     items -d- country
     country -r- area
     items -d- category
-    
+    order_detail -u- order
+    order -l- user
+    user --favorite_items
 }
      
      

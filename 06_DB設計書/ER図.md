@@ -19,7 +19,7 @@ package "Beginners Coffee" as target_system {
       １文字なら "主" とか "従" まど日本語でも記載可能
      '/
      
-     entity "商品マスタ" as item <m_item> <<M,MASTER_MARK_COLOR>> {
+     entity "商品マスタ" as items <m_items> <<M,MASTER_MARK_COLOR>> {
         +  item_id[PK]
         --
         item_name
@@ -91,13 +91,16 @@ package "Beginners Coffee" as target_system {
         price
     }
     
-    entity "お気に入りテーブル" as favorite_item <t_favorite_item> <<T,TRANSACTION_MARK_COLOR>> {
+    entity "お気に入りテーブル" as favorite_items <t_favorite_items> <<T,TRANSACTION_MARK_COLOR>> {
         +  favorite_id[PK]
         --
         user_id[FK]
         item_id[FK]
         register_at
     }
+    
+    items -l- order_detail
+    items -r- favorite_items
     
 }
      

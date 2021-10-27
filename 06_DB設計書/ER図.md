@@ -103,10 +103,10 @@ package "Beginners Coffee" as target_system {
     items ||-l-o{ favorite_items
     items }o-d-|| country
     country }o-r-|| area
-    items -d- category
-    order_detail -u- order
-    order -l- user
-    user --favorite_items
+    items }o-d-|| category
+    order_detail }|-u-|| order
+    order }o-l-|| user
+    user ||--o{ favorite_items
 }
      
      

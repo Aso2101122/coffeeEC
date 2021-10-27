@@ -10,7 +10,7 @@
 |item_description|text||〇|||
 |item_img_url|text||〇||
 |country_id|int(11)||〇|〇|
-|item_category|int(11)||〇|〇|
+|category_id|int(11)||〇|〇|
 |point|int(11)||〇||
 |featured_flag|bit||||
 |Registered_date|datetime||〇||
@@ -19,7 +19,7 @@
 ## m_country
 |項目名|型|PK|NN|FK|
 |--|--|--|--|--|
-|country_id|int(11)|〇|〇|〇|
+|country_id|int(11)|〇|〇||
 |country_name|varchar(100)||〇||
 |country_img_url|text||〇||
 |area_id|int(11)|||〇|〇|
@@ -39,7 +39,7 @@
 ## m_user
 |項目名|型|PK|NN|FK|
 |--|--|--|--|--|
-|user_id|int(11)|〇|〇|〇|
+|user_id|int(11)|〇|〇||
 |mail|varchar(255)||〇||
 |password|varchar(100)||〇||
 |last_name|text||〇||
@@ -57,7 +57,7 @@
 |項目名|型|PK|NN|FK|
 |--|--|--|--|--|
 |order_id|int(11)|〇|〇|〇|
-|user_id|int(11)||〇||
+|user_id|int(11)||〇|〇|
 |order_at|datetime||〇||
 |postage|int(11)||〇||
 |total_fee|int(11)||〇||
@@ -69,7 +69,7 @@
 |--|--|--|--|--|
 |order_detail_id|int(11)|〇|〇||
 |order_id|int(11)|〇|〇||
-|item_id|int(11)|〇|〇||
+|item_id|int(11)|〇|〇|〇|
 |amount|int(11)||〇||
 |quantity|int(11)||〇||
 |price|int(11)||〇||
@@ -77,7 +77,7 @@
 |項目名|型|PK|NN|FK|
 |--|--|--|--|--|
 |favorite_id|int(11)|〇|〇||
-|user_id|int(11)||〇||
-|item_id|int(11)||〇||
+|user_id|int(11)||〇|〇|
+|item_id|int(11)||〇|〇|
 |register_at|datetime||〇||
 

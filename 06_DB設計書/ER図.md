@@ -31,6 +31,7 @@ package "Beginners Coffee" as target_system {
         point
         featured_flag
         Registered_date
+        delete_flag
     }
         
     entity "生産国マスタ" as country <m_item> <<M,MASTER_MARK_COLOR>> {
@@ -68,6 +69,7 @@ package "Beginners Coffee" as target_system {
         building
         owne_points
         signup_at
+        delete_flag
     }
     
     entity "注文テーブル" as order <t_order> <<T,TRANSACTION_MARK_COLOR>> {

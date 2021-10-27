@@ -61,7 +61,24 @@
 |order_at|datetime||〇||
 |postage|int(11)||〇||
 |total_fee|int(11)||〇||
-|point|int(11)||〇||
+|earne_point|int(11)||||
+|use_point|int(11)||||
 
+## t_order_detail
+|項目名|型|PK|NN|FK|
+|--|--|--|--|--|
+|order_detail_id|int(11)|〇|〇||
+|order_id|int(11)|〇|〇||
+|item_id|int(11)|〇|〇||
+|amount|int(11)||〇||
+|quantity|int(11)||〇||
+|price|int(11)||〇||
 
+## t_favorite
+|項目名|型|PK|NN|FK|
+|--|--|--|--|--|
+|favorite_id|int(11)|〇|〇||
+|user_id|int(11)||〇||
+|item_id|int(11)||〇||
+|register_at|datetime||〇||
 

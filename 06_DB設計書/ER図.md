@@ -81,6 +81,7 @@ package "Beginners Coffee" as target_system {
         total_fee
         earne_point
         use_point
+        cancel_flag
     }
     
     entity "注文詳細テーブル" as order_detail <t_order_detail> <<T,TRANSACTION_MARK_COLOR>> {

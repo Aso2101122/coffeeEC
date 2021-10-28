@@ -29,9 +29,9 @@ package "Beginners Coffee" as target_system {
         country_id[FK]
         category_id[FK]
         point
-        featured_flag
         Registered_date
-        delete_flag
+        featured_flag
+        featured_flag
     }
         
     entity "生産国マスタ" as country <m_item> <<M,MASTER_MARK_COLOR>> {

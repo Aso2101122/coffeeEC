@@ -69,7 +69,6 @@ package "Beginners Coffee" as target_system {
         building
         owne_points
         signup_at
-        delete_flag
     }
     
     entity "注文テーブル" as order <t_order> <<T,TRANSACTION_MARK_COLOR>> {

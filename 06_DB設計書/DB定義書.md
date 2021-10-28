@@ -77,8 +77,8 @@
 |論理名|物理名|型|PK|NN|FK|
 |--|--|--|--|--|--|
 |注文詳細ID|order_detail_id|int(11)|〇|〇||
-|注文ID|order_id|int(11)|〇|〇|〇|
-|商品ID|item_id|int(11)|〇|〇|〇|
+|注文ID|order_id|int(11)||〇|〇|
+|商品ID|item_id|int(11)||〇|〇|
 |量|amount|int(11)||〇||
 |数量|quantity|int(11)||〇||
 |金額|price|int(11)||〇||

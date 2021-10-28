@@ -12,9 +12,9 @@
 |country_id|int(11)||〇|〇|
 |category_id|int(11)||〇|〇|
 |point|int(11)||〇||
-|featured_flag|bit||||
 |Registered_date|datetime||〇||
-
+|private_flag|bit|||
+|featured_flag|bit||||
 
 ## m_country
 
@@ -74,8 +74,8 @@
 |項目名|型|PK|NN|FK|
 |--|--|--|--|--|
 |order_detail_id|int(11)|〇|〇||
-|order_id|int(11)|〇|〇|〇|
-|item_id|int(11)|〇|〇|〇|
+|order_id|int(11)||〇|〇|
+|item_id|int(11)||〇|〇|
 |amount|int(11)||〇||
 |quantity|int(11)||〇||
 |price|int(11)||〇||

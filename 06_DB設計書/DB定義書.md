@@ -59,6 +59,7 @@
 |マンション名・部屋番号等|building|varchar(100)|||||
 |保有ポイント|owne_points|int(11)||〇||
 |サインアップ日時|signup_at|datetime|||||
+|削除フラグ|delete_flag|bit||||
 
 ## t_order
 

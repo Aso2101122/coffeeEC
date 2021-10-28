@@ -51,7 +51,7 @@
 |パスワード|password|varchar(100)||〇||
 |名前|last_name|text||〇||
 |姓名|first_name|text||〇||
-|名字|phone_number|int(11)||||
+|電話番号|phone_number|int(11)||||
 |郵便番号|postcode|int(11)||||
 |都道府県|prefecture|varchar(100)||||
 |市区町村|city|varchar(100)||||

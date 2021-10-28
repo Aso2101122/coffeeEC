@@ -15,6 +15,7 @@
 |Registered_date|datetime||〇||
 |private_flag|bit|||
 |featured_flag|bit||||
+|private_flag|bit|||
 
 ## m_country
 
@@ -56,6 +57,8 @@
 |building|varchar(100)|||||
 |owne_points|int(11)||〇||
 |signup_at|datetime|||||
+|delete_flag|bit||||
+
 
 ## t_order
 
@@ -68,6 +71,7 @@
 |total_fee|int(11)||〇||
 |earne_point|int(11)||||
 |use_point|int(11)||||
+|cancel_flag|bit||||
 
 ## t_order_detail
 

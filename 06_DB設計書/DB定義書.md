@@ -72,6 +72,7 @@
 |合計金額|total_fee|int(11)||〇||
 |獲得ポイント|earne_point|int(11)||||
 |使用ポイント|use_point|int(11)||||
+|キャンセルフラグ|cancel_flag|bit||||
 
 ## t_order_detail
 

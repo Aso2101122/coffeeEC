@@ -8,16 +8,16 @@
 |論理名|物理名|型|PK|NN|FK|
 |--|--|--|--|--|--|
 |商品ID|item_id|int(11)|〇|〇||
-|商品名|item_name|varchar(50)||〇||
+|商品名|item_name|varchar(100)||〇||
 |価格|price|int(11)||〇||
-|商品説明|item_description|text||〇|||
-|商品画像URL|item_img_url|text||〇||
+|商品説明|item_description|mediumtext||〇|||
+|商品画像URL|item_img_url|varchar(255)||〇||
 |生産国ID|country_id|int(11)||〇|〇|
 |カテゴリID|category_id|int(11)||〇|〇|
 |ポイント|point|int(11)||〇||
 |登録日時|Registered_date|datetime||〇||
-|おすすめフラグ|featured_flag|bit||||
-|非公開フラグ|private_flag|bit|||
+|おすすめフラグ|featured_flag|bit(1)||||
+|非公開フラグ|private_flag|bit(1)|||
 
 ## m_country
 
@@ -25,7 +25,7 @@
 |--|--|--|--|--|--|
 |生産国ID|country_id|int(11)|〇|〇||
 |生産国名|country_name|varchar(100)||〇||
-|生産国旗画像URL|country_img_url|text||〇||
+|生産国旗画像URL|country_img_url|varchar(255)||〇||
 |生産地方ID|area_id|int(11)|||〇|〇|
 
 ## m_area
@@ -33,7 +33,7 @@
 |論理名|物理名|型|PK|NN|FK|
 |--|--|--|--|--|--|
 |生産地方ID|area_id|int(11)|〇|〇||
-|生産地方名|area_name|text||〇||
+|生産地方名|area_name|varchar(100)||〇||
 
 ## m_category
 

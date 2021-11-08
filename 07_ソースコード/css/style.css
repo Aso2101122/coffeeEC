@@ -1,6 +1,18 @@
 /* 全ページ共通のCSS */
 /* marginやpaddingなどの余白の設定はしない */
 
+/* htmlの設定 */
+html{
+    height:100%;
+}
+
+
+/* ボディの設定 */
+body{
+    height: 100%;
+}
+
+
 /* ヘッダー画像仮置きの設定 */
 .headder-img{
     width: 100%;
@@ -10,6 +22,7 @@
 /* メインコンテンツの設定 */
 .main-content{
     width: 1000px;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;

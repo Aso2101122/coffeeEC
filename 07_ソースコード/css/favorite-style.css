@@ -1,0 +1,13 @@
+.headder-img {
+    width: 100%;
+}
+.merchandise {
+    display: flex;
+}
+.item{
+    margin-left: 20px;
+    width: fit-content;
+    display: flex;
+    flex-flow: column;
+    text-align:left;
+}

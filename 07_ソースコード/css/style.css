@@ -30,4 +30,13 @@ body{
 }
 
 
+/* 商品詳細のレイアウト */
+div.merchandise{
+    margin-left: 20px;
+    width: fit-content;
+    display: flex;
+    flex-flow: column;
+    text-align:left;
+}
+
 

@@ -1,0 +1,10 @@
+/* コーヒーワールドマップ固有のCSS */
+
+/* 背景の色を灰色にする */
+body{
+    background-color: #E5E5E5;
+}
+
+/* img{
+    cursor: default;
+} */

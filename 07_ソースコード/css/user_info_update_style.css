@@ -1,0 +1,27 @@
+body{
+    background-color: #E5E5E5;
+}
+
+button.savechanges-button{
+    color: white;
+    background-color: black;
+    border-color: black;
+    font-weight: bold;
+    width: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+button.top-button{
+    background-color: white;
+    border-color: black;
+    font-weight: bold;
+    width: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+

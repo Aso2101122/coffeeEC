@@ -1,13 +1,29 @@
+
+
+
 .headder-img {
     width: 100%;
 }
-.merchandise {
+.item {
     display: flex;
+    margin-left: 30px;
 }
-.item{
-    margin-left: 20px;
+.item2{
+    margin-left: 30px;
+}
+.merchandises{
+    margin-left: 30px;
     width: fit-content;
     display: flex;
     flex-flow: column;
     text-align:left;
+}
+.margin{
+    margin: 0;
+    padding: 0;
+}
+.order{
+    background-color: #4FDFFF;
+    color: white;
+    height: 40px;
 }

@@ -1,6 +1,16 @@
 .headder-img {
     width: 100%;
 }
+.display{
+    display: flex;
+    direction: rtl;
+    margin-right: 550px;
+    margin-bottom: 30px;
+}
+.example{
+  height: 20px;
+  margin-top: 20px;
+}
 .merchandise {
     display: flex;
 }

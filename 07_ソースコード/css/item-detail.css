@@ -23,6 +23,11 @@ div.merchandise2{
 img.beans1{
     width: 370px;
     height: 370px;
+    margin-left: 30px;
+}
+
+.letter1{
+    margin-left: 30px;
 }
 
 div.origin{

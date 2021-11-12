@@ -6,7 +6,7 @@ body{
     width: 100%;
 }
 
-.main-content{
+div.merchandise1{
     width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -14,9 +14,15 @@ body{
     background-color: white;
 }
 
-div.merchandise{
-    margin-left: 0;
+div.merchandise2{
+    text-align: left;
     display: flex;
+    flex-direction: column;
+}
+
+img.beans1{
+    width: 370px;
+    height: 370px;
 }
 
 div.origin{

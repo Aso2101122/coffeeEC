@@ -21,12 +21,16 @@ div.merchandise{
 
 div.origin{
     width: 200px;
+    display: flex;
 }
 
 .text{
     text-align:left;
 }
 
+.point{
+    font-size: xx-small;
+}
 div.coffeedrip{
     padding: 30px 30px 0px 30px;
     width: 410px;

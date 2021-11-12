@@ -1,5 +1,5 @@
 /* 全ページ共通のCSS */
-/* marginやpaddingなどの余白の設定はしない */
+/* marginやpaddingなどの余白の余白は個別のファイルで設定 */
 
 /* htmlの設定 */
 html{
@@ -18,6 +18,160 @@ body{
     width: 100%;
 }
 
+/* グローバルメニュースタイル */
+.black-line{
+    width: 100%;
+    height: 20px;
+    background-color: black;
+}
+
+
+header{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height:70px;
+    border-bottom: solid 0.5px rgb(204, 204, 204);
+}
+header > ul{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+header > li{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 66px;
+    
+}
+
+
+ul > li{
+    display: inline-block;
+}
+
+
+ul > li > a.over{
+    color: black;
+    text-decoration:none;
+    border: solid 0.5px rgb(255, 255, 255);
+    border-bottom: none;
+    padding: 5px 15px;
+    display: block;
+    font-size: 80%;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+}
+
+
+
+
+
+ul > li:hover > a.over{
+    border-right: solid 0.5px rgb(204, 204, 204);
+    border-left: solid 0.5px rgb(204, 204, 204);
+    color: #444;
+}
+
+
+#nav-item_li{
+    height: 50px;
+    margin-top: 0;
+}
+
+#nav-item{
+    width:110px;
+    margin-top: 0;
+    padding: 24px;
+}
+
+#nav-login{
+
+}
+
+
+
+
+ 
+/* Submenu */
+ 
+ul li ul {
+    position: absolute;
+    border: solid 0.5px rgb(204, 204, 204);
+}
+
+#item-over{
+    margin-left: -78px;
+    padding:10px;
+}
+
+#user-over{
+    margin-left: -50px;
+    padding:20px;
+    text-align: left;
+}
+
+ul li ul li{
+    display: block;
+}
+ul li ul li img{
+    border: solid 0.5px rgb(255, 255, 255);
+}
+ul li ul li img:hover{
+    border: solid 0.5px rgb(204, 204, 204);
+}
+
+/* ユーザー名 */
+ul li ul div p{
+    width: 220px;
+    font-weight: bold;
+    padding-bottom: 2px;
+    border-bottom: solid 1px rgb(29, 29, 29);
+}
+
+/* ログインボタン */
+ul li ul div button.black-button{
+    cursor: pointer;
+    width: 220px;
+    margin: 5px 0px;
+    padding: 10px 60px;
+    
+}
+
+/* 新規会員登録ボタン */
+ul li ul div button.normal-button{
+    cursor: pointer;
+    width: 220px;
+    margin: 5px 0px;
+    padding: 5px 60px;
+    
+}
+
+.global-menu ul li ul{
+    display: none;
+}
+.global-menu ul li:hover ul{
+    display: inline-block;
+    background-color: white;
+    animation: fadeIn 0.2s ease 0.3s 1 normal;
+}
+
+li.item-link{
+    display: inline-block;
+    background-color: white;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* メインコンテンツの設定 */
 .main-content{
@@ -27,6 +181,12 @@ body{
     margin-right: auto;
     text-align: center;
     background-color: white;
+}
+
+/* 見出し画像 */
+.heading-img{
+    width: 700px;
+    margin-top: 20px;
 }
 
 
@@ -39,4 +199,21 @@ div.merchandise{
     text-align:left;
 }
 
+/* ノーマルボタンレイアウト */
+button.normal-button{
+    background-color: white;
+    border-color: black;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 
+/* 黒いボタン（決定ボタン）レイアウト */
+button.black-button{
+    background-color: black;
+    border-color: black;
+    color: white;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

@@ -5,6 +5,44 @@ body{
     background-color: #E5E5E5;
 }
 
-/* img{
-    cursor: default;
-} */
+/* 見出し調整 */
+h3{
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+/* マップ部分 */
+div.main-1{
+    display: inline-block;
+}
+
+/* おすすめ豆部分 */
+div.main-2{
+    float: left;
+    margin-right: 10px;
+}
+
+
+div.main-3{
+    float: right;
+}
+/* マップ画像 */
+.map-img{
+    width: 550px;
+}
+
+/* 商品表示の設定 */
+.recommend-item{
+
+}
+
+
+
+/* もっと見るボタン */
+button.normal-button{
+    width: 150px;
+}
+
+.origin-info{
+    text-align: left;
+}

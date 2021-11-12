@@ -1,0 +1,35 @@
+body{
+    background-color: #E5E5E5;
+}
+
+.main-content{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: white;
+}
+
+button.savechanges-button{
+    color: white;
+    background-color: black;
+    border-color: black;
+    font-weight: bold;
+    width: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+button.top-button{
+    background-color: white;
+    border-color: black;
+    font-weight: bold;
+    width: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+

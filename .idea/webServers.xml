@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="47e8ca5d-cc48-4168-ab0c-bfec8c85dc84" name="coffeeEC" url="http://ftp.lolipop.jp/Biginners-coffee">
+        <fileTransfer host="ftp.lolipop.jp" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

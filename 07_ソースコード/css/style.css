@@ -1,6 +1,8 @@
 /* 全ページ共通のCSS */
 /* marginやpaddingなどの余白の余白は個別のファイルで設定 */
 
+
+
 /* htmlの設定 */
 html{
     height:100%;
@@ -9,18 +11,21 @@ html{
 
 /* ボディの設定 */
 body{
+    /* position: relative; */
     height: 100%;
-    background-color: #E5E5E5;
 }
-
 
 /* ヘッダー画像仮置きの設定 */
 .headder-img{
     width: 100%;
+    height: 70px;
+    position: fixed; /* 画像を固定 */
 }
 
 /* グローバルメニュースタイル */
 .black-line{
+    position: fixed;
+    top: 0px;
     width: 100%;
     height: 20px;
     background-color: black;
@@ -28,10 +33,12 @@ body{
 
 
 header{
-    position: relative;
+    position: fixed;
+    top: 0px;
     display: inline-block;
     width: 100%;
     height:70px;
+    background-color:rgb(255, 255, 255);
     border-bottom: solid 0.5px rgb(204, 204, 204);
 }
 header > ul{
@@ -55,7 +62,7 @@ ul > li{
 
 
 ul > li > a.over{
-    color: black;
+    color: rgb(85, 85, 85);
     text-decoration:none;
     border: solid 0.5px rgb(255, 255, 255);
     border-bottom: none;
@@ -67,29 +74,9 @@ ul > li > a.over{
 }
 
 
-
-
-
 ul > li:hover > a.over{
     border-right: solid 0.5px rgb(204, 204, 204);
     border-left: solid 0.5px rgb(204, 204, 204);
-    color: #444;
-}
-
-
-#nav-item_li{
-    height: 50px;
-    margin-top: 0;
-}
-
-#nav-item{
-    width:110px;
-    margin-top: 0;
-    padding: 24px;
-}
-
-#nav-login{
-
 }
 
 
@@ -103,13 +90,27 @@ ul li ul {
     border: solid 0.5px rgb(204, 204, 204);
 }
 
+/* 商品ナビホバーで表示されるメニュー */
 #item-over{
-    margin-left: -78px;
+    margin-left: -110px;
     padding:10px;
 }
 
+#nav-item_li{
+    height: 50px;
+    margin-top: 0;
+}
+
+#nav-item{
+    width:110px;
+    margin-top: 0;
+    padding: 24px;
+}
+
+/* ログインナビホバーで表示されるメニュー */
 #user-over{
-    margin-left: -50px;
+    margin-top: -1px;
+    margin-left: -120px;
     padding:20px;
     text-align: left;
 }
@@ -123,6 +124,40 @@ ul li ul li img{
 ul li ul li img:hover{
     border: solid 0.5px rgb(204, 204, 204);
 }
+
+/* 検索バー */
+ul li input{
+    border: solid 1px #888888;
+    font-size: 11px;
+    width: 250px;
+    height: 25px;
+    margin: 10px 20px;
+    padding: 8px;
+    padding-left: 12px;
+}
+
+ul li input:focus{
+    outline: none;
+    border: solid 2px black;
+}
+
+button.serch_btn{
+    background-color:black;
+    border: none;
+    width: 25px;
+    height: 25px;
+    padding: 0px;
+    margin-left: 0px;
+    position: relative;
+    right: 30px;
+}
+
+img.serch_img{
+    width: 15px;
+    height: 15px;
+}
+
+
 
 /* ユーザー名 */
 ul li ul div p{
@@ -150,13 +185,14 @@ ul li ul div button.normal-button{
     
 }
 
+/* 表示非表示切替 */
 .global-menu ul li ul{
     display: none;
 }
 .global-menu ul li:hover ul{
     display: inline-block;
     background-color: white;
-    animation: fadeIn 0.2s ease 0.3s 1 normal;
+    animation: fadeIn 0.2s ease 0.3s 1 normal; /* アニメーションつけたいけどわからん */
 }
 
 li.item-link{
@@ -167,20 +203,12 @@ li.item-link{
 
 
 
-
-
-
-
-
-
-
 /* メインコンテンツの設定 */
 .main-content{
-    width: 1000px;
-    height: 100%;
+    margin-top: 70px;
     margin-left: auto;
     margin-right: auto;
-    background-color: white;
+    
 }
 
 /* 見出し画像 */

@@ -1,4 +1,31 @@
-<!-- テスト用 -->
+<?php
+require("./dbmanager.php");
+session_start();
+if(!empty($POST)){
+    //    入力情報をチェック
+    if($_POST['lastname'] === "" || $_POST['firstname'] === ""){
+        $error['name'] = "blank";
+    }
+    if ($_POST['email'] === "") {
+        $error['email'] = "blank";
+    }
+    if ($_POST['password'] === "") {
+        $error['password'] = "blank";
+    }
+    //メールアドレスの重複検知
+    if(!isset($error)){
+        $member = $pdo -> prepare('SELECT COUNT(*) as cnt FROM m_user WHERE email=?');
+
+    }
+
+}
+
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -14,7 +41,7 @@
     <?php require "global-menu.php" ?>
     <!-- <div class="main-content"> -->
     <div class="menber-ship-form">
-        <form action="menber-add.php" method="post">
+        <form action="./menber-add.php" method="post">
             <h1>新規会員登録</h1>
             <div class="form-parts">
                 <span class="tag">お名前</span>
@@ -25,7 +52,7 @@
             <div class="form-parts">
                 <span class="tag">メールアドレス</span>
                 <span class="mandatory">必須</span><br>
-                <input type="mail" name="mail" class="input-text" /><br>
+                <input type="mail" name="email" class="input-text" /><br>
             </div>
             <div class="form-parts">
                 <span class="tag">パスワード</span>

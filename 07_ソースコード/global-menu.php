@@ -3,6 +3,7 @@
 
 
 <!-- HTML部 -->
+<div class="black-line"></div>
 <header class="global-menu">
     <ul>
         <li>

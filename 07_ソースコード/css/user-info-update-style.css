@@ -2,12 +2,20 @@ body{
     background-color: #E5E5E5;
 }
 
-.main-content{
-    width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+h2{
+    margin: 0px;
+}
+
+h3{
+    margin: 10px;
+}
+div.main-content{
     background-color: white;
+    text-align: left;
+}
+
+div.left{
+    margin-left: 200px;
 }
 
 button.savechanges-button{

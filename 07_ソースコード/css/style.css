@@ -27,7 +27,7 @@ body{
     width: 100%;
     position: fixed;
     background-color: black;
-    
+
 }
 
 /* グローバルメニュースタイル */
@@ -87,10 +87,6 @@ ul > li:hover > a.over{
     border-left: solid 0.5px rgb(204, 204, 204);
 }
 
-
-
-
- 
 /* Submenu */
  
 ul li ul {
@@ -165,8 +161,6 @@ img.serch_img{
     height: 15px;
 }
 
-
-
 /* ユーザー名 */
 ul li ul div p{
     width: 220px;
@@ -208,15 +202,13 @@ li.item-link{
     background-color: white;
 }
 
-
-
-
 /* メインコンテンツの設定 */
 .main-content{
     margin-top: 70px;
     margin-left: auto;
     margin-right: auto;
     width: 1000px;
+    height: 100%;
 }
 
 /* 見出し画像 */

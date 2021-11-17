@@ -1,6 +1,3 @@
-
-
-
 .headder-img {
     width: 100%;
 }
@@ -9,7 +6,8 @@
     margin-left: 30px;
 }
 .item2{
-    margin-left: 30px;
+    margin-left: 40px;
+    margin-top: 20px;
 }
 .merchandises{
     margin-left: 30px;
@@ -26,4 +24,8 @@
     background-color: #4FDFFF;
     color: white;
     height: 40px;
+    border: 0cm;
+}
+.cart-image{
+   margin-right: 20px; 
 }

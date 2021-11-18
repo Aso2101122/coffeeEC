@@ -58,7 +58,7 @@
 |--|--|--|--|--|--|
 |会員ID|user_id|varchar(11)|〇|〇||
 |メールアドレス|mail|varchar(255)||〇||
-|パスワード|password|varchar(100)||〇||
+|パスワード|password|varchar(255)||〇||
 |名前|last_name|text||〇||
 |姓名|first_name|text||〇||
 |電話番号|phone_number|int(11)||||
@@ -91,7 +91,7 @@
 |注文詳細ID|order_detail_id|int(11)|〇|〇||
 |注文ID|order_id|int(11)||〇|〇|
 |商品ID|item_id|int(11)||〇|〇|
-|量|amount|int(11)||〇||
+|量|amount|int(11)||||
 |数量|quantity|int(11)||〇||
 |金額|price|int(11)||〇||
 
@@ -103,3 +103,4 @@
 |会員ID|user_id|int(11)||〇|〇|
 |商品ID|item_id|int(11)||〇|〇|
 |登録日時|register_at|timestamp||〇||
+|削除フラグ|delete_flag|bit(1)||||

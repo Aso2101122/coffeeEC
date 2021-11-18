@@ -20,7 +20,7 @@
 |酸味|acidity|int(1)||〇||
 |コク|rich|int(1)||〇||
 |香り|scent|int(1)||〇||
-|登録日時|Registered_date|datetime||〇||
+|登録日時|Registered_date|timestamp||〇||
 |おすすめフラグ|featured_flag|bit(1)||||
 |非公開フラグ|private_flag|bit(1)|||
 
@@ -54,7 +54,7 @@
 
 |論理名|物理名|型|PK|NN|FK|
 |--|--|--|--|--|--|
-|会員ID|user_id|int(11)|〇|〇||
+|会員ID|user_id|varchar(11)|〇|〇||
 |メールアドレス|mail|varchar(255)||〇||
 |パスワード|password|varchar(100)||〇||
 |名前|last_name|text||〇||
@@ -66,7 +66,7 @@
 |丁目番地|block|varchar(100)||||
 |マンション名・部屋番号等|building|varchar(100)|||||
 |保有ポイント|owne_points|int(11)||〇||
-|サインアップ日時|signup_at|datetime|||||
+|サインアップ日時|signup_at|timestamp|||||
 |削除フラグ|delete_flag|bit||||
 
 ## t_order
@@ -75,7 +75,7 @@
 |--|--|--|--|--|--|
 |注文ID|order_id|int(11)|〇|〇||
 |会員ID|user_id|int(11)||〇|〇|
-|注文日時|order_at|datetime||〇||
+|注文日時|order_at|timestamp||〇||
 |送料|postage|int(11)||〇||
 |合計金額|total_fee|int(11)||〇||
 |獲得ポイント|earne_point|int(11)||||
@@ -100,4 +100,4 @@
 |お気に入りID|favorite_id|int(11)|〇|〇||
 |会員ID|user_id|int(11)||〇|〇|
 |商品ID|item_id|int(11)||〇|〇|
-|登録日時|register_at|datetime||〇||
+|登録日時|register_at|timestamp||〇||

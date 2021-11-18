@@ -34,6 +34,9 @@
 |--|--|--|--|--|--|
 |生産地方ID|area_id|int(11)|〇|〇||
 |生産地方名|area_name|varchar(100)||〇||
+|地方説明|area_explanation|text||||
+|代表国|area_country|text||||
+|代表的なブランド|area_beans|text||||
 
 ## m_category
 

@@ -15,6 +15,11 @@
 |生産国ID|country_id|int(11)||〇|〇|
 |カテゴリID|category_id|int(11)||〇|〇|
 |ポイント|point|int(11)||〇||
+|苦味|bitter|int(1)||〇||
+|甘味|sweet|int(1)||〇||
+|酸味|acidity|int(1)||〇||
+|コク|rich|int(1)||〇||
+|香り|scent|int(1)||〇||
 |登録日時|Registered_date|datetime||〇||
 |おすすめフラグ|featured_flag|bit(1)||||
 |非公開フラグ|private_flag|bit(1)|||

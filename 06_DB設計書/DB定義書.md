@@ -9,13 +9,13 @@
 
 |論理名|物理名|型|PK|NN|FK|
 |--|--|--|--|--|--|
-|商品ID|item_id|int(11)|〇|〇||
+|商品ID|item_id|varchar(11)|〇|〇||
 |商品名|item_name|varchar(100)||〇||
 |価格|price|int(11)||〇||
 |商品説明|item_description|mediumtext||〇|||
 |商品画像パス|item_img_url|varchar(255)||〇||
-|生産国ID|country_id|int(11)||〇|〇|
-|カテゴリID|category_id|int(11)||〇|〇|
+|生産国ID|country_id|varchar(11)||〇|〇|
+|カテゴリID|category_id|varchar(11)||〇|〇|
 |ポイント|point|int(11)||〇||
 |苦味|bitter|int(1)||〇||
 |甘味|sweet|int(1)||〇||
@@ -30,16 +30,16 @@
 
 |論理名|物理名|型|PK|NN|FK|
 |--|--|--|--|--|--|
-|生産国ID|country_id|int(11)|〇|〇||
+|生産国ID|country_id|varchar(11)|〇|〇||
 |生産国名|country_name|varchar(100)||〇||
 |生産国旗画像パス|country_img_url|varchar(255)||〇||
-|生産地方ID|area_id|int(11)|||〇|〇|
+|生産地方ID|area_id|varchar(11)|||〇|〇|
 
 ## m_area
 
 |論理名|物理名|型|PK|NN|FK|
 |--|--|--|--|--|--|
-|生産地方ID|area_id|int(11)|〇|〇||
+|生産地方ID|area_id|varchar(11)|〇|〇||
 |生産地方名|area_name|varchar(100)||〇||
 |地方説明|area_explanation|text||||
 |代表国|area_country|text||||
@@ -69,7 +69,7 @@
 |マンション名・部屋番号等|building|varchar(100)|||||
 |保有ポイント|owne_points|int(11)||〇||
 |サインアップ日時|signup_at|timestamp|||||
-|削除フラグ|delete_flag|bit||||
+|削除日時|delete_at|datetime||||
 
 ## t_order
 

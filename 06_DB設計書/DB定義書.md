@@ -58,7 +58,8 @@
 |--|--|--|--|--|--|
 |会員ID|user_id|varchar(11)|〇|〇||
 |メールアドレス|mail|varchar(255)||〇||
-|パスワード|password|varchar(100)||〇||
+|パスワード|password|varchar(255)||〇||
+|ソルト|salt|varchar(255)||〇||
 |名前|last_name|text||〇||
 |姓名|first_name|text||〇||
 |電話番号|phone_number|int(11)||||

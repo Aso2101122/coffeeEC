@@ -2,6 +2,10 @@ body{
     background-color: #E5E5E5;
 }
 
+a{
+    text-decoration:none;
+}
+
 .main-content{
     width: 1000px;
     margin-left: auto;

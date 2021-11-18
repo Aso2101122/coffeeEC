@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <img src="img/groval-menu.png" class="headder-img">
+    <?php require './global-menu.php' ?>
     <div class="main-content">
         <img src=".\img\index_title_01.png" class="page-img">
         <u>

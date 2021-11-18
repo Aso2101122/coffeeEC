@@ -29,6 +29,11 @@ package "Beginners Coffee" as target_system {
         country_id[FK]
         category_id[FK]
         point
+        bitter
+        sweet
+        acidity
+        rich
+        scent
         Registered_date
         featured_flag
         private_flag  

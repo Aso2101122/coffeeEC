@@ -103,3 +103,4 @@
 |会員ID|user_id|int(11)||〇|〇|
 |商品ID|item_id|int(11)||〇|〇|
 |登録日時|register_at|timestamp||〇||
+|削除フラグ|delete_flag|bit(1)||||

@@ -14,7 +14,7 @@ if(!empty($POST)){
     }
     //メールアドレスの重複検知
     if(!isset($error)){
-        $member = $pdo -> prepare('SELECT COUNT(*) as cnt FROM m_user WHERE email=?');
+        $member = $pdo -> prepare('SELECT COUNT(*) as cnt FROM m_user WHERE mail=?');
 
     }
 

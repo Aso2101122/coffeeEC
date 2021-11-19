@@ -3,10 +3,10 @@ require("./dbmanager.php");
 session_start();
 if(!empty($POST)){
     //    入力情報をチェック
-    if ($_POST['email'] === "") {
+    if ($_POST['email'] === "email") {
         $error['email'] = "blank";
     }
-    if ($_POST['password'] === "") {
+    if ($_POST['password'] === "password") {
         $error['password'] = "blank";
     }
     //メールアドレスの重複検知
@@ -44,14 +44,14 @@ if(!empty($POST)){
                 <input type="password" name="password" class="input-text" /><br>
             </div>
             <div class="submit-button">
-                <button type="submit" class="black-button">ログイン</button>
+                <button onclick ="location.href='index.php'"type="submit" class="black-button">ログイン</button>
             </div>
 
         </form>
     </div>
     <div class="transition-form">
         <h1>初めてのご利用の方はこちら</h1>
-        <button class="normal-button">新規会員登録へ</button>
+        <button onclick ="location.href='menber-add.php'"class="normal-button">新規会員登録へ</button>
     </div>
     <!-- </div> -->
 </body>

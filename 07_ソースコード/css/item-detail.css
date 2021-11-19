@@ -6,7 +6,7 @@ body{
     width: 100%;
 }
 
-div.merchandise1{
+div.main-content{
     width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -14,25 +14,53 @@ div.merchandise1{
     background-color: white;
 }
 
-div.merchandise2{
+div.merchandise1{
     text-align: left;
     display: flex;
     flex-direction: column;
+    margin-left: 60px;
 }
 
 img.beans1{
-    width: 370px;
-    height: 370px;
-    margin-left: 30px;
-}
-
-.letter1{
-    margin-left: 30px;
+    width: 300px;
+    height: 300px;
 }
 
 div.origin{
-    width: 200px;
+    border: solid 1px;
+    height: 45px;
+    width: 240px;
     display: flex;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 95px;
+}
+
+.flag-img{
+    height: 20px;
+    width: 30px;
+    margin-left: 5px;
+}
+
+.letter2{
+    margin-top: 9px;
+    margin-left: 30px;
+}
+
+.drip{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    background-color: #E5E5E5;
+    padding: 10px 10px 10px 10px;
+    width: 370px;
+    height: 230px;
+}
+
+.letter3{
+    text-align: left;
+    flex-direction: column;
+    margin-bottom: 5px;
 }
 
 .text{
@@ -41,11 +69,4 @@ div.origin{
 
 .point{
     font-size: xx-small;
-}
-div.coffeedrip{
-    padding: 30px 30px 0px 30px;
-    width: 410px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #E5E5E5;
 }

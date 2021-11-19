@@ -1,1 +1,13 @@
-
+|ページ名|ファイル名|
+|--|--|
+|トップページ|index.php|
+|商品一覧|item-list.html|
+|商品詳細|item-detail.htl|
+|カート|cart.html|
+|お気に入り|favorite.html|
+|産地で探す|coffee-world-map|
+|新規会員登録|menber-add|
+|ログイン|menber-login.php|
+|会員登録情報変更|user-info-update|
+|グローバルメニュー|global-menu.php|
+|db接続|dbmanager|

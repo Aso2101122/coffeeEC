@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <img src="img/groval-menu.png" class="headder-img">
+    <?php require './global-menu.php' ?>
     <div class="main-content">
         <img src=".\img\index_title_01.png" class="page-img">
         <u>
@@ -25,7 +25,7 @@
                 </a>
             </div>
             <div class="chooseByOrigin">
-                <a href="">
+                <a href="./coffee-world-map.php">
                     <img src="img/index_world-map_bn.png"><br>
                     <div class="text">産地でコーヒー豆を選ぶ</div>
                 </a>

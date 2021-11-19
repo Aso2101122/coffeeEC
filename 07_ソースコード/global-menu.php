@@ -31,7 +31,7 @@
                     <p>ゲスト様</p>
                     <button type="submit" onclick="location.href='#'" class="black-button">ログイン</button>
                     <br>
-                    <button type="submit" onclick="location.href='#'" class="normal-button">新規会員登録</button>
+                    <button type="submit" onclick="href='./menber-add.php'" class="normal-button">新規会員登録</button>
                 </div>
             </ul>
         </li>

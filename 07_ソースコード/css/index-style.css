@@ -2,6 +2,10 @@ body{
     background-color: #E5E5E5;
 }
 
+a{
+    text-decoration:none;
+}
+
 .main-content{
     width: 1000px;
     margin-left: auto;
@@ -11,7 +15,7 @@ body{
 }
 img.page-img{
     width: 60%;
-    margin-top: 15px;
+    margin-top: 50px;
 }
 
 .text{

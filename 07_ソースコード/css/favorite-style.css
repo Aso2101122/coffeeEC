@@ -1,5 +1,13 @@
+body{
+    background-color: #E5E5E5;
+}
 .headder-img {
     width: 100%;
+}
+h1{
+    margin: 30px 0px ;
+    border-bottom: solid 1px;
+    width: 230px;
 }
 .item {
     display: flex;

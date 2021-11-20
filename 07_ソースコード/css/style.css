@@ -10,6 +10,10 @@ html{
 
 
 /* ボディの設定 */
+html{
+    height:100%;
+}
+
 body{
     /* position: relative; */
     height: 100%;
@@ -235,6 +239,7 @@ button.normal-button{
     font-weight: bold;
     padding-top: 5px;
     padding-bottom: 5px;
+    cursor: pointer;
 }
 
 /* 黒いボタン（決定ボタン）レイアウト */
@@ -245,4 +250,5 @@ button.black-button{
     font-weight: bold;
     padding-top: 5px;
     padding-bottom: 5px;
+    cursor: pointer;
 }

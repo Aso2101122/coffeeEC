@@ -1,9 +1,9 @@
 <?php
 require("./dbmanager.php");
 session_start();
-if(!empty($POST)){
+if (!empty($POST)) {
     //    入力情報をチェック
-    if($_POST['lastname'] === "" || $_POST['firstname'] === ""){
+    if ($_POST['lastname'] === "" || $_POST['firstname'] === "") {
         $error['name'] = "blank";
     }
     if ($_POST['email'] === "") {
@@ -13,11 +13,9 @@ if(!empty($POST)){
         $error['password'] = "blank";
     }
     //メールアドレスの重複検知
-    if(!isset($error)){
-        $member = $pdo -> prepare('SELECT COUNT(*) as cnt FROM m_user WHERE mail=?');
-
+    if (!isset($error)) {
+        $member = $pdo->prepare('SELECT COUNT(*) as cnt FROM m_user WHERE mail=?');
     }
-
 }
 
 
@@ -67,7 +65,7 @@ if(!empty($POST)){
     </div>
     <div class="transition-form">
         <h1>会員の方はこちら</h1>
-        <button class="normal-button">ログインへ</button>
+        <button onclick="location.href='menber-login.php'" class="normal-button">ログインへ</button>
     </div>
     <!-- </div> -->
 </body>

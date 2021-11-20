@@ -1,0 +1,112 @@
+/* 会員登録画面css */
+body{
+    /* position: fixed; */ /* スクロール禁止 */
+    background-image: url("../img/menber-add_background_img.jpg");
+    /* background-attachment: fixed; */
+    background-size: cover;
+    background-repeat:no-repeat;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 190px;
+}
+
+/* .main-content{
+    width: 70%;
+    height: 100%;
+    padding-top: 60px;
+} */
+
+.menber-ship-form{
+    background-color: rgba(255, 255, 255, 0.93);
+    border: solid 2px black;
+    width: 600px;
+    margin: 0px auto 0px;
+}
+
+.transition-form{
+    background-color: rgba(255, 255, 255, 0.93);
+    width:600px;
+    border: solid 2px black;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+h1{
+    font-size: 20px;
+    font-weight:500;
+    text-align:center;
+    letter-spacing: 1px;
+    margin: 25px auto 0px;
+    border-bottom: solid 1px black;
+    width: 300px;
+}
+
+
+/* 必須マーク */
+.mandatory{
+    font-size: xx-small;
+    color: red;
+    border: solid 1px red;
+    padding:  0px 10px;
+    margin: 30px 15px 30px 0px;
+}
+
+form{
+    width: 400px;
+    margin: 0px auto;
+}
+
+/* 項目ごとdiv */
+div.form-parts{
+    margin: 20px;
+}
+
+.tag{
+    font-size: x-small;
+    font-weight:bold;
+    margin: 40px 15px 40px 0px;
+}
+
+
+input{
+    border: solid 2px black;
+    margin-top: 10px;
+    height: 28px;
+    font-size:small;
+    padding-left: 5px;
+}
+
+input.input-text{
+    width:100%;
+    
+}
+
+
+.submit-button{
+    text-align: center;
+}
+
+
+
+.black-button{
+    font-size: xx-small;
+    margin: 10px auto 20px;
+    padding: 0px 70px;
+}
+
+
+.normal-button{
+    font-size:xx-small;
+    margin: 30px;
+    padding: 0px 70px;
+}
+
+
+.firstname{
+    margin-left: 10px;
+}
+

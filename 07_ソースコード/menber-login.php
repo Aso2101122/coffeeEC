@@ -1,23 +1,54 @@
 <?php
 require("./dbmanager.php");
 session_start();
-if(!empty($POST)){
-    //    入力情報をチェック
-    if ($_POST['email'] === "email") {
-        $error['email'] = "blank";
+//ログイン状態の場合ログイン後のページにリダイレクト
+if (isset($_SESSION["login"])) {
+  session_regenerate_id(TRUE);
+  header("Location: index.php");
+  exit();
+}
+
+//postされて来なかったとき
+if (count($_POST) === 0) {
+  $message = "エラー";
+}
+//postされて来た場合
+else {
+  //メールアドレスまたはパスワードが送信されて来なかった場合
+  if(empty($_POST["mail"]) || empty($_POST["password"])) {
+    $message = "メールアドレスとパスワードを入力してください";
+  }
+  //メールアドレスとパスワードが送信されて来た場合
+  else {
+    //post送信されてきたユーザー名がデータベースにあるか検索
+    try {
+      $stmt = $pdo -> prepare('SELECT * FROM m_users WHERE mail=?');
+      $stmt -> bindParam(1, $_POST['name'], PDO::PARAM_STR, 10);
+      $stmt -> execute();
+      $result = $stmt -> fetch(PDO::FETCH_ASSOC);
     }
-    if ($_POST['password'] === "password") {
-        $error['password'] = "blank";
-    }
-    //メールアドレスの重複検知
-    if(!isset($error)){
-        $member = $pdo -> prepare('SELECT COUNT(*) as cnt FROM m_user WHERE email=?');
-        
+    catch (PDOExeption $e) {
+      exit('データベースエラー');
     }
 
+
+    //検索したユーザー名に対してパスワードが正しいかを検証
+    //正しくないとき
+    if (!password_verify($_POST['password'], $result['password'])) {
+        $message="メールアドレスかパスワードが違います";
+      }
+    //正しいとき
+    else{
+      session_regenerate_id(TRUE); //セッションidを再発行
+      $_SESSION["login"] = $_POST['name']; //セッションにログイン情報を登録
+      header("index.php"); //ログイン後のページにリダイレクト
+      exit();
+    }
+  }
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -33,7 +64,7 @@ if(!empty($POST)){
     <?php require "global-menu.php" ?>
     <!-- <div class="main-content"> -->
     <div class="menber-ship-form">
-        <form action="menber-login.php" method="post">
+        <form action="index.php" method="post">
             <h1>ログイン</h1>
             <div class="form-parts">
                 <span class="tag">メールアドレス</span>
@@ -44,7 +75,7 @@ if(!empty($POST)){
                 <input type="password" name="password" class="input-text" /><br>
             </div>
             <div class="submit-button">
-                <button onclick ="location.href='index.php'"type="submit" class="black-button">ログイン</button>
+                <button type="submit" class="black-button">ログイン</button>
             </div>
 
         </form>

@@ -1,8 +1,20 @@
 <?php
-require_once "dbmanager.php";
-$pdo = getDb();
-$sql = $pdo->query('select * from m_area');
+try {
+    require_once "dbmanager.php";
+    //pdoインスタンス作成するメソッド
+    $pdo = getDb();
+    //sql文を生成、実行
+    $sql = $pdo->query('select * from m_area');
+    //配列形式に変換
+    $resultlist = $sql->fetchAll(PDO::FETCH_ASSOC);
+    // echo '<pre>';
+    // print_r($resultlist);
+    // echo '</pre>';
+} catch (PDOException $e) {
+    echo 'データベースエラー';
+}
 
+// getで選んだ地方を取得する
 // if (isset($_GET['id'])) {
 //     echo $_GET['id'];
 // }
@@ -27,16 +39,14 @@ $sql = $pdo->query('select * from m_area');
 </head>
 
 <body>
-
-    <?php require 'global-menu.php' ?>
+    <?php require './global-menu.php'; ?>
     <div class="main-content">
-        <?php print_r($sql); ?>
         <img src="img/world-map_title_img.png" class="heading-img">
         <h1>世界のコーヒーマップ</h1>
         <p>産地の味の違いを楽しみながらコーヒーを飲んで見てください。</p>
         <div class="main-1">
             <div class="main-2">
-                <img src="./img/world-map_world-map_img_00.png" alt="コーヒーワールドマップ" id="worldmap" usemap="#map" class="map-img">
+                <img src="./img/world-map_world-map_img_00.png" alt="コーヒーワールドマップ" id="worldmap" usemap="#map" class="map-img" />
                 <map name="map">
                     <area alt="アフリカ部分" shape="poly" coords="126,330,122,297,116,282,92,284,54,270,35,277,18,297,3,316,4,325,12,340,24,357,60,359,77,444,81,448,104,448,124,416,135,402,135,382,133,374,142,363,146,362,157,334,126,334,126,334" href="#" onclick="selectArea(1)" onmouseover="pictureChange(1)" onmouseout="pictureChange(0)" onfocus="pictureChange(1)" onblur="pictureChange(0)">
 
@@ -55,6 +65,7 @@ $sql = $pdo->query('select * from m_area');
                     <area alt="中南米2" shape="poly" coords="647,312,640,305,623,304,619,306,622,312,631,317,647,322,651,321,650,314,649,311,643,308" href="#" onclick="selectArea(3)" onmouseover="pictureChange(3)" onmouseout="pictureChange(0)" onfocus="pictureChange(3)" onblur="pictureChange(0)">
                 </map>
                 <script>
+                    //レスポンシブ対応
                     $('img[usemap]').rwdImageMaps();
                 </script>
                 <div class="origin-info">
@@ -64,18 +75,18 @@ $sql = $pdo->query('select * from m_area');
             </div>
             <div class="main-3">
                 <div class="recommend-item">
-                    <h3>この産地のコーヒー豆</h2>
-                        <div class="merchandise">
-                            <img src="img/index_item_image.png">
-                            <a class="item-name">商品名</a>
-                            <a class="item-fee">￥300</a>
-                        </div>
-                        <div class="merchandise">
-                            <img src="img/index_item_image.png">
-                            <a class="item-name">商品名</a>
-                            <a class="item-fee">￥300</a>
-                        </div>
-                        <button type="button" class="normal-button">もっと見る</button>
+                    <h2>この産地のコーヒー豆</h2>
+                    <div class="merchandise">
+                        <img src="img/index_item_image.png">
+                        <a class="item-name">商品名</a>
+                        <a class="item-fee">￥300</a>
+                    </div>
+                    <div class="merchandise">
+                        <img src="img/index_item_image.png">
+                        <a class="item-name">商品名</a>
+                        <a class="item-fee">￥300</a>
+                    </div>
+                    <button type="button" class="normal-button">もっと見る</button>
                 </div>
             </div>
         </div>

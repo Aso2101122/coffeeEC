@@ -11,7 +11,7 @@ h3{
     margin-bottom: 10px;
 }
 
-main-content{
+.main-content{
     text-align: center;
 }
 
@@ -46,6 +46,7 @@ div.main-3{
 /* もっと見るボタン */
 button.normal-button{
     width: 150px;
+    margin-top: 15px;
 }
 
 .origin-info{

@@ -1,4 +1,4 @@
-const text1 = document.getElementById('text1');
+//const text1 = document.getElementById('text1');
 var area_title = document.getElementById('area-name');
 var area_feature = document.getElementById('area-feature');
 var images_src = new Array("./img/world-map_world-map_img_00.png"); //デフォルトの画像url
@@ -24,7 +24,8 @@ function pictureChange(num) {
 function selectArea(num) {
     area_title.innerHTML = areanames[num - 1];
     area_feature.innerHTML = areafeatures[num - 1];
-    location.href = "coffee-world-map.php?id=" + num;
 }
 
+
+//レスポンシブ対応
 jQuery('img[usemap]').rwdImageMaps();

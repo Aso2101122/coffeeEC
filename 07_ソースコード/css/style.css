@@ -1,21 +1,13 @@
 /* 全ページ共通のCSS */
 /* marginやpaddingなどの余白の余白は個別のファイルで設定 */
 
-
-
-/* htmlの設定 */
-html{
-    height:100%;
-}
-
-
 /* ボディの設定 */
 html{
     height:100%;
 }
 
+/* 背景の色は個別で指定 */
 body{
-    /* position: relative; */
     height: 100%;
 }
 
@@ -26,12 +18,37 @@ body{
     position: fixed; /* 画像を固定 */
 }
 
+/* メインコンテンツの設定 */
+.main-content{
+    background-color: white;
+    padding-top: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+}
+
+/* min-heightに対応してないブラウザ用 */
+.main-content{
+    height: 100%;
+}
+
+
+.main-content{
+    min-height: 100%;
+}
+
+/* 要素を超えた分の背景が伸びないブラウザ用 */
+.main-content{
+    height: auto;
+}
+
+
+/* 仮のヘッダーの位置 */
 .cariheader{
     height: 70px;
     width: 100%;
     position: fixed;
     background-color: black;
-
 }
 
 /* グローバルメニュースタイル */
@@ -158,6 +175,8 @@ button.serch_btn{
     margin-left: 0px;
     position: relative;
     right: 30px;
+    top: 0.5px;
+    bottom: 0px;
 }
 
 img.serch_img{
@@ -206,15 +225,7 @@ li.item-link{
     background-color: white;
 }
 
-/* メインコンテンツの設定 */
-.main-content{
-    background-color: white;
-    padding-top: 90px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 1000px;
-    height: 100%;
-}
+
 
 /* 見出し画像 */
 .heading-img{

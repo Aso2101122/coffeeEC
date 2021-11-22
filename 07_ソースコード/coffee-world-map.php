@@ -1,7 +1,11 @@
 <?php
-if (isset($_GET['id'])) {
-    echo $_GET['id'];
-}
+require_once "dbmanager.php";
+$pdo = getDb();
+$sql = $pdo->query('select * from m_area');
+
+// if (isset($_GET['id'])) {
+//     echo $_GET['id'];
+// }
 ?>
 
 
@@ -23,8 +27,10 @@ if (isset($_GET['id'])) {
 </head>
 
 <body>
-    <img src="img/groval-menu.png">
+
+    <?php require 'global-menu.php' ?>
     <div class="main-content">
+        <?php print_r($sql); ?>
         <img src="img/world-map_title_img.png" class="heading-img">
         <h1>世界のコーヒーマップ</h1>
         <p>産地の味の違いを楽しみながらコーヒーを飲んで見てください。</p>

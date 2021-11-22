@@ -24,7 +24,7 @@ else {
     //post送信されてきたユーザー名がデータベースにあるか検索
     try {
       $stmt = $pdo -> prepare('SELECT * FROM m_users WHERE mail=?');
-      $stmt -> bindParam(1, $_POST['name'], PDO::PARAM_STR, 10);
+      $stmt -> bindParam(1, $_POST['user_id'], PDO::PARAM_STR, 10);
       $stmt -> execute();
       $result = $stmt -> fetch(PDO::FETCH_ASSOC);
     }
@@ -35,18 +35,23 @@ else {
 
     //検索したユーザー名に対してパスワードが正しいかを検証
     //正しくないとき
-    if (!password_verify($_POST['password'], $result['password'])) {
-        $message="メールアドレスかパスワードが違います";
-      }
-    //正しいとき
-    else{
-      session_regenerate_id(TRUE); //セッションidを再発行
-      $_SESSION["login"] = $_POST['name']; //セッションにログイン情報を登録
-      header("index.php"); //ログイン後のページにリダイレクト
-      exit();
+    if (!isset($row['mail'])) {
+      echo 'メールアドレス又はパスワードが間違っています。';
+      return false;
     }
+    //パスワード確認後sessionにメールアドレスを渡す
+    if (password_verify($_POST['password'], $row['password'])) {
+      session_regenerate_id(true); //session_idを新しく生成し、置き換える
+      $_SESSION['mail'] = $row['mail'];
+      echo 'ログインしました';
+    } else {
+      echo 'メールアドレス又はパスワードが間違っています。';
+      return false;
+    }
+    
   }
 }
+
 
 ?>
 
@@ -65,11 +70,11 @@ else {
     <?php require "global-menu.php" ?>
     <!-- <div class="main-content"> -->
     <div class="menber-ship-form">
-        <form action="index.php" method="post">
+        <form action="menber-login.php" method="post">
             <h1>ログイン</h1>
             <div class="form-parts">
                 <span class="tag">メールアドレス</span>
-                <input type="text" name="email" class="input-text" /><br>
+                <input type="text" name="mail" class="input-text" /><br>
             </div>
             <div class="form-parts">
                 <span class="tag">パスワード</span>

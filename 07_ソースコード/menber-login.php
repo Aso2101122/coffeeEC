@@ -1,5 +1,6 @@
 <?php
 require("./dbmanager.php");
+$pdo = getDb();
 session_start();
 //ログイン状態の場合ログイン後のページにリダイレクト
 if (isset($_SESSION["login"])) {

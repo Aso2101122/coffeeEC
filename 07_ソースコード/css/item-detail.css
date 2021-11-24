@@ -14,6 +14,9 @@ div.main-content{
     background-color: white;
 }
 
+div.item-detail{
+    display: flex;
+}
 div.merchandise1{
     text-align: left;
     display: flex;
@@ -34,6 +37,7 @@ div.origin{
     text-align: center;
     margin-top: 20px;
     margin-left: 95px;
+    background-color: #E5E5E5;
 }
 
 .flag-img{
@@ -69,4 +73,9 @@ div.origin{
 
 .point{
     font-size: xx-small;
+}
+
+.radar-img{
+    height: 250px;
+    width: 350px;
 }

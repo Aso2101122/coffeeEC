@@ -104,3 +104,14 @@ div.origin{
     height: 250px;
     width: 350px;
 }
+.orde{
+    background-color: #4FDFFF;
+    width: 250px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #4FDFFF;
+    color: white;
+    position: relative;
+    top: 70px;
+    left: 50px;
+}

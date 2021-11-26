@@ -1,23 +1,49 @@
+body{
+    background-color: #E5E5E5;
+}
 .headder-img {
     width: 100%;
 }
+.beans-header{
+    width: 870px;
+    height: 150px;
+    margin-left: 60px;
+    margin-bottom: 20px;
+}
 .display{
-    display: flex;
-    direction: rtl;
-    margin-right: 550px;
-    margin-bottom: 30px;
+    text-align: right;
+    margin-right: 210px;
+    margin-bottom: 20px;
 }
 .example{
-  height: 20px;
-  margin-top: 20px;
+    direction: rtl;
 }
-.merchandise {
+.item {
     display: flex;
+    margin-left: 30px;
 }
-.item{
-    margin-left: 20px;
+.item2{
+    display: flex;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+.merchandises{
+    margin-left: 30px;
     width: fit-content;
     display: flex;
     flex-flow: column;
     text-align:left;
+}
+.margin{
+    margin: 0;
+    padding: 0;
+}
+.order{
+    background-color: #4FDFFF;
+    color: white;
+    height: 40px;
+    border: 0cm;
+}
+.cart-image{
+   margin-right: 20px; 
 }

@@ -34,6 +34,8 @@ div.main-right{
 .letter1{
     margin-top: 20px;
     margin-left: 40px;
+    border-bottom: solid black;
+    width: 300px;
 }
 div.item-detail{
     display: flex;
@@ -114,4 +116,21 @@ div.origin{
     position: relative;
     top: 70px;
     left: 50px;
+    font-weight: bolder;
+}
+
+.many{
+    width:35px;
+}
+
+.favorite{
+    background-color: white;
+    width: 250px;
+    padding: 10px;
+    font-weight: bolder;
+}
+
+.recommendation{
+    font-size: large;
+    border-bottom: solid black;
 }

@@ -12,23 +12,22 @@ body{
 }
 .display{
     text-align: right;
-    margin-right: 210px;
-    margin-bottom: 20px;
+    position: relative;right: 210px;
 }
 .example{
     direction: rtl;
+    position: relative;right: 140px;
+    position: relative;bottom: 41px;
 }
 .item {
     display: flex;
-    margin-left: 30px;
 }
 .item2{
     display: flex;
-    margin-left: 40px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .merchandises{
-    margin-left: 30px;
+    margin-left: 70px;
     width: fit-content;
     display: flex;
     flex-flow: column;
@@ -46,4 +45,12 @@ body{
 }
 .cart-image{
    margin-right: 20px; 
+}
+.item3{
+    display: flex;
+    margin-top: 10px;
+}
+.item4{
+    display: flex;
+    margin-top: 10px;
 }

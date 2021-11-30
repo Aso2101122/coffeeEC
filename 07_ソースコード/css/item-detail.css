@@ -24,16 +24,21 @@ div.main-content{
 }
 
 div.main-left{
-    margin-left: 10px;
+    margin-left: 45px;
 }
 
 div.main-right{
-
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    width: 40%;
 }
 
 .letter1{
     margin-top: 20px;
     margin-left: 40px;
+    border-bottom: solid black;
+    width: 300px;
 }
 div.item-detail{
     display: flex;
@@ -104,6 +109,8 @@ div.origin{
     height: 250px;
     width: 350px;
 }
+
+/* カートボタン */
 .orde{
     background-color: #4FDFFF;
     width: 250px;
@@ -111,7 +118,43 @@ div.origin{
     box-sizing: border-box;
     border: 1px solid #4FDFFF;
     color: white;
-    position: relative;
-    top: 70px;
-    left: 50px;
+    font-weight: bolder;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.many{
+    width: 35px;
+    margin-left: 10px;
+}
+
+div.name{
+    border-bottom: solid 1px black;
+    margin-bottom: 5px;
+}
+
+div.main-explanation{
+    border-bottom: solid 1px black;
+}
+
+.explanation{
+    margin-bottom: 40px;
+}
+
+/* お気に入りボタン */
+.favorite{
+    background-color: white;
+    width: 250px;
+    padding: 10px;
+    font-weight: bolder;
+    margin-left: 82px;
+}
+
+.recommendation{
+    font-size: large;
+    border-bottom: solid black;
+}
+
+.many-gram{
+    margin-right: 230px;
 }

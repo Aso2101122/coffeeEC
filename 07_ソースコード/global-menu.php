@@ -12,7 +12,7 @@
         <li id="nav-item_li">
             <a href="" class="over" id="nav-item">商品</a>
             <ul id="item-over">
-                <li class="item-link"><a href="#"><img src="./img/global-menu_beans.png"></a></li>
+                <li class="item-link"><a href="product.php?category=01"><img src="./img/global-menu_beans.png"></a></li>
                 <li class="item-link"><a href="#"><img src="./img/global-menu_coffee-utensils.png"></a></li>
             </ul>
         </li>

@@ -1,18 +1,15 @@
 <?php
-try {
-    require_once "dbmanager.php";
-    //pdoインスタンス作成するメソッド
-    $pdo = getDb();
-    //sql文を生成、実行
-    $sql = $pdo->query('select * from m_area');
-    //配列形式に変換
-    $resultlist = $sql->fetchAll(PDO::FETCH_ASSOC);
-    // echo '<pre>';
-    // print_r($resultlist);
-    // echo '</pre>';
-} catch (PDOException $e) {
-    echo 'データベースエラー';
-}
+require_once "dbmanager.php";
+//pdoインスタンス作成するメソッド
+$pdo = getDb();
+//sql文を生成、実行
+$sql = $pdo->query('select * from m_area');
+//配列形式に変換
+$resultlist = $sql->fetchAll(PDO::FETCH_ASSOC);
+// echo '<pre>';
+// print_r($resultlist);
+// echo '</pre>';
+
 
 // getで選んだ地方を取得する
 // if (isset($_GET['id'])) {
@@ -20,8 +17,10 @@ try {
 // }
 ?>
 
-
-
+<script type="text/javascript">
+    var sample = JSON.parse('<?php echo $varJsSample; ?>');
+    //jsonをparseしてJavaScriptの変数に代入
+</script>
 
 <!DOCTYPE html>
 <html lang="ja">

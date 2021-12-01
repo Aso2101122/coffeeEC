@@ -6,6 +6,9 @@ images_src.push("./img/world-map_africa_img_01_over.png"); //アフリカマウ�
 images_src.push("./img/world-map_asia_img_02_over.png"); //東南アジアマウスオーバー時
 images_src.push("./img/world-map_latin-america_img_03_over.png"); //中南米マウスオーバー時
 
+// alert("値: " + sample['id']['a']);
+let area_id = area[0]['area_id'];
+alert('エリアid:' + area_id);
 
 var areanames = new Array('アフリカ', '東南アジア', '中南米');
 

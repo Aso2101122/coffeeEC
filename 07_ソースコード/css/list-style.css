@@ -19,13 +19,14 @@ body{
 /*並び替えのスタイル*/
 .display{
     text-align: right;
-    margin-right: 210px;
-    margin-bottom: 20px;
+    position: relative;right: 210px;
 }
 
 /*並び替えのセレクトボックスのスタイル*/
 .example{
     direction: rtl;
+    position: relative;right: 140px;
+    position: relative;bottom: 41px;
 }
 
 /*１行の商品情報*/
@@ -60,4 +61,3 @@ div.info{
 span.price{
     text-align: right;
 }
-

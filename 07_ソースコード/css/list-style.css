@@ -1,45 +1,46 @@
 body{
-    background-color: #E5E5E5;
+    background-color: #f5f5f5;
 }
 
-
-.headder-img {
-    width: 100%;
+.main-content{
+    width: 1200px;
 }
 
 /*見出し画像スタイル*/
-.beans-header{
-    width: 870px;
+.headder-img{
+    width: 900px;
     height: 150px;
-    margin-top: 20px;
-    margin-left: 60px;
-    margin-bottom: 20px;
+    margin: 20px 165px;
 }
 
+div.sort{
+    margin-right: 150px;
+    text-align: right;
+}
+
+.sort-select{
+    padding: 5px 10px;
+}
 /*並び替えのスタイル*/
 .display{
-    text-align: right;
-    position: relative;right: 210px;
+
 }
 
 /*並び替えのセレクトボックスのスタイル*/
 .example{
-    direction: rtl;
-    position: relative;right: 140px;
-    position: relative;bottom: 41px;
 }
 
 /*１行の商品情報*/
 .item-row{
-    margin: 20px 55px;
+    margin: 20px 56px;
     width: auto;
     display: flex;
 }
 
 /*１件の商品div*/
 div.merchandises{
-    margin-right: 15px;
-    margin-left: 15px;
+    margin-right: 36px;
+    margin-left: 36px;
     width: fit-content;
     display: flex;
     flex-flow: column;
@@ -49,7 +50,8 @@ div.merchandises{
 /*商品画像*/
 img.item-img{
     width: 200px;
-    height: 170px;
+    height: 200px;
+    border: solid black 1px;
 }
 /*商品名、価格*/
 div.info{
@@ -60,4 +62,15 @@ div.info{
 /*商品名*/
 span.price{
     text-align: right;
+}
+
+/*商品リンク*/
+a.item-link{
+    text-decoration:none;
+    color: black;
+}
+
+/*商品リンクホバー*/
+a.item-link:hover{
+    color: #f78230;
 }

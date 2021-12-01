@@ -11,13 +11,6 @@ body{
     height: 100%;
 }
 
-/* ヘッダー画像仮置きの設定 */
-.headder-img{
-    width: 100%;
-    height: 70px;
-    position: fixed; /* 画像を固定 */
-}
-
 /* メインコンテンツの設定 */
 .main-content{
     background-color: white;

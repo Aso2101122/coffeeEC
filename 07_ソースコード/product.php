@@ -10,9 +10,11 @@ if (isset($_GET['category'])) {
     $sql->bindValue(1,$category);
     $sql->execute();
     $result = $sql->fetchALL(PDO::FETCH_ASSOC);
+} else if($_GET['keyword']){
+
 }
 
-
+$pdo= null;
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +22,7 @@ if (isset($_GET['category'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>商品一覧：Biginners coffee</title>
+    <title>Biginners coffee：商品一覧</title>
     <link rel="stylesheet" href="css/sanitize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/list-style.css">
@@ -29,30 +31,43 @@ if (isset($_GET['category'])) {
 <body>
 <?php require 'global-menu.php'; ?>
 <div class="main-content">
-    <img src="./img/item-list_beans-header_img.png" class="beans-header" >
-    <span class="display">表示順:<span>
-    <span class="example">
-        <select name="example">
-            <option value="人気順">人気順</option>
-        </select>
-    </span>
+    <?php
+    if($_GET['category'] === '01'){
+        echo '<img src="./img/item-list_beans-header_img.png" class="headder-img">';
+    }else if($_GET['category'] === '02'){
+        echo '<img src="./img/item-list_utensils-header_img.png" class="headder-img">';
+    }
+
+    ?>
+    <div class="sort">
+        <span class="display">表示順:<span>
+        <span class="example">
+            <select name="example" class="sort-select">
+                <option value="人気順">人気順</option>
+            </select>
+        </span>
+    </div>
     <?php
     $count = count($result);
     for ($i=0; $i < $count; $i+=4){
-    echo '<div class="item-row">';
-        for ($j=$i; $j < 4; $j++){
+
+        echo '<div class="item-row">';
+        for ($j=0; $j < 4; $j++){
             echo '<div class="merchandises">';
-                echo'<img src="./img/item-img/'.$result[$j]['item_img_url'].'" class="item-img">';
-                echo '<div class="info">';
-                    echo '<span>'.$result[$j]['item_name'].'</span><br>';
-                    echo '<span class="price">'.$result[$j]['price'].'(税込)</span>';
-                echo '</div>';
+                echo '<a href="item-detail.php?id='.$result[$j+$i]['item_id'].'" class="item-link">';
+                    echo'<img src="./img/item-img/'.$result[$j+$i]['item_img_url'].'" class="item-img">';
+                    echo '<div class="info">';
+                        echo '<span>'.$result[$j+$i]['item_name'].'</span><br>';
+                        echo '<span class="price">'.$result[$j+$i]['price'].'(税込)</span>';
+                    echo '</div>';
+                echo '</a>';
             echo '</div>';
-            if($j == $count-1){
+            if($j+$i == $count-1){
                 break;
             }
         }
         echo '</div>';
+
     }
     ?>
 </div>

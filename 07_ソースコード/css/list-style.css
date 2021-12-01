@@ -2,6 +2,7 @@ body{
     background-color: #f5f5f5;
 }
 
+/*あとでstyle.cssの方も書き換える*/
 .main-content{
     width: 1200px;
 }
@@ -53,6 +54,18 @@ img.item-img{
     height: 200px;
     border: solid black 1px;
 }
+/*商品画像ホバー*/
+img.item-img:hover{
+    opacity: 0.6;
+    filter: brightness(110%);
+}
+
+/*画像ホバー白色アニメーション*/
+img {
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
 /*商品名、価格*/
 div.info{
     margin: 0;
@@ -71,6 +84,10 @@ a.item-link{
 }
 
 /*商品リンクホバー*/
-a.item-link:hover{
+div.info:hover{
     color: #f78230;
+}
+
+.price{
+    text-align: right;
 }

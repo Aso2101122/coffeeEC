@@ -10,8 +10,9 @@ if (isset($_GET['category'])) {
     $sql->bindValue(1,$category);
     $sql->execute();
     $result = $sql->fetchALL(PDO::FETCH_ASSOC);
-} else if($_GET['keyword']){
-
+} else if (isset($_GET['keyword'])){
+    //検索用処理
+    $keyword = $_GET['keyword'];
 }
 
 $pdo= null;
@@ -58,7 +59,9 @@ $pdo= null;
                     echo'<img src="./img/item-img/'.$result[$j+$i]['item_img_url'].'" class="item-img">';
                     echo '<div class="info">';
                         echo '<span>'.$result[$j+$i]['item_name'].'</span><br>';
-                        echo '<span class="price">'.$result[$j+$i]['price'].'(税込)</span>';
+                        echo '<div class="price">';
+                            echo '<span>'.$result[$j+$i]['price'].'(税込)</span>';
+                        echo '</div>';
                     echo '</div>';
                 echo '</a>';
             echo '</div>';

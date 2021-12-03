@@ -1,58 +1,35 @@
-<?php
+<?php ob_start();
 require("./dbmanager.php");
 $pdo = getDb();
 session_start();
-//ログイン状態の場合ログイン後のページにリダイレクト
-if (isset($_SESSION["login"])) {
-  session_regenerate_id(TRUE);
-  header("Location: index.php");
-  exit();
-}
-
-//postされて来なかったとき
-if (count($_POST) === 0) {
-  $message = "エラー";
-}
-//postされて来た場合
-else {
-  //メールアドレスまたはパスワードが送信されて来なかった場合
-  if(empty($_POST["mail"]) || empty($_POST["password"])) {
-    $message = "メールアドレスとパスワードを入力してください";
-  }
-  //メールアドレスとパスワードが送信されて来た場合
-  else {
-    //post送信されてきたユーザー名がデータベースにあるか検索
-    try {
-      $stmt = $pdo -> prepare('SELECT * FROM m_users WHERE mail=?');
-      $stmt -> bindParam(1, $_POST['user_id'], PDO::PARAM_STR, 10);
-      $stmt -> execute();
-      $result = $stmt -> fetch(PDO::FETCH_ASSOC);
+if (!empty($_POST)) {
+    /* 入力情報の不備を検知 */
+    if ($_POST['mail'] === "") {
+        $error['mail'] = "blank";
     }
-    catch (PDOExeption $e) {
-      exit('データベースエラー');
-    }
-
-
-    //検索したユーザー名に対してパスワードが正しいかを検証
-    //正しくないとき
-    if (!isset($row['mail'])) {
-      echo 'メールアドレス又はパスワードが間違っています。';
-      return false;
-    }
-    //パスワード確認後sessionにメールアドレスを渡す
-    if (password_verify($_POST['password'], $row['password'])) {
-      session_regenerate_id(true); //session_idを新しく生成し、置き換える
-      $_SESSION['mail'] = $row['mail'];
-      echo 'ログインしました';
-    } else {
-      echo 'メールアドレス又はパスワードが間違っています。';
-      return false;
+    if ($_POST['password'] === "") {
+        $error['password'] = "blank";
     }
     
-  }
+    /* メールアドレスの重複を検知 */
+    if (!isset($error)) {
+        $member = $pdo->prepare('SELECT COUNT(*) as cnt FROM m_user WHERE mail=?');
+        $member->execute(array(
+            $_POST['mail']
+        ));
+        $record = $member->fetch();
+        if ($record['cnt'] > 0) {
+            $error['mail'] = 'duplicate';
+        }
+    }
+ 
+    /* エラーがなければ次のページへ */
+    if (!isset($error)) {
+        $_SESSION['user'] = $_POST;   // フォームの内容をセッションで保存
+        header('Location: index.php');   // check.phpへ移動
+        exit();
+    }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -67,23 +44,30 @@ else {
 </head>
 
 <body>
-    <?php require "global-menu.php" ?>
+
     <!-- <div class="main-content"> -->
     <div class="menber-ship-form">
         <form action="menber-login.php" method="post">
             <h1>ログイン</h1>
             <div class="form-parts">
                 <span class="tag">メールアドレス</span>
-                <input type="text" name="mail" class="input-text" /><br>
+                <input type="text" id="mail" name="mail" class="input-text" placeholder="メールアドレスを入力" ><br>
+                <?php if (!empty($error["mail"]) && $error['mail'] === 'blank'): ?>
+                    <p class="error">＊メールアドレスを入力してください</p>
+                <?php elseif (!empty($error["mail"]) && $error['mail'] === 'duplicate'): ?>
+                    <p class="error">＊このメールアドレスはすでに登録済みです</p>
+                <?php endif ?>
             </div>
             <div class="form-parts">
                 <span class="tag">パスワード</span>
-                <input type="password" name="password" class="input-text" /><br>
+                <input type="password" id="password" name="password" class="input-text" placeholder="パスワードを入力"/><br>
+                <?php if (!empty($error["password"]) && $error['password'] === 'blank'): ?>
+                    <p class="error">＊パスワードを入力してください</p>
+                <?php endif ?>
             </div>
             <div class="submit-button">
-                <button type="submit" class="black-button">ログイン</button>
+                <input type="submit" id="login" name="login" class="black-button"value="ログイン">
             </div>
-
         </form>
     </div>
     <div class="transition-form">
@@ -92,5 +76,4 @@ else {
     </div>
     <!-- </div> -->
 </body>
-
 </html>

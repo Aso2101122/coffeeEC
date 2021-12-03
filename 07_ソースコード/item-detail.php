@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
     //商品idをGETでを取得
     $item_id = $_GET['id'];
     //データベースから必要な情報を検索
-    $sql = $pdo->prepare('SELECT * FROM m_items, m_country WHERE m_items.country_id = m_country.country_id AND item_id=? AND private_flag=0');
+    $sql = $pdo->prepare('  ');
     $sql->bindValue(1,$item_id);
     $sql->execute();
     $result = $sql->fetchALL(PDO::FETCH_ASSOC);

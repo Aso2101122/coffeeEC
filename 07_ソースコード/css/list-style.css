@@ -7,11 +7,17 @@ body{
     width: 1200px;
 }
 
-/*見出し画像スタイル*/
-.headder-img{
+div.headder{
     width: 900px;
     height: 150px;
-    margin: 20px 165px;
+    margin: 20px auto;
+}
+
+
+/*見出し画像スタイル*/
+img.headder-img{
+    width: 900px;
+    height: 150px;
 }
 
 div.sort{
@@ -46,6 +52,11 @@ div.merchandises{
     display: flex;
     flex-flow: column;
     text-align:left;
+}
+
+div.merchandises:hover{
+    opacity: 0.6;
+    filter: brightness(110%);
 }
 
 /*商品画像*/
@@ -90,4 +101,18 @@ div.info:hover{
 
 .price{
     text-align: right;
+}
+
+/*見つからないときのメッセージ*/
+div.not-find{
+    border-top: solid black 1px;
+    width: 900px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px auto;
+    padding: 30px ;
+}
+
+hr.line{
+width: 900px;
 }

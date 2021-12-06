@@ -11,6 +11,10 @@ a{
     color: black;
 }
 
+canvas{
+
+}
+
 a:hover{
     text-decoration: underline;; 
 }

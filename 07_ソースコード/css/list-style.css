@@ -39,15 +39,15 @@ div.sort{
 
 /*１行の商品情報*/
 .item-row{
-    margin: 20px 56px;
+    margin: 20px 133px;
     width: auto;
     display: flex;
 }
 
 /*１件の商品div*/
 div.merchandises{
-    margin-right: 36px;
-    margin-left: 36px;
+    margin-right: 17px;
+    margin-left: 17px;
     width: fit-content;
     display: flex;
     flex-flow: column;
@@ -66,10 +66,10 @@ img.item-img{
     border: solid black 1px;
 }
 /*商品画像ホバー*/
-img.item-img:hover{
-    opacity: 0.6;
-    filter: brightness(110%);
-}
+/*img.item-img:hover{*/
+/*    opacity: 0.6;*/
+/*    filter: brightness(110%);*/
+/*}*/
 
 /*画像ホバー白色アニメーション*/
 img {

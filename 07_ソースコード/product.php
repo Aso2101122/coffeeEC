@@ -57,12 +57,11 @@ $pdo= null;
         echo '<div class="not-find">該当する商品がありません</div>';
     } else {
         for ($i=0; $i < $count; $i+=4){
-
             echo '<div class="item-row">';
             for ($j=0; $j < 4; $j++){
                 echo '<div class="merchandises">';
                 echo '<a href="item-detail.php?id='.$result[$j+$i]['item_id'].'" class="item-link">';
-                echo'<img src="./img/item-img/'.$result[$j+$i]['item_img_url'].'" class="item-img">';
+                echo '<img src="./img/item-img/'.$result[$j+$i]['item_img_url'].'" class="item-img">';
                 echo '<div class="info">';
                 echo '<span>'.$result[$j+$i]['item_name'].'</span><br>';
                 echo '<div class="price">';

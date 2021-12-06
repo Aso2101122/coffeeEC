@@ -35,15 +35,18 @@ $pdo= null;
         <div class="item-detail">
             <div class="main-left">
                 <div class="merchandise1">
-                    <h1 class="letter1"><?= $result[0]['item_name']?></h1>
+                    <div class="item-name1">
+                        <h1><?= $result[0]['item_name']?></h1>
+                    </div>
+
                     <img src="img/item-img/<?= $result[0]['item_img_url']?>" class="beans1">
                 </div>
                 <div class="origin">
-                    <a href="./product.php?country=<?= $result[0]['country_id']?>" class="letter2">生産国:<?= $result[0]['country_name']?>
+                    <a href="./product.php?country=<?= $result[0]['country_id']?>" class="country-button">生産国:<?= $result[0]['country_name']?>
                         <img src="img/country-flag_img/<?= $result[0]['country_img_url']?>" class="flag-img">
                     </a>
                 </div>
-                <h1 class="letter3">参考記事</h1>
+                <h2 class="letter3">参考記事</h2>
                 <div class="drip">
                     <a href="">
                         <img src="img/index_reference-page_bn.png"/>

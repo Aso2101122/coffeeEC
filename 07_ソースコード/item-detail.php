@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
     //商品idをGETでを取得
     $item_id = $_GET['id'];
     //データベースから必要な情報を検索
-    $sql = $pdo->prepare('SELECT * FROM m_items, m_country WHERE m_items.country_id = m_country.country_id AND item_id =10001 AND private_flag =0');
+    $sql = $pdo->prepare('SELECT * FROM m_items, m_country WHERE m_items.country_id = m_country.country_id AND item_id =? AND private_flag =0');
     $sql->bindValue(1,$item_id);
     $sql->execute();
     $result = $sql->fetchALL(PDO::FETCH_ASSOC);
@@ -60,7 +60,9 @@ $pdo= null;
                         <a><?= $result[0]['price']?>( 税込 )</a>
                         <p class="point">+<?= $result[0]['point']?>ポイント</p>
                     </div>
-                    <canvas id="myRadarChart" width="300" height="300"></canvas>
+                    <div class="chart">
+                        <canvas id="myRadarChart"></canvas>
+                    </div>
                     <div class="main-explanation">
                         <p class="explanation">
                             <?= $result[0]['item_description']?>
@@ -92,6 +94,7 @@ $pdo= null;
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     <script src="js/rader-chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </body>
 </html>
 

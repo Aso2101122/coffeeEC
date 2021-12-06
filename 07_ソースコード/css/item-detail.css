@@ -2,6 +2,10 @@
     background-color:#f5f5f5;
 }
 
+.main-content{
+    width: 1200px;
+}
+
 .headder-img{
     width: 100%;
 }
@@ -11,12 +15,15 @@ a{
     color: black;
 }
 
-canvas{
+div.chart{
+    margin: 30px 0;
+}
 
+canvas{
 }
 
 a:hover{
-    text-decoration: underline;; 
+    text-decoration: underline;
 }
 
 div.main-content{

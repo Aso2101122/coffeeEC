@@ -1,4 +1,4 @@
-<?php ob_start();
+<?php /*ob_start();*/
 require("./dbmanager.php");
 $pdo = getDb();
 session_start();
@@ -13,20 +13,21 @@ if (!empty($_POST)) {
     
     /* メールアドレスの重複を検知 */
     if (!isset($error)) {
-        $member = $pdo->prepare('SELECT COUNT(*) as cnt FROM m_user WHERE mail=?');
+        $member = $pdo->prepare('SELECT * FROM m_user WHERE mail=? AND password=?');
         $member->execute(array(
-            $_POST['mail']
+            $_POST['mail'],$_POST['password']
         ));
-        $record = $member->fetch();
-        if ($record['cnt'] > 0) {
-            $error['mail'] = 'duplicate';
+        $record = $member->fetchAll();
+        var_dump($record);
+        if ($record['cnt'] != 1) {
+            $error['mail'] = 'mismatch';
         }
     }
  
     /* エラーがなければ次のページへ */
     if (!isset($error)) {
         $_SESSION['user'] = $_POST;   // フォームの内容をセッションで保存
-        header('Location: index.php');   // check.phpへ移動
+        header('あいうえお');   // check.phpへ移動
         exit();
     }
 }
@@ -52,12 +53,10 @@ if (!empty($_POST)) {
             <div class="form-parts">
                 <span class="tag">メールアドレス</span>
                 <input type="text" id="mail" name="mail" class="input-text" placeholder="メールアドレスを入力" ><br>
-                <?php if (!empty($error["mail"]) && $error['mail'] === 'blank'): ?>
-                    <p class="error">＊メールアドレスを入力してください</p>
-                <?php elseif (!empty($error["mail"]) && $error['mail'] === 'duplicate'): ?>
-                    <p class="error">＊このメールアドレスはすでに登録済みです</p>
-                <?php endif ?>
             </div>
+            <?php if (!empty($error["mail"]) && $error['mail'] === 'mismatch'): ?>
+                <p class="error">＊このメールアドレスが違います</p>
+            <?php endif ?>
             <div class="form-parts">
                 <span class="tag">パスワード</span>
                 <input type="password" id="password" name="password" class="input-text" placeholder="パスワードを入力"/><br>

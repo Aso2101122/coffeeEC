@@ -1,28 +1,35 @@
-<?php
+<?php ob_start();
 require("./dbmanager.php");
+$pdo = getDb();
 session_start();
-if (!empty($POST)) {
-    //    入力情報をチェック
-    if ($_POST['lastname'] === "" || $_POST['firstname'] === "") {
-        $error['name'] = "blank";
-    }
-    if ($_POST['email'] === "") {
-        $error['email'] = "blank";
+if (!empty($_POST)) {
+    /* 入力情報の不備を検知 */
+    if ($_POST['mail'] === "") {
+        $error['mail'] = "blank";
     }
     if ($_POST['password'] === "") {
         $error['password'] = "blank";
     }
-    //メールアドレスの重複検知
+    
+    /* メールアドレスの重複を検知 */
     if (!isset($error)) {
-        $member = $pdo->prepare('SELECT COUNT(*) as cnt FROM m_user WHERE mail=?');
+        $member = $pdo->prepare('SELECT COUNT(*) as cnt FROM m_user WHERE mail=? and password=?');
+        $member->execute(array(
+            $_POST['mail'],$_POST{'password'}
+        ));
+        $record = $member->fetch();
+        if ($record['cnt'] != 1) {
+            $error['mail'] = 'mismatch';
+        }
+    }
+ 
+    /* エラーがなければ次のページへ */
+    if (!isset($error)) {
+        $_SESSION['user'] = $_POST;   // フォームの内容をセッションで保存
+        header('Location: index.php');   // check.phpへ移動
+        exit();
     }
 }
-
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -52,6 +59,9 @@ if (!empty($POST)) {
                 <span class="mandatory">必須</span><br>
                 <input type="mail" name="email" class="input-text" /><br>
             </div>
+            <?php if (!empty($error["mail"]) && $error['mail'] === 'mismatch'): ?>
+                <p class="error">＊このメールアドレスはすでに登録済みです</p>
+            <?php endif ?>
             <div class="form-parts">
                 <span class="tag">パスワード</span>
                 <span class="mandatory">必須</span><br>

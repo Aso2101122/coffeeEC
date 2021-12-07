@@ -1,3 +1,9 @@
+<?php
+session_start();
+echo '<p>',$_SESSION['user'],'</p>';
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 

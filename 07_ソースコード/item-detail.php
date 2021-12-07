@@ -35,10 +35,7 @@ $pdo= null;
         <div class="item-detail">
             <div class="main-left">
                 <div class="merchandise1">
-                    <div class="item-name1">
-                        <h1><?= $result[0]['item_name']?></h1>
-                    </div>
-
+                    <h1><div class="item-name1"><?= $result[0]['item_name']?></div></h1>
                     <img src="img/item-img/<?= $result[0]['item_img_url']?>" class="beans1">
                 </div>
                 <div class="origin">

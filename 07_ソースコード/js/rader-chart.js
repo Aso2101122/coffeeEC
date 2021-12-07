@@ -12,7 +12,7 @@ var myRadarChart = new Chart(ctx, {
                 //グラフ全体のラベル
                 label: "",
                 //背景色
-                backgroundColor: "rgba(174, 119, 2,0.8)",
+                backgroundColor: "rgba(174, 119, 2,1)",
                 //枠線の色
                 borderColor: "rgba(99, 68, 0,1)",
                 //結合点の背景色
@@ -77,36 +77,36 @@ var myRadarChart = new Chart(ctx, {
     // plugins: [dataLabelPlugin]
 });
 
-// Define a plugin to provide data labels
-Chart.plugins.register({
-    afterDatasetsDraw: function (chart, easing) {
-        // To only draw at the end of animation, check for easing === 1
-        var ctx = chart.ctx;
-
-        chart.data.datasets.forEach(function (dataset, i) {
-            var meta = chart.getDatasetMeta(i);
-            if (!meta.hidden) {
-                meta.data.forEach(function (element, index) {
-                    // Draw the text in black, with the specified font
-                    ctx.fillStyle = 'rgb(0, 0, 0)';
-
-                    var fontSize = 16;
-                    var fontStyle = 'normal';
-                    var fontFamily = 'Helvetica Neue';
-                    ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
-
-                    // Just naively convert to string for now
-                    var dataString = dataset.data[index].toString();
-
-                    // Make sure alignment settings are correct
-                    ctx.textAlign = 'center';
-                    ctx.textBaseline = 'middle';
-
-                    var padding = 5;
-                    var position = element.tooltipPosition();
-                    ctx.fillText(dataString, position.x, position.y - (fontSize / 2) - padding);
-                });
-            }
-        });
-    }
-});
+// // Define a plugin to provide data labels
+// Chart.plugins.register({
+//     afterDatasetsDraw: function (chart, easing) {
+//         // To only draw at the end of animation, check for easing === 1
+//         var ctx = chart.ctx;
+//
+//         chart.data.datasets.forEach(function (dataset, i) {
+//             var meta = chart.getDatasetMeta(i);
+//             if (!meta.hidden) {
+//                 meta.data.forEach(function (element, index) {
+//                     // Draw the text in black, with the specified font
+//                     ctx.fillStyle = 'rgb(0, 0, 0)';
+//
+//                     var fontSize = 16;
+//                     var fontStyle = 'normal';
+//                     var fontFamily = 'Helvetica Neue';
+//                     ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
+//
+//                     // Just naively convert to string for now
+//                     var dataString = dataset.data[index].toString();
+//
+//                     // Make sure alignment settings are correct
+//                     ctx.textAlign = 'center';
+//                     ctx.textBaseline = 'middle';
+//
+//                     var padding = 5;
+//                     var position = element.tooltipPosition();
+//                     ctx.fillText(dataString, position.x, position.y - (fontSize / 2) - padding);
+//                 });
+//             }
+//         });
+//     }
+// });

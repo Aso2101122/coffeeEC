@@ -32,14 +32,16 @@ $pdo= null;
 <body>
 <?php require 'global-menu.php'; ?>
 <div class="main-content">
-    <?php
-    if($_GET['category'] === '01'){
-        echo '<img src="./img/item-list_beans-header_img.png" class="headder-img">';
-    }else if($_GET['category'] === '02'){
-        echo '<img src="./img/item-list_utensils-header_img.png" class="headder-img">';
-    }
+    <div class="headder">
+        <?php
+        if($_GET['category'] === '01'){
+            echo '<img src="./img/item-list_beans-header_img.png" class="headder-img">';
+        }else if($_GET['category'] === '02'){
+            echo '<img src="./img/item-list_utensils-header_img.png" class="headder-img">';
+        }
+        ?>
+    </div>
 
-    ?>
     <div class="sort">
         <span class="display">表示順:<span>
         <span class="example">
@@ -48,30 +50,35 @@ $pdo= null;
             </select>
         </span>
     </div>
+    <hr class="line">
     <?php
     $count = count($result);
-    for ($i=0; $i < $count; $i+=4){
-
-        echo '<div class="item-row">';
-        for ($j=0; $j < 4; $j++){
-            echo '<div class="merchandises">';
+    if ($count === 0){
+        echo '<div class="not-find">該当する商品がありません</div>';
+    } else {
+        for ($i=0; $i < $count; $i+=4){
+            echo '<div class="item-row">';
+            for ($j=0; $j < 4; $j++){
+                echo '<div class="merchandises">';
                 echo '<a href="item-detail.php?id='.$result[$j+$i]['item_id'].'" class="item-link">';
-                    echo'<img src="./img/item-img/'.$result[$j+$i]['item_img_url'].'" class="item-img">';
-                    echo '<div class="info">';
-                        echo '<span>'.$result[$j+$i]['item_name'].'</span><br>';
-                        echo '<div class="price">';
-                            echo '<span>'.$result[$j+$i]['price'].'(税込)</span>';
-                        echo '</div>';
-                    echo '</div>';
+                echo '<img src="./img/item-img/'.$result[$j+$i]['item_img_url'].'" class="item-img">';
+                echo '<div class="info">';
+                echo '<span>'.$result[$j+$i]['item_name'].'</span><br>';
+                echo '<div class="price">';
+                echo '<span>'.$result[$j+$i]['price'].'(税込)</span>';
+                echo '</div>';
+                echo '</div>';
                 echo '</a>';
-            echo '</div>';
-            if($j+$i == $count-1){
-                break;
+                echo '</div>';
+                if($j+$i == $count-1){
+                    break;
+                }
             }
-        }
-        echo '</div>';
+            echo '</div>';
 
+        }
     }
+
     ?>
 </div>
 </body>

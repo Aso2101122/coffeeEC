@@ -1,9 +1,5 @@
- body{
-    background-color:#f5f5f5;
-}
-
-.headder-img{
-    width: 100%;
+body{
+    background-color: #f5f5f5;
 }
 
 a{
@@ -11,16 +7,20 @@ a{
     color: black;
 }
 
+div.chart{
+    margin: 30px 0; /*上下に30px余白*/
+}
+
+canvas{
+}
+
 a:hover{
-    text-decoration: underline;; 
+    text-decoration: underline;
 }
 
 div.main-content{
-    width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 1200px;
     text-align: center;
-    background-color: white;
 }
 
 div.main-left{
@@ -34,12 +34,21 @@ div.main-right{
     width: 40%;
 }
 
-.letter1{
-    margin-top: 20px;
-    margin-left: 40px;
-    border-bottom: solid black;
-    width: 300px;
+h1{
+    display: table;
+    font-size: 180%;
+    margin: 0;
 }
+
+/*見出し商品名*/
+div.item-name1{
+    display: inline-block;
+    margin: 40px 0;
+    padding: 3px 0;
+    border-bottom: solid black 2px;
+
+}
+
 div.item-detail{
     display: flex;
 }
@@ -74,7 +83,7 @@ div.origin{
     margin-left: 5px;
 }
 
-.letter2{
+.country-button{
     margin-top: 9px;
     margin-left: 30px;
 }

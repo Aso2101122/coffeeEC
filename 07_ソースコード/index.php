@@ -14,9 +14,7 @@
     <?php require './global-menu.php' ?>
     <div class="main-content">
         <img src=".\img\index_title_01.png" class="page-img">
-        <u>
-            <h2>コーヒー豆を選ぶ</h2>
-        </u>
+            <h1>コーヒー豆を選ぶ</h1>
         <div class="chooseCoffee">
             <div class="recommend">
                 <a href="">
@@ -31,18 +29,14 @@
                 </a>
             </div>
         </div>
-
-
-        <u>
-            <h2>コーヒー基礎知識</h2>
-        </u>
+            <h1>コーヒー基礎知識</h1>
         <div class="coffeedrip">
             <a href="">
                 <img src="img/index_reference-page_bn.png" class="drip-img">
                 <div class="text">コーヒーの淹れ方と必要な道具</div>
             </a>
         </div>
-        <h2>RANKING</h2>
+        <h1>RANKING</h1>
         <p>売れ筋商品</p>
         <div class="ranking">
             <div class="merchandise">

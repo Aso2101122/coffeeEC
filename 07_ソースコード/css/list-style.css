@@ -7,11 +7,17 @@ body{
     width: 1200px;
 }
 
-/*見出し画像スタイル*/
-.headder-img{
+div.headder{
     width: 900px;
     height: 150px;
-    margin: 20px 165px;
+    margin: 20px auto;
+}
+
+
+/*見出し画像スタイル*/
+img.headder-img{
+    width: 900px;
+    height: 150px;
 }
 
 div.sort{
@@ -33,19 +39,24 @@ div.sort{
 
 /*１行の商品情報*/
 .item-row{
-    margin: 20px 56px;
+    margin: 20px 133px;
     width: auto;
     display: flex;
 }
 
 /*１件の商品div*/
 div.merchandises{
-    margin-right: 36px;
-    margin-left: 36px;
+    margin-right: 17px;
+    margin-left: 17px;
     width: fit-content;
     display: flex;
     flex-flow: column;
     text-align:left;
+}
+
+div.merchandises:hover{
+    opacity: 0.6;
+    filter: brightness(110%);
 }
 
 /*商品画像*/
@@ -55,10 +66,10 @@ img.item-img{
     border: solid black 1px;
 }
 /*商品画像ホバー*/
-img.item-img:hover{
-    opacity: 0.6;
-    filter: brightness(110%);
-}
+/*img.item-img:hover{*/
+/*    opacity: 0.6;*/
+/*    filter: brightness(110%);*/
+/*}*/
 
 /*画像ホバー白色アニメーション*/
 img {
@@ -90,4 +101,18 @@ div.info:hover{
 
 .price{
     text-align: right;
+}
+
+/*見つからないときのメッセージ*/
+div.not-find{
+    border-top: solid black 1px;
+    width: 900px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px auto;
+    padding: 30px ;
+}
+
+hr.line{
+width: 900px;
 }

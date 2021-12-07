@@ -19,8 +19,8 @@ echo '<p>',$_SESSION['user'],'</p>';
 <body>
     <?php require './global-menu.php' ?>
     <div class="main-content">
-        <img src=".\img\index_title_01.png" class="page-img">
-            <h1>コーヒー豆を選ぶ</h1>
+        <img src=".\img\index_title_01.png" class="page-img"> 
+        <h1><span>コーヒー豆を選ぶ</span></h1>
         <div class="chooseCoffee">
             <div class="recommend">
                 <a href="">
@@ -35,14 +35,14 @@ echo '<p>',$_SESSION['user'],'</p>';
                 </a>
             </div>
         </div>
-            <h1>コーヒー基礎知識</h1>
+            <h1><span>コーヒー基礎知識</span></h1>
         <div class="coffeedrip">
             <a href="">
                 <img src="img/index_reference-page_bn.png" class="drip-img">
                 <div class="text">コーヒーの淹れ方と必要な道具</div>
             </a>
         </div>
-        <h1>RANKING</h1>
+        <h1><span>RANKING</span></h1>
         <p>売れ筋商品</p>
         <div class="ranking">
             <div class="merchandise">

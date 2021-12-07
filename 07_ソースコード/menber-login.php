@@ -1,4 +1,4 @@
-<?php ob_start();
+<?php
 require("./dbmanager.php");
 $pdo = getDb();
 session_start();
@@ -25,8 +25,8 @@ if (!empty($_POST)) {
  
     /* エラーがなければ次のページへ */
     if (!isset($error)) {
-        $_SESSION['user'] = $_POST['mail'];   // フォームの内容をセッションで保存
-        header('Location: index.php');   // check.phpへ移動
+        $_SESSION['user'] = $_POST;   // フォームの内容をセッションで保存
+        header('Location: login.php');   // check.phpへ移動
         exit();
     }
 }

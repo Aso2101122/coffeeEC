@@ -35,7 +35,6 @@ div.main-right{
 }
 
 h1{
-    display: table;
     font-size: 180%;
     margin: 0;
 }
@@ -46,7 +45,6 @@ div.item-name1{
     margin: 40px 0;
     padding: 3px 0;
     border-bottom: solid black 2px;
-
 }
 
 div.item-detail{

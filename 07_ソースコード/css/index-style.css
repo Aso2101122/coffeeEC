@@ -7,8 +7,8 @@ a{
     color: black;
 }
 
-h1{
-    border-bottom:solid 1px black;
+span{
+    border-bottom:solid 2px black;
 }
 
 a:hover{
@@ -61,7 +61,7 @@ div.coffeedrip{
 
 div.ranking{
     display: flex;
-    margin-left: 55px;
+    margin-left: 152px;
 }
 div.merchandise{
     margin-left: 20px;

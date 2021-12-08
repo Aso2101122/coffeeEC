@@ -10,24 +10,24 @@ if (!empty($_POST)) {
     if ($_POST['password'] === "") {
         $error['password'] = "blank";
     }
-
-    /* メールアドレスの重複を検知 */
     if (!isset($error)) {
         $member = $pdo->prepare('SELECT * FROM m_user WHERE mail=? AND password=?');
-        $member->execute(array(
-            $_POST['mail'], $_POST['password']
-        ));
-        $record = $member->fetchAll();
-        var_dump($record);
-        if ($record['cnt'] != 1) {
-            $error['mail'] = 'mismatch';
+        $member->execute(array($_POST['mail'], $_POST['password']));
+        $cnt = $member->rowCount();
+        $record = $member->fetchALL(PDO::FETCH_ASSOC);
+        //検索結果が0件の時や複数件あったとき
+        if ($cnt != 1) {
+            $error['result'] = 'mismatch';
         }
     }
-
     /* エラーがなければ次のページへ */
     if (!isset($error)) {
-        $_SESSION['user'] = $_POST;   // フォームの内容をセッションで保存
-        header('あいうえお');   // check.phpへ移動
+        $sql = $pdo->prepare('SELECT * FROM t_favorite_items WHERE user_id=?');
+        $sql->execute([$record[0]['user_id']]);
+        $favorite_items = $sql->fetchALL(PDO::FETCH_ASSOC);
+        $_SESSION['user'] = $record[0];   // フォームの内容をセッションで保存
+        $_SESSION['favorite'] = $favorite_items;
+        header('Location: ./index.php');
         exit();
     }
 }
@@ -45,35 +45,36 @@ if (!empty($_POST)) {
 </head>
 
 <body>
-
-    <!-- <div class="main-content"> -->
-    <div class="menber-ship-form">
-        <form action="menber-login.php" method="post">
-            <h1>ログイン</h1>
-            <div class="form-parts">
-                <span class="tag">メールアドレス</span>
-                <input type="text" id="mail" name="mail" class="input-text" placeholder="メールアドレスを入力"><br>
-            </div>
-            <?php if (!empty($error["mail"]) && $error['mail'] === 'mismatch') : ?>
-                <p class="error">＊このメールアドレスが違います</p>
+<?php require './global-menu.php'; ?>
+<div class="menber-ship-form">
+    <form action="menber-login.php" method="post">
+        <h1>ログイン</h1>
+        <div class="form-parts">
+            <span class="tag">メールアドレス</span>
+            <input type="text" id="mail" name="mail" class="input-text"><br>
+        </div>
+        <?php if (!empty($error["mail"]) && $error['mail'] === 'blank') : ?>
+            <p class="error">＊メールアドレスを入力してください</p>
+        <?php endif ?>
+        <div class="form-parts">
+            <span class="tag">パスワード</span>
+            <input type="password" id="password" name="password" class="input-text" /><br>
+            <?php if (!empty($error["password"]) && $error['password'] === 'blank') : ?>
+                <p class="error">＊パスワードを入力してください</p>
             <?php endif ?>
-            <div class="form-parts">
-                <span class="tag">パスワード</span>
-                <input type="password" id="password" name="password" class="input-text" placeholder="パスワードを入力" /><br>
-                <?php if (!empty($error["password"]) && $error['password'] === 'blank') : ?>
-                    <p class="error">＊パスワードを入力してください</p>
-                <?php endif ?>
-            </div>
-            <div class="submit-button">
-                <input type="submit" id="login" name="login" class="black-button" value="ログイン">
-            </div>
-        </form>
-    </div>
-    <div class="transition-form">
-        <h1>初めてのご利用の方はこちら</h1>
-        <button onclick="location.href='menber-add.php'" class="normal-button">新規会員登録へ</button>
-    </div>
-    <!-- </div> -->
+        </div>
+        <?php if (!empty($error["result"]) && $error['result'] === 'mismatch') : ?>
+            <p class="error">＊メールアドレスかパスワードが間違っています。</p>
+        <?php endif ?>
+        <div class="submit-button">
+            <button class="black-button" value="ログイン">ログイン</button>
+        </div>
+    </form>
+</div>
+<div class="transition-form">
+    <h1>初めてのご利用の方はこちら</h1>
+    <button onclick="location.href='menber-add.php'" class="normal-button">新規会員登録へ</button>
+</div>
 </body>
 
 </html>

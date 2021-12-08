@@ -7,85 +7,96 @@ a{
     color: black;
 }
 
+/*レーダーチャート*/
 div.chart{
     margin: 30px 0; /*上下に30px余白*/
 }
 
-canvas{
-}
-
+/*リンクをホバーしたとき*/
 a:hover{
     text-decoration: underline;
 }
 
+/*コンテンツ全体(ヘッダー以外)*/
 div.main-content{
     width: 1200px;
+
+}
+/*左のコンテンツと右のコンテンツの親*/
+/*おすすめ以外のコンテンツ*/
+div.item-detail{
+    display: flex;
     text-align: center;
 }
 
+/*左のコンテンツ*/
 div.main-left{
-    margin-left: 45px;
+    margin-left: 120px;
 }
 
+/*右のコンテンツ*/
 div.main-right{
+    margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
-    width: 40%;
+    width: 450px;
 }
 
+/*見出し*/
 h1{
     font-size: 180%;
     margin: 0;
-}
 
-/*見出し商品名*/
-div.item-name1{
-    display: inline-block;
-    margin: 40px 0;
-    padding: 3px 0;
-    border-bottom: solid black 2px;
 }
-
-div.item-detail{
-    display: flex;
-}
+/*商品名と画像div*/
 div.merchandise1{
     text-align: left;
     display: flex;
     flex-direction: column;
 }
 
-img.beans1{
-    width: 300px;
-    height: 300px;
-    margin-left: auto;
-    margin-right: auto;
+/*見出し商品名*/
+div.item-name1{
+    display: inline-block;
+    margin: 30px 0;
+    padding: 0 5px ;
+    border-bottom: solid black 3px;
+    text-align: left;
 }
 
-div.origin{
+/*商品画像*/
+img.beans1{
+    width: 340px;
+    height: 340px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*生産国検索ボタン*/
+a.country-button{
     border: solid 1px;
     height: 45px;
     width: 240px;
     display: flex;
+    font-weight: bold;
     text-align: center;
+    background-color: #E5E5E5;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    background-color: #E5E5E5;
+    padding: 11px 0 0 30px;
+
 }
 
+/*国旗画像*/
 .flag-img{
     height: 20px;
     width: 30px;
     margin-left: 5px;
 }
 
-.country-button{
-    margin-top: 9px;
-    margin-left: 30px;
-}
-
+/*参考記事*/
 .drip{
     text-align: left;
     display: flex;
@@ -98,27 +109,76 @@ div.origin{
     height: auto;
 }
 
-.letter3{
+/*参考記事*/
+h2.reference{
     text-align: left;
+    font-size: large;
     flex-direction: column;
     margin-bottom: 5px;
 }
 
-.page-title{
-    text-align:left;
+/*左の商品名*/
+h2.item-name2{
+    font-size: x-large;
 }
 
-.point{
-    font-size: xx-small;
+/*商品名価格コンテナ*/
+div.info{
+    border-bottom: solid 1px black;
+    margin-bottom: 5px;
 }
 
-.radar-img{
-    height: 250px;
-    width: 350px;
+/*価格、ポイントコンテナ*/
+div.price_point{
+    text-align: right;
+    font-weight: bold;
+}
+
+/*価格表示*/
+span.price{
+    font-size: large;
+}
+
+/*ポイント数表示*/
+span.point{
+    font-size: small;
+}
+
+
+/*説明文*/
+p.explanation{
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+/*グラム数コンテナ*/
+div.gram-container{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+select.gramselect{
+    width: 100px;
+    height: 30px;
+    font-size: large;
+}
+
+
+/*100gの杯数説明だけ右揃え*/
+.cup-container{
+    text-align: right;
+}
+
+/*100gの杯数説明*/
+span.cup{
+    font-size: small;
 }
 
 /* カートボタン */
-.orde{
+.order-button{
     background-color: #4FDFFF;
     width: 250px;
     padding: 10px;
@@ -130,23 +190,20 @@ div.origin{
     margin-bottom: 20px;
 }
 
+/*個数*/
 .many{
     width: 35px;
     margin-left: 10px;
 }
 
-div.name{
-    border-bottom: solid 1px black;
-    margin-bottom: 5px;
-}
+
+
 
 div.main-explanation{
     border-bottom: solid 1px black;
 }
 
-.explanation{
-    margin-bottom: 40px;
-}
+
 
 /* お気に入りボタン */
 .favorite{

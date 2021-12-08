@@ -35,15 +35,15 @@ $pdo= null;
         <div class="item-detail">
             <div class="main-left">
                 <div class="merchandise1">
-                    <h1><div class="item-name1"><?= $result[0]['item_name']?></div></h1>
+                    <h1>
+                        <div class="item-name1"><?= $result[0]['item_name']?></div>
+                    </h1>
                     <img src="img/item-img/<?= $result[0]['item_img_url']?>" class="beans1">
                 </div>
-                <div class="origin">
-                    <a href="./product.php?country=<?= $result[0]['country_id']?>" class="country-button">生産国:<?= $result[0]['country_name']?>
-                        <img src="img/country-flag_img/<?= $result[0]['country_img_url']?>" class="flag-img">
-                    </a>
-                </div>
-                <h2 class="letter3">参考記事</h2>
+                <a href="./product.php?country=<?= $result[0]['country_id']?>" class="country-button">生産国:<?= $result[0]['country_name']?>
+                    <img src="img/country-flag_img/<?= $result[0]['country_img_url']?>" class="flag-img">
+                </a>
+                <h2 class="reference">参考記事</h2>
                 <div class="drip">
                     <a href="">
                         <img src="img/index_reference-page_bn.png"/>
@@ -54,43 +54,51 @@ $pdo= null;
                 </div>
             </div>
             <div class="main-right">
-                <div class="merchandise3">
-                    <div class="name">
-                        <h2><?= $result[0]['item_name']?></h2>
-                        <a><?= $result[0]['price']?>( 税込 )</a>
-                        <p class="point">+<?= $result[0]['point']?>ポイント</p>
+                <div class="info">
+                    <h2 class="item-name2"><?= $result[0]['item_name']?></h2>
+                    <div class="price_point">
+                        <span class="price"><?= $result[0]['price']?>円( 税込 )</span><br>
+                        <span class="point">+<?= $result[0]['point']?>ポイント</span>
                     </div>
-                    <div class="chart">
-                        <canvas id="myRadarChart"></canvas>
-                    </div>
-                    <div class="main-explanation">
-                        <p class="explanation">
-                            <?= $result[0]['item_description']?>
-                        </p>
-                    </div>
-                    <form action="" method="post">
+                </div>
+                <div class="chart">
+                    <canvas id="myRadarChart"></canvas>
+                </div>
+                <div class="main-explanation">
+                    <p class="explanation">
+                        <?= $result[0]['item_description']?>
+                    </p>
+                </div>
+                <form action="" method="post">
+                    <div class="gram-container">
                         <span class="many-gram">グラム数</span>
-                        <select name="gram">
+                        <select name="gram" class="gramselect">
                             <?php
                             for($i=1; $i<=5; $i++){
                                 echo '<option value="',$i*100,'"">'.$i*100,'</option>';
                             }
                             ?>
                         </select>
-                        <br>
-                        <input type="nummber" value="1" name="many" class="many"/>
-                        <span>個</span>
-                        <button class="orde">
-                            <img src="./img/cart_cart_icon.png" class="cart-image"/>
-                            カートに入れる
-                        </button>
-                        <br>
-                        <button class="favorite">💛 お気に入り</button>
-                    </form>
-                </div>
+                        <div></div>
+                        <div class="cup-container">
+                            <span class="cup">100g(10~15杯)</span>
+                        </div>
+                    </div>
+                    <br>
+                    <input type="nummber" value="1" name="many" class="many"/>
+                    <span>個</span>
+                    <button class="order-button">
+                        <img src="./img/cart_cart_icon.png" class="cart-image"/>
+                        カートに入れる
+                    </button>
+                    <br>
+                    <button class="favorite">💛 お気に入り</button>
+                </form>
             </div>
         </div>
-        <span class="recommendation">入門者におすすめのコーヒー</span>
+        <div class="">
+            <span class="recommendation">入門者におすすめのコーヒー</span>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     <script src="js/rader-chart.js"></script>

@@ -1,6 +1,8 @@
 <?php
 session_start();
-echo '<p>',$_SESSION['user'],'</p>';
+//echo '<pre>';
+//echo print_r($_SESSION['user']);
+//echo '</pre>';
 ?>
 
 
@@ -19,6 +21,14 @@ echo '<p>',$_SESSION['user'],'</p>';
 <body>
     <?php require './global-menu.php' ?>
     <div class="main-content">
+        <?php
+        echo '<pre>';
+        echo print_r($_SESSION['user']);
+        echo '</pre>';
+        echo '<pre>';
+        echo print_r($_SESSION['favorite']);
+        echo '</pre>';
+        ?>
         <img src=".\img\index_title_01.png" class="page-img"> 
         <h1><span>コーヒー豆を選ぶ</span></h1>
         <div class="chooseCoffee">

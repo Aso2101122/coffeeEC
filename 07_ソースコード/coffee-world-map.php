@@ -6,9 +6,20 @@ $pdo = getDb();
 $sql = $pdo->query('select * from m_area');
 //配列形式に変換
 $resultlist = $sql->fetchAll(PDO::FETCH_ASSOC);
-// echo '<pre>';
-// print_r($resultlist);
-// echo '</pre>';
+
+$test = [
+    "0" => ["area_id" => 1111]
+];
+
+echo '<pre>';
+print_r($test);
+echo '</pre>';
+
+echo '<pre>';
+print_r($resultlist);
+echo '</pre>';
+$varJsSample = json_encode($resultlist, JSON_UNESCAPED_UNICODE);
+// $varJsSample = json_encode($resultlist);
 
 
 // getで選んだ地方を取得する
@@ -39,7 +50,18 @@ $resultlist = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
     <?php require './global-menu.php'; ?>
+    <script>
+        // JSON.stringify($varJsSample)
+        var dummyarea = document.getElementById("dummy");
+        dummyarea.insertAdjacentElement("afterbegin", JSON.stringify($varJsSample));
+    </script>
     <div class="main-content">
+        <?php
+        echo '<pre>';
+        print_r($resultlist);
+        echo '</pre>';
+        ?>
+        <div id="dummy"> ダミー </div>
         <img src="img/world-map_title_img.png" class="heading-img">
         <h1>世界のコーヒーマップ</h1>
         <p>産地の味の違いを楽しみながらコーヒーを飲んで見てください。</p>
@@ -47,9 +69,9 @@ $resultlist = $sql->fetchAll(PDO::FETCH_ASSOC);
             <div class="main-2">
                 <img src="./img/world-map_world-map_img_00.png" alt="コーヒーワールドマップ" id="worldmap" usemap="#map" class="map-img" />
                 <map name="map">
-                    <area alt="アフリカ部分" shape="poly" coords="126,330,122,297,116,282,92,284,54,270,35,277,18,297,3,316,4,325,12,340,24,357,60,359,77,444,81,448,104,448,124,416,135,402,135,382,133,374,142,363,146,362,157,334,126,334,126,334" href="#" onclick="selectArea(1)" onmouseover="pictureChange(1)" onmouseout="pictureChange(0)" onfocus="pictureChange(1)" onblur="pictureChange(0)">
+                    <area alt="アフリカ部分" shape="poly" coords="126,330,122,297,116,282,92,284,54,270,35,277,18,297,3,316,4,325,12,340,24,357,60,359,77,444,81,448,104,448,124,416,135,402,135,382,133,374,142,363,146,362,157,334,126,334,126,334" onclick="selectArea(1)" onmouseover="pictureChange(1)" onmouseout="pictureChange(0)" onfocus="pictureChange(1)" onblur="pictureChange(0)">
 
-                    <area alt="マダガスカル部分" shape="poly" coords="155,396,148,393,137,405,133,415,133,421,135,425,140,427,144,427,148,420,156,399,386,413" href="#" onclick="selectArea(1)" onmouseover="pictureChange(1)" onmouseout="pictureChange(0)" onfocus="pictureChange(1)" onblur="pictureChange(0)">
+                    <area alt="マダガスカル部分" shape="poly" coords="155,396,148,393,137,405,133,415,133,421,135,425,140,427,144,427,148,420,156,399,386,413" onclick="selectArea(1)" onmouseover="pictureChange(1)" onmouseout="pictureChange(0)" onfocus="pictureChange(1)" onblur="pictureChange(0)">
 
                     <area alt="東南アジア1" shape="poly" coords="287,309,278,308,267,313,257,300,249,295,243,296,234,315,248,327,251,352,256,361,267,364,266,355,261,334,261,331,268,339,281,336,282,337,286,332,285,327,281,320,282,320,282,320" href="#" onclick="selectArea(2)" onmouseover="pictureChange(2)" onmouseout="pictureChange(0)" onfocus="pictureChange(2)" onblur="pictureChange(0)">
 

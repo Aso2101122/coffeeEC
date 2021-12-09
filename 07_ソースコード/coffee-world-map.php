@@ -3,12 +3,13 @@ require_once "dbmanager.php";
 //pdoインスタンス作成するメソッド
 $pdo = getDb();
 //sql文を生成、実行
-$sql = $pdo->query('select * from m_area');
+$stmt = $pdo->query('select * from m_area');
 //配列形式に変換
-$resultlist = $sql->fetchAll(PDO::FETCH_ASSOC);
+$resultlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $test = [
-    "0" => ["area_id" => 1111]
+    "0" => ["area_id" => 1111, "area_name" => "こんにちは"],
+    "1" => ["area_id" => 2222, "area_name" => "こんばんは"]
 ];
 
 echo '<pre>';
@@ -18,8 +19,11 @@ echo '</pre>';
 echo '<pre>';
 print_r($resultlist);
 echo '</pre>';
-$varJsSample = json_encode($resultlist, JSON_UNESCAPED_UNICODE);
+print_r($resulttest);
+// $varJsSample = json_encode($resultlist, JSON_UNESCAPED_UNICODE);
+$varJsSample = json_encode($resultlist, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 // $varJsSample = json_encode($resultlist);
+
 
 
 // getで選んだ地方を取得する
@@ -49,12 +53,6 @@ $varJsSample = json_encode($resultlist, JSON_UNESCAPED_UNICODE);
 </head>
 
 <body>
-    <?php require './global-menu.php'; ?>
-    <script>
-        // JSON.stringify($varJsSample)
-        var dummyarea = document.getElementById("dummy");
-        dummyarea.insertAdjacentElement("afterbegin", JSON.stringify($varJsSample));
-    </script>
     <div class="main-content">
         <?php
         echo '<pre>';

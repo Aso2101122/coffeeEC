@@ -6,9 +6,10 @@ images_src.push("./img/world-map_africa_img_01_over.png"); //アフリカマウ�
 images_src.push("./img/world-map_asia_img_02_over.png"); //東南アジアマウスオーバー時
 images_src.push("./img/world-map_latin-america_img_03_over.png"); //中南米マウスオーバー時
 
-// alert("値: " + sample[0]['area_id']);
-var area_id = sample[0]['area_id'];
-alert("値：" + sample[1]['area_id']);
+alert("値: " + sample[0]["area_name"]);
+alert(sample[1]["area_id"]);
+// var area_id = sample[0]['area_id'];
+// alert("値：" + sample[1]['area_id']);
 
 var areanames = new Array('アフリカ', '東南アジア', '中南米');
 
@@ -24,9 +25,10 @@ function pictureChange(num) {
     document.getElementById("worldmap").src = images_src[num];
 }
 
-function selectArea(num) {
-    area_title.innerHTML = areanames[num - 1];
-    area_feature.innerHTML = areafeatures[num - 1];
+function selectArea(area_num) {
+    console.log(area_num);
+    area_title.innerHTML = areanames[area_num];
+    // area_feature.innerHTML = areafeatures[area_num];
 }
 
 

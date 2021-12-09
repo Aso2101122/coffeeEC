@@ -2,7 +2,7 @@
 
 /* 背景の色を灰色にする */
 body{
-    background-color: #E5E5E5;
+    background-color: #f5f5f5;
 }
 
 /* 見出し調整 */
@@ -15,25 +15,75 @@ h3{
     text-align: center;
 }
 
+.heading-img{
+    width: 900px;
+    height: 150px; 
+}
 
-/* マップ部分 */
+
+/* 全体部分 */
 div.main-1{
     display: inline-block;
 }
 
-/* おすすめ豆部分 */
+/* マップ部分 */
 div.main-2{
     float: left;
-    margin-right: 10px;
+    width: 700px;
 }
 
 
-div.main-3{
-    float: right;
-}
 /* マップ画像 */
 .map-img{
-    width: 550px;
+    width: 700px;
+}
+
+.origin-info{
+    text-align: left;
+    margin-top: 20px;
+}
+
+/* エリア名 */
+h2.area-name-on{
+    border-bottom: solid black 2px;
+}
+
+/* エリア説明部 */
+p#area-area-feature{
+    
+}
+
+/* エリアテーブル（生産国やブランド情報） */
+.area-table-on{
+    background-color: #F4F4F4;
+    margin-top: 50px;
+    width: 700px;
+    margin-bottom: 200px;
+}
+
+tr.area-tr-on{
+    padding: 20px 5px;
+    border-top: solid #CCCCCC 1px;
+    border-bottom: solid #CCCCCC 1px;
+}
+
+td{
+    padding: 10px 10px;
+
+}
+
+td.table-heading{
+    padding: 15px 10px;
+    width: 150px;
+}
+
+
+
+/* おすすめ豆部分 */
+div.main-3{
+    float: right;
+    width: 300px;
+    text-align: center;
 }
 
 /* 商品表示の設定 */
@@ -42,13 +92,68 @@ div.main-3{
 }
 
 
+h2.item-heading{
+    margin: 0;
+}
+
+/*１件の商品div*/
+div.merchandise{
+    width: fit-content;
+    display: flex;
+    flex-flow: column;
+    text-align:left;
+    margin: 20px auto 20px auto;
+}
+
+div.merchandise:hover{
+    opacity: 0.6;
+    filter: brightness(110%);
+}
+
+/*商品画像*/
+img.item-img{
+    width: 200px;
+    height: 200px;
+    border: solid black 1px;
+}
+
+/*画像ホバー白色アニメーション*/
+img {
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+/*商品名、価格*/
+div.info{
+    margin: 0;
+    padding: 0;
+}
+
+/*商品名*/
+span.price{
+    text-align: right;
+}
+
+/*商品リンク*/
+a.item-link{
+    text-decoration:none;
+    color: black;
+}
+
+/*商品リンクホバー*/
+div.info:hover{
+    color: #f78230;
+}
+
+.price{
+    text-align: right;
+}
+
 
 /* もっと見るボタン */
 button.normal-button{
     width: 150px;
     margin-top: 15px;
+    margin-bottom: 300px;
 }
 
-.origin-info{
-    text-align: left;
-}

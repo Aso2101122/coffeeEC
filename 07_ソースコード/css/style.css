@@ -1,5 +1,8 @@
 /* 全ページ共通のCSS */
 /* marginやpaddingなどの余白の余白は個別のファイルで設定 */
+*{
+    font-family: 'Noto Sans JP', sans-serif;
+}
 
 /* ボディの設定 */
 html{

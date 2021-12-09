@@ -16,6 +16,10 @@ session_start();
     <link rel="stylesheet" href="css/sanitize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index-style.css">
+    <!-- フォント読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -29,7 +33,7 @@ session_start();
         echo print_r($_SESSION['favorite']);
         echo '</pre>';
         ?>
-        <img src=".\img\index_title_01.png" class="page-img"> 
+        <img src=".\img\index_title_01.png" class="page-img">
         <h1><span>コーヒー豆を選ぶ</span></h1>
         <div class="chooseCoffee">
             <div class="recommend">
@@ -45,7 +49,7 @@ session_start();
                 </a>
             </div>
         </div>
-            <h1><span>コーヒー基礎知識</span></h1>
+        <h1><span>コーヒー基礎知識</span></h1>
         <div class="coffeedrip">
             <a href="">
                 <img src="img/index_reference-page_bn.png" class="drip-img">

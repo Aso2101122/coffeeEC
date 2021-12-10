@@ -14,8 +14,18 @@ var area_beans = document.getElementById('area-beans');
 
 // 商品1のオブジェクトを取得
 var item_name1 = document.getElementById('item-name1');
+var item_price1 = document.getElementById('item-price1');
+var item_img1 = document.getElementById('item-img1');
+var item_link1 = document.getElementById('item-link1');
+
+var item_name2 = document.getElementById('item-name2');
+var item_price2 = document.getElementById('item-price2');
+var item_img2 = document.getElementById('item-img2');
+var item_link2 = document.getElementById('item-link2');
 
 
+// 3か国の商品情報を１つの連想配列に挿入
+var item_list = { 1: africa_item, 2: asia_item, 3: latain_america_item }
 
 
 
@@ -31,7 +41,7 @@ images_src.push("./img/world-map_latin-america_img_03_over.png"); //中南米マ
 // alert("値: " + sample[0]["area_name"]);
 // alert(sample[1]["area_id"]);
 // var area_id = sample[0]['area_id'];
-// alert("値：" + sample[1]['area_id']);
+// alert("値：" + item_list[1][0]["item_id"]);
 
 var num = 0;
 
@@ -44,12 +54,17 @@ function selectArea(area_num) {
     area_title.innerHTML = area_result[area_num - 1]["area_name"];
     area_feature.innerHTML = area_result[area_num - 1]["area_explanation"];
 
-    // 商品情報を変える
-    item_name1.innerHTML = africa_item[0][item_name];
+    // // 商品情報を変える
+    item_name1.innerHTML = item_list[area_num][0]["item_name"];
+    item_price1.innerHTML = item_list[area_num][0]["price"] + "円(税込み)";
+    item_img1.src = "./img/item-img/" + item_list[area_num][0]["item_img_url"];
+    item_link1.href = "http://aso2101122.schoolbus.jp/Biginners-coffee/item-detail.php?id=" + item_list[area_num][0]["item_id"];
 
-
-
-
+    // // 商品情報を変える2件目
+    item_name2.innerHTML = item_list[area_num][1]["item_name"];
+    item_price2.innerHTML = item_list[area_num][1]["price"] + "円(税込み)";
+    item_img2.src = "./img/item-img/" + item_list[area_num][1]["item_img_url"];
+    item_link2.href = "http://aso2101122.schoolbus.jp/Biginners-coffee/item-detail.php?id=" + item_list[area_num][1]["item_id"];
 
 
 

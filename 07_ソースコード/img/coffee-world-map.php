@@ -59,6 +59,10 @@ $JsonLatainAmerica = json_encode($latin_america_item_list, JSON_UNESCAPED_UNICOD
     <?php require './global-menu.php'; ?>
     <div class="main-content">
         <img src="img/world-map_title_img.png" class="heading-img">
+        <?php
+        print_r($africa_item_list);
+        ?>
+
         <h1>世界のコーヒーマップ</h1>
         <p>産地の味の違いを楽しみながらコーヒーをお飲みください。</p>
         <div class="main-1">
@@ -109,7 +113,7 @@ $JsonLatainAmerica = json_encode($latin_america_item_list, JSON_UNESCAPED_UNICOD
                             <div class="info">
                                 <span id="item-name1">商品名</span><br>
                                 <div class="price">
-                                    <span id="item-price1">500円(税込み)
+                                    <span id="item-name1">500円(税込み)
                                     </span>
                                 </div>
                             </div>
@@ -121,7 +125,7 @@ $JsonLatainAmerica = json_encode($latin_america_item_list, JSON_UNESCAPED_UNICOD
                             <div class="info">
                                 <span id="item-name2">商品名</span><br>
                                 <div class="price">
-                                    <span id="item-price2">500円(税込み)
+                                    <span id="item-name2">500円(税込み)
                                     </span>
                                 </div>
                             </div>

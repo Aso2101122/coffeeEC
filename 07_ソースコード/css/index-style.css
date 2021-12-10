@@ -71,13 +71,21 @@ div.merchandise{
     text-align:left;
 }
 
+.rank{
+    margin-bottom: 0;
+}
+
+.selling{
+    margin-top: 0;
+}
+
 button.merchandise-button{
     background-color: white;
     border-color: black;
     font-weight: bold;
     width: 300px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
     padding-top: 5px;
     padding-bottom: 5px;
 }

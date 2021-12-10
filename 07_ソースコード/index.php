@@ -56,8 +56,8 @@ session_start();
                 <div class="text">コーヒーの淹れ方と必要な道具</div>
             </a>
         </div>
-        <h1><span>RANKING</span></h1>
-        <p>売れ筋商品</p>
+        <h1 class="rank"><span>RANKING</span></h1>
+        <p class ="selling">売れ筋商品</p>
         <div class="ranking">
             <div class="merchandise">
                 <img src="img/index_item_image.png">

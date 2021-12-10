@@ -85,7 +85,7 @@ session_start();
                 <a>￥300</a>
             </div>
         </div>
-        <button class="merchandise-button">人気商品をもっと見る</button>
+        <button class="merchandise-button">人気商品をもっと見る <img src="img/yazi1.png" class="arrow-png"></button>
     </div>
 </body>
 

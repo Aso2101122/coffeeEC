@@ -1,7 +1,14 @@
 <!-- phpログイン確認 -->
+<?php
+if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
+    $login_flag = true;
+    $user_name = "";
+    $user_name = $_SESSION['user']['last_name'].$_SESSION['user']['first_name'];
+}else{
+    $login_flag = false;
+}
 
-
-
+?>
 <!-- HTML部 -->
 <div class="black-line"></div>
 <header class="global-menu">
@@ -22,6 +29,7 @@
                 <button type="submit" class="serch_btn"><img src="./img/global-memu_serch_icon.png" class="serch_img"></button>
             </from>
         </li>
+        <?php if(!$login_flag) :?>
         <li>
             <a href="#" class="over">
                 <img src="./img/nav-login_logo.png" width="60px" />
@@ -35,6 +43,35 @@
                 </div>
             </ul>
         </li>
+        <?php endif ?>
+        <?php if($login_flag) :?>
+        <li>
+            <a href="#" class="over">
+                <img src="./img/nav-mypage_logo.png" width="60px" />
+            </a>
+            <ul id="user-over">
+                <div>
+                    <p><?= $user_name ?>様</p>
+                    <a href="user-info-update.php">
+                        <img src="./img/nav-mypage_logo.png"/>
+                        <span>お客様情報</span>
+                    </a>
+                    <div class="point-content">
+                        <span>ご利用可能ポイント</span>
+                        <span>pt</span>
+                    </div>
+                    <div class="border"></div>
+                    <div>
+                        <a href="logout.php">
+                            <img src="./img/nav-logout_logo.png"/>
+                            <span>ログアウト</span>
+                        </a>
+                    </div>
+                </div>
+            </ul>
+        </li>
+        <?php endif ?>
+
         <li>
             <a href="./favorite.html" class="over"><img src="./img/nav-favorite_logo.png" width="60px" /></a>
         </li>

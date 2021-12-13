@@ -18,10 +18,6 @@ if (isset($_GET['id'])) {
     echo '<p>該当する商品が見つかりませんでした。</p>';
 }
 
-
-
-
-
 $user_id = null;
 $item_id = null;
 if(isset($_POST['method'])){
@@ -57,7 +53,39 @@ if(isset($_SESSION['user']['user_id'])){
     }else{
         $favorite_flag = false;
     }
+}
 
+//カート追加
+if(isset($_POST['cart-button'])){
+    if(isset($_SESSION['cart'])){
+        $cart = $_SESSION['cart'];
+        $count = count($cart);
+        //カートに挿入するセッション情報の連想配列を作る
+        $cart_add_info= array('item_id'=>$_GET['id'],'gram'=>$_POST['gram'],'quantity'=>$_POST['quantity']);
+        //重複フラグ
+        $duplicate_flag = false;
+        //重複がないかのチェック
+        foreach($cart as $key => $value){
+            //idが一致するかのチェック
+            if($value['item_id'] == $_GET['id']){
+                //グラムが一致するかどうかのチェック
+                if($value['gram'] == $_POST['gram']){
+                    //idとgram数が一致する場合は個数を増やす
+                    $_SESSION['cart'][$key]['quantity']++;
+                    $duplicate_flag = true;
+                }
+            }
+        }
+        //重複がない場合はcartに追加する
+        if(!$duplicate_flag){
+            $_SESSION['cart'][$count] = $cart_add_info;
+        }
+    }else{
+        //cartに商品が１つもなかった場合
+        //商品id,グラム数, 個数の情報を持った連想配列を作る
+        $cart_info = array('item_id'=>$_GET['id'], 'gram'=>$_POST['gram'], 'quantity'=>$_POST['quantity']);
+        $_SESSION['cart'][0] = $cart_info;
+    }
 }
 
 
@@ -117,27 +145,29 @@ $pdo= null;
                         <?= $result[0]['item_description']?>
                     </p>
                 </div>
-                <div class="gram-container">
-                    <span class="many-gram">グラム数</span>
-                    <select name="gram" class="gramselect">
-                        <?php
-                        for($i=1; $i<=5; $i++){
-                            echo '<option value="',$i*100,'"">'.$i*100,'</option>';
-                        }
-                        ?>
-                    </select>
-                    <div></div>
-                    <div class="cup-container">
-                        <span class="cup">100g(10~15杯)</span>
+                <form action="item-detail.php?id=<?= $result[0]['item_id'] ?>" method="post">
+                    <div class="gram-container">
+                        <span class="many-gram">グラム数</span>
+                        <select name="gram" class="gramselect">
+                            <?php
+                            for($i=1; $i<=5; $i++){
+                                echo '<option value="',$i*100,'"">'.$i*100,'</option>';
+                            }
+                            ?>
+                        </select>
+                        <div></div>
+                        <div class="cup-container">
+                            <span class="cup">100g(10~15杯)</span>
+                        </div>
                     </div>
-                </div>
-                <br>
-                <input type="nummber" value="1" name="many" class="many"/>
-                <span>個</span>
-                <button class="order-button">
-                    <img src="./img/cart_cart_icon.png" class="cart-image"/>
-                    カートに入れる
-                </button>
+                    <br>
+                    <input type="nummber" value="1" name="quantity" class="many"/>
+                    <span>個</span>
+                    <button type="submit" class="order-button" name="cart-button" value="add">
+                        <img src="./img/cart_cart_icon.png" class="cart-image"/>
+                        カートに入れる
+                    </button>
+                </form>
                 <br>
                 <?php
                 if(isset($favorite_flag)){

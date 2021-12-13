@@ -23,14 +23,12 @@ session_start();
     <?php require './global-menu.php' ?>
     <div class="main-content">
         <?php
-        if($login_flag) {
             echo '<pre>';
             echo print_r($_SESSION['user']);
             echo '</pre>';
             echo '<pre>';
-            echo print_r($_SESSION['favorite']);
+            echo print_r($_SESSION['cart']);
             echo '</pre>';
-        }
         ?>
         <img src=".\img\index_title_01.png" class="page-img">
         <h1><span class="heading">コーヒー豆を選ぶ</span></h1>
@@ -84,7 +82,7 @@ session_start();
                 <a>￥300</a>
             </div>
         </div>
-        <button class="merchandise-button">人気商品をもっと見る <img src="img/yazi1.png" class="arrow-png"></button>
+        <button class="merchandise-button">人気商品をもっと見る<img src="img/yazi3.png" class="arrow-img-black"></button>
     </div>
 </body>
 

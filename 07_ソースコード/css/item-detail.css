@@ -168,7 +168,7 @@ div.gram-container{
 select.gramselect{
     width: 100px;
     height: 30px;
-    font-size: large;
+    font-size: larger;
 }
 
 
@@ -199,6 +199,12 @@ span.cup{
     font-weight: bolder;
     margin-left: 10px;
     margin-bottom: 20px;
+}
+
+.cart-image{
+    position: relative;
+    bottom: 2px;
+    right: 8px;
 }
 
 /*ハート画像*/

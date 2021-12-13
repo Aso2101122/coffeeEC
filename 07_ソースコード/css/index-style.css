@@ -93,8 +93,14 @@ button.merchandise-button{
     margin-bottom: 100px;
     padding-top: 5px;
     padding-bottom: 5px;
-    text-align: none;
 }
 img.arrow-png{
     margin-left: 60px;
+}
+
+.arrow-img-black{
+    width: 18px;
+    position: relative;
+    bottom: 2px;
+    left: 67px;
 }

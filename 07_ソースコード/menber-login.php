@@ -26,7 +26,6 @@ if (!empty($_POST)) {
         $sql->execute([$record[0]['user_id']]);
         $favorite_items = $sql->fetchALL(PDO::FETCH_ASSOC);
         $_SESSION['user'] = $record[0];   // フォームの内容をセッションで保存
-        $_SESSION['favorite'] = $favorite_items;
         header('Location: ./index.php');
         exit();
     }

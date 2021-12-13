@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "dbmanager.php";
 //pdoインスタンス作成するメソッド
 $pdo = getDb();

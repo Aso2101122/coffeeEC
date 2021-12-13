@@ -79,7 +79,7 @@ img {
 
 /*商品名、価格*/
 div.info{
-    margin: 0;
+    margin: 5px 0;
     padding: 0;
 }
 
@@ -94,10 +94,6 @@ a.item-link{
     color: black;
 }
 
-/*商品リンクホバー*/
-div.info:hover{
-    color: #f78230;
-}
 
 .price{
     text-align: right;

@@ -24,13 +24,24 @@ if (isset($_GET['id'])) {
 
 $user_id = null;
 $item_id = null;
-
-if(isset($_POST['insert']))
-
-
-
-
-
+if(isset($_POST['method'])){
+    $user_id = $_POST['user_id'];
+    $item_id = $_POST['item_id'];
+    //お気に入りを追加する
+    if($_POST['method'] == 0){
+        $sql = $pdo->prepare('INSERT INTO t_favorite_items(user_id,item_id) VALUES (?,?)');
+        $sql->bindValue(1,$user_id);
+        $sql->bindValue(2,$item_id);
+        $sql->execute();
+    }
+    //お気に入りを削除する
+    if($_POST['method'] == 1){
+        $sql = $pdo->prepare('DELETE FROM t_favorite_items WHERE user_id = ? AND item_id = ?');
+        $sql->bindValue(1,$user_id);
+        $sql->bindValue(2,$item_id);
+        $sql->execute();
+    }
+}
 
 $favorite_flag = null;
 //お気に入り情報取得
@@ -41,7 +52,7 @@ if(isset($_SESSION['user']['user_id'])){
     $sql->bindValue(1,$user_id);
     $sql->bindValue(2,$item_id);
     $sql->execute();
-    if($sql->rowCount() >= 1){
+    if($sql->rowCount() === 1){
         $favorite_flag = true;
     }else{
         $favorite_flag = false;
@@ -65,18 +76,6 @@ $pdo= null;
 <body>
     <?php require './global-menu.php'; ?>
     <div class="main-content">
-        <?php
-        //ポスト送信パラメーターチェック
-        $p_action=null; $p_method=null; $p_item_id=null; $p_user_id=null;
-        print("<div class='checkMsg'>POSTパラメータ：");
-        echo $_POST['method'];
-        echo $_POST['item_id'];
-        echo $_POST['user_id'];
-//            if(isset($_POST['method'])){ if($_POST['method']!=""){ $p_method = $_POST['method']; print("ポストメソッド： ".$p_method);} }
-//            if(isset($_POST['item_id'])){ if($_POST['item_id']!=""){ $p_item_id = $_POST['item_id']; print("アイテムID： ".$p_item_id); } }
-//            if(isset($_POST['user_id'])){ if($_POST['user_id']!=""){ $p_user_id = $_POST['user_id']; print("ユーザーID： ".$p_user_id); } }
-            print("</div>");
-        ?>
         <div class="item-detail">
             <div class="main-left">
                 <div class="merchandise1">
@@ -114,43 +113,43 @@ $pdo= null;
                         <?= $result[0]['item_description']?>
                     </p>
                 </div>
-                <form action="" method="post">
-                    <div class="gram-container">
-                        <span class="many-gram">グラム数</span>
-                        <select name="gram" class="gramselect">
-                            <?php
-                            for($i=1; $i<=5; $i++){
-                                echo '<option value="',$i*100,'"">'.$i*100,'</option>';
-                            }
-                            ?>
-                        </select>
-                        <div></div>
-                        <div class="cup-container">
-                            <span class="cup">100g(10~15杯)</span>
-                        </div>
-                    </div>
-                    <br>
-                    <input type="nummber" value="1" name="many" class="many"/>
-                    <span>個</span>
-                    <button class="order-button">
-                        <img src="./img/cart_cart_icon.png" class="cart-image"/>
-                        カートに入れる
-                    </button>
-                    <br>
-                    <?php
-                    $page_url = (((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ) ? "https://" : "http://").$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-                    if(isset($favorite_flag)){
-                        if($favorite_flag){
-                            //お気に入り登録されていないとき
-                            echo '<button onclick="execPost(',$page_url,',INSERT,',$item_id,',',$user_id,')" class="favorite"><img src="img/heart_black.png" class="heart">お気に入り登録</button>';
-                        }else{
-                            //お気に入り登録されているとき
-                            echo '<button onclick="execPost(',$page_url,',DELETE,',$item_id,',',$user_id,')"class="favorite"><img src="img/heart_pink.png" class="heart">お気に入り削除</button>';
+                <div class="gram-container">
+                    <span class="many-gram">グラム数</span>
+                    <select name="gram" class="gramselect">
+                        <?php
+                        for($i=1; $i<=5; $i++){
+                            echo '<option value="',$i*100,'"">'.$i*100,'</option>';
                         }
+                        ?>
+                    </select>
+                    <div></div>
+                    <div class="cup-container">
+                        <span class="cup">100g(10~15杯)</span>
+                    </div>
+                </div>
+                <br>
+                <input type="nummber" value="1" name="many" class="many"/>
+                <span>個</span>
+                <button class="order-button">
+                    <img src="./img/cart_cart_icon.png" class="cart-image"/>
+                    カートに入れる
+                </button>
+                <br>
+                <?php
+                if(isset($favorite_flag)){
+                    if(!$favorite_flag){
+                        //お気に入り登録されていないとき
+                        $method = 0;
+                        echo '<button type="button" onclick="execPost('.$method.','.$item_id.','.$user_id.')" class="favorite"><img src="img/heart_black.png" class="heart">お気に入り登録</button>';
+                    }else{
+                        //お気に入り登録されているとき
+                        $method = 1;
+                        echo '<button type="button" onclick="execPost('.$method.','.$item_id.','.$user_id.')" class="favorite"><img src="img/heart_pink.png" class="heart">お気に入り削除</button>';
                     }
-                    ?>
-
-                </form>
+                }else{
+                    echo '<button type="button" onclick="location.href=\'./menber-login.php?msg=01&page='.$result[0]['item_id'].'\'" class="favorite"><img src="img/heart_black.png" class="heart">お気に入り登録</button>';
+                }
+                ?>
             </div>
         </div>
         <div class="">

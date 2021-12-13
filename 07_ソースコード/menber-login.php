@@ -1,7 +1,7 @@
 <?php /*ob_start();*/
+session_start();
 require("./dbmanager.php");
 $pdo = getDb();
-session_start();
 if (!empty($_POST)) {
     /* 入力情報の不備を検知 */
     if ($_POST['mail'] === "") {

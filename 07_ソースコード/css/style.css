@@ -50,7 +50,7 @@ body{
 /* グローバルメニュースタイル */
 .black-line{
     position: fixed;
-    top: 0px;
+    top: 0;
     width: 100%;
     height: 20px;
     background-color: black;
@@ -67,15 +67,15 @@ header{
     border-bottom: solid 0.5px rgb(204, 204, 204);
 }
 header > ul{
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
     text-align: center;
     white-space: nowrap;
 }
 
 header > li{
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
     height: 66px;
     
 }
@@ -167,12 +167,12 @@ button.serch_btn{
     border: none;
     width: 25px;
     height: 25px;
-    padding: 0px;
-    margin-left: 0px;
+    padding: 0;
+    margin-left: 0;
     position: relative;
     right: 30px;
     top: 0.5px;
-    bottom: 0px;
+    bottom: 0;
 }
 
 img.serch_img{
@@ -200,10 +200,74 @@ ul li ul div button.black-button{
 ul li ul div button.normal-button{
     cursor: pointer;
     width: 220px;
-    margin: 5px 0px;
+    margin: 5px 0;
     padding: 5px 60px;
     
 }
+
+/*ログイン済みの会員情報ナビ*/
+
+img.user-info-logo-img{
+    margin-top: 5px;
+    }
+
+/*ポイント表示コンテンツ*/
+.point-content{
+    background-color: #F0F0F0;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.available-points{
+    font-weight: lighter;
+    color: #595959;
+    font-size: x-small;
+    line-height: 0.7;
+}
+
+/*文字を中央ぞろえにする*/
+div.point-text-content{
+    text-align: center;
+    width: 60px;
+}
+
+div.point-display{
+    margin-top: 12px;
+    margin-right: 20px;
+}
+
+span.point-many{
+    margin-top: 13px;
+    font-weight: bold;
+    font-size: large;
+}
+
+span.point{
+    margin-top: 13px;
+}
+
+
+div.border{
+    border-bottom: solid #595959 1px;
+}
+
+
+div.logout-content{
+   margin-top: 5px;
+}
+
+img.logout-link-img{
+    margin-left: 3px;
+}
+
+span.logout-link-text{
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
 
 /* 表示非表示切替 */
 .global-menu ul li ul{
@@ -219,6 +283,11 @@ li.item-link{
     display: inline-block;
     background-color: white;
 }
+
+
+
+
+
 
 
 

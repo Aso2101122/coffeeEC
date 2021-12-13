@@ -1,8 +1,5 @@
 <?php
 session_start();
-//echo '<pre>';
-//echo print_r($_SESSION['user']);
-//echo '</pre>';
 ?>
 
 
@@ -26,15 +23,17 @@ session_start();
     <?php require './global-menu.php' ?>
     <div class="main-content">
         <?php
-        echo '<pre>';
-        echo print_r($_SESSION['user']);
-        echo '</pre>';
-        echo '<pre>';
-        echo print_r($_SESSION['favorite']);
-        echo '</pre>';
+        if($login_flag) {
+            echo '<pre>';
+            echo print_r($_SESSION['user']);
+            echo '</pre>';
+            echo '<pre>';
+            echo print_r($_SESSION['favorite']);
+            echo '</pre>';
+        }
         ?>
         <img src=".\img\index_title_01.png" class="page-img">
-        <h1><span>コーヒー豆を選ぶ</span></h1>
+        <h1><span class="heading">コーヒー豆を選ぶ</span></h1>
         <div class="chooseCoffee">
             <div class="recommend">
                 <a href="">
@@ -49,7 +48,7 @@ session_start();
                 </a>
             </div>
         </div>
-        <h1><span>コーヒー基礎知識</span></h1>
+        <h1><span class="heading">コーヒー基礎知識</span></h1>
         <div class="coffeedrip">
             <a href="">
                 <img src="img/index_reference-page_bn.png" class="drip-img">

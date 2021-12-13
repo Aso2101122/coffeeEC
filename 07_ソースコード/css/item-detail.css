@@ -20,8 +20,8 @@ a:hover{
 /*コンテンツ全体(ヘッダー以外)*/
 div.main-content{
     width: 1200px;
-
 }
+
 /*左のコンテンツと右のコンテンツの親*/
 /*おすすめ以外のコンテンツ*/
 div.item-detail{
@@ -205,6 +205,7 @@ span.cup{
     position: relative;
     bottom: 2px;
     right: 8px;
+    width: 17px;
 }
 
 /*ハート画像*/

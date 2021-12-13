@@ -70,7 +70,7 @@ $pdo= null;
                 echo '<div class="info">';
                 echo '<span>'.$result[$j+$i]['item_name'].'</span><br>';
                 echo '<div class="price">';
-                echo '<span>'.$result[$j+$i]['price'].'(税込)</span>';
+                echo '<span>'.$result[$j+$i]['price'].'円(税込)</span>';
                 echo '</div>';
                 echo '</div>';
                 echo '</a>';

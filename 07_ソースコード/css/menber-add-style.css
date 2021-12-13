@@ -82,7 +82,6 @@ input{
 
 input.input-text{
     width:100%;
-    
 }
 
 
@@ -93,20 +92,26 @@ input.input-text{
 
 
 .black-button{
-    font-size: xx-small;
+    font-size: x-small;
     margin: 10px auto 20px;
     padding: 0px 70px;
 }
 
 
 .normal-button{
-    font-size:xx-small;
+    font-size:x-small;
     margin: 30px;
     padding: 0px 70px;
 }
-
+.name-contener{
+    display: flex;
+}
 
 .firstname{
-    margin-left: 10px;
+    width: 47%;
+    margin-left: 6%;
+}
+.lastname{
+    width: 47%;
 }
 

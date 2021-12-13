@@ -40,6 +40,10 @@ if (!empty($_POST)) {
     <link rel="stylesheet" href="./css/sanitize.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/menber-add-style.css" />
+    <!-- フォント読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -51,8 +55,11 @@ if (!empty($_POST)) {
             <div class="form-parts">
                 <span class="tag">お名前</span>
                 <span class="mandatory">必須</span><br>
-                <input type="text" placeholder="山田" name="firstname" class="lastname" />
-                <input type="text" placeholder="太郎" name="lastname" class="firstname" /><br>
+                <div class="name-contener">
+                    <input type="text" placeholder="山田" name="firstname" class="lastname" />
+                    <input type="text" placeholder="太郎" name="lastname" class="firstname" />
+                </div>
+
             </div>
             <div class="form-parts">
                 <span class="tag">メールアドレス</span>

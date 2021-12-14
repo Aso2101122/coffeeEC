@@ -6,6 +6,10 @@ $count = 0;
 if(isset($_SESSION['cart'])){
     $count = count($_SESSION['cart']);
 }
+//金額計算
+foreach($_SESSION)
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -59,11 +63,15 @@ if(isset($_SESSION['cart'])){
                     </div>
                     <span class="item-price"><?= $result[0]['price'] ?>円（税込）</span>
                     <span class="item-stock">在庫あり</span>
-                    <button type="button" class="item-delete" >削除</button>
+                    <button type="button" class="item-delete" onclick="">削除</button>
                     <select name="quantity" class="quantity">
                         <?php
                         for($j=1; $j<100; $j++){
-                            echo '<option value="'.$j.'">'.$j.'</option>';
+                            $selected = null;
+                            if ( $_SESSION['cart'][$i]['quantity'] == $j ) {
+                                $selected = ' selected';
+                            }
+                            echo '<option value="'.$j.'"'.$selected.'>'.$j.'</option>';
                         }
                         ?>
                     </select>

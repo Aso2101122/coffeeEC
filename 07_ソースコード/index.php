@@ -1,8 +1,5 @@
 <?php
 session_start();
-//echo '<pre>';
-//echo print_r($_SESSION['user']);
-//echo '</pre>';
 ?>
 
 
@@ -26,15 +23,15 @@ session_start();
     <?php require './global-menu.php' ?>
     <div class="main-content">
         <?php
-        echo '<pre>';
-        echo print_r($_SESSION['user']);
-        echo '</pre>';
-        echo '<pre>';
-        echo print_r($_SESSION['favorite']);
-        echo '</pre>';
+            echo '<pre>';
+            echo print_r($_SESSION['user']);
+            echo '</pre>';
+            echo '<pre>';
+            echo print_r($_SESSION['cart']);
+            echo '</pre>';
         ?>
         <img src=".\img\index_title_01.png" class="page-img">
-        <h1><span>コーヒー豆を選ぶ</span></h1>
+        <h1><span class="heading">コーヒー豆を選ぶ</span></h1>
         <div class="chooseCoffee">
             <div class="recommend">
                 <a href="">
@@ -49,15 +46,15 @@ session_start();
                 </a>
             </div>
         </div>
-        <h1><span>コーヒー基礎知識</span></h1>
+        <h1><span class="heading">コーヒー基礎知識</span></h1>
         <div class="coffeedrip">
             <a href="">
                 <img src="img/index_reference-page_bn.png" class="drip-img">
                 <div class="text">コーヒーの淹れ方と必要な道具</div>
             </a>
         </div>
-        <h1><span>RANKING</span></h1>
-        <p>売れ筋商品</p>
+        <h1 class="rank"><span>RANKING</span></h1>
+        <p class ="selling">売れ筋商品</p>
         <div class="ranking">
             <div class="merchandise">
                 <img src="img/index_item_image.png">
@@ -85,7 +82,7 @@ session_start();
                 <a>￥300</a>
             </div>
         </div>
-        <button class="merchandise-button">人気商品をもっと見る</button>
+        <button class="merchandise-button">人気商品をもっと見る<img src="img/yazi3.png" class="arrow-img-black"></button>
     </div>
 </body>
 

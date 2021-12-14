@@ -1,7 +1,7 @@
 <?php /*ob_start();*/
+session_start();
 require("./dbmanager.php");
 $pdo = getDb();
-session_start();
 if (!empty($_POST)) {
     /* 入力情報の不備を検知 */
     if ($_POST['mail'] === "") {
@@ -26,7 +26,6 @@ if (!empty($_POST)) {
         $sql->execute([$record[0]['user_id']]);
         $favorite_items = $sql->fetchALL(PDO::FETCH_ASSOC);
         $_SESSION['user'] = $record[0];   // フォームの内容をセッションで保存
-        $_SESSION['favorite'] = $favorite_items;
         header('Location: ./index.php');
         exit();
     }
@@ -42,6 +41,10 @@ if (!empty($_POST)) {
     <link rel="stylesheet" href="./css/sanitize.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/menber-add-style.css" />
+    <!-- フォント読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body>

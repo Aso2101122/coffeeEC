@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("./dbmanager.php");
 $pdo = getDb();
 
@@ -27,6 +28,10 @@ $pdo= null;
     <link rel="stylesheet" href="css/sanitize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/list-style.css">
+    <!-- フォント読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -65,7 +70,7 @@ $pdo= null;
                 echo '<div class="info">';
                 echo '<span>'.$result[$j+$i]['item_name'].'</span><br>';
                 echo '<div class="price">';
-                echo '<span>'.$result[$j+$i]['price'].'(税込)</span>';
+                echo '<span>'.$result[$j+$i]['price'].'円(税込)</span>';
                 echo '</div>';
                 echo '</div>';
                 echo '</a>';

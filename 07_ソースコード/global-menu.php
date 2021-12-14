@@ -1,7 +1,15 @@
 <!-- phpログイン確認 -->
+<?php
+if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
+    $login_flag = true;
+    $user_name = "";
+    $user_name = $_SESSION['user']['last_name'].$_SESSION['user']['first_name'];
+    $point = $_SESSION['user']['owned_points'];
+}else{
+    $login_flag = false;
+}
 
-
-
+?>
 <!-- HTML部 -->
 <div class="black-line"></div>
 <header class="global-menu">
@@ -18,10 +26,11 @@
         </li>
         <li>
             <from action="" method="post">
-                <input type="text" placeholder="何をお探しですか" 　class="sarch-nav" />
+                <input type="text" placeholder="何をお探しですか" class="sarch-nav" />
                 <button type="submit" class="serch_btn"><img src="./img/global-memu_serch_icon.png" class="serch_img"></button>
             </from>
         </li>
+        <?php if(!$login_flag) :?>
         <li>
             <a href="#" class="over">
                 <img src="./img/nav-login_logo.png" width="60px" />
@@ -35,11 +44,45 @@
                 </div>
             </ul>
         </li>
+        <?php endif ?>
+        <?php if($login_flag) :?>
         <li>
-            <a href="./favorite.html" class="over"><img src="./img/nav-favorite_logo.png" width="60px" /></a>
+            <a href="#" class="over">
+                <img src="./img/nav-mypage_logo.png" width="60px" />
+            </a>
+            <ul id="user-over">
+                <div>
+                    <p>こんにちは、<?= $user_name ?>様</p>
+                    <a href="user-info-update.php">
+                        <img src="./img/nav-user-info_logo.png" class="user-info-logo-img">
+                        <span class="">お客様情報</span>
+                    </a>
+                    <div class="point-content">
+                        <div class="point-text-content">
+                            <span class="available-points">ご利用可能<br>ポイント</span>
+                        </div>
+                        <div class="point-display">
+                            <span class="point-many"><?= $point ?></span>
+                            <span class="point">pt</span>
+                        </div>
+                    </div>
+                    <div class="border"></div>
+                    <div class="logout-content">
+                        <a href="logout.php" class="logout-link">
+                            <img src="./img/nav-logout_logo.png" class="logout-link-img"/>
+                            <span class="logout-link-text">ログアウト</span>
+                        </a>
+                    </div>
+                </div>
+            </ul>
+        </li>
+        <?php endif ?>
+
+        <li>
+            <a href="./favorite.php" class="over"><img src="./img/nav-favorite_logo.png" width="60px" /></a>
         </li>
         <li>
-            <a href="./cart.html" class="over"><img src="./img/nav-cart_logo.png" width="60px" /></a>
+            <a href="./cart.php" class="over"><img src="./img/nav-cart_logo.png" width="60px" /></a>
         </li>
     </ul>
 </header>

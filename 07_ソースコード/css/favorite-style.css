@@ -1,39 +1,110 @@
 body{
-    background-color: #E5E5E5;
+    background-color: #f5f5f5;
 }
-.headder-img {
-    width: 100%;
+
+h1.heading{
+    width: 900px;
+    border-bottom: solid 2px;
+    margin: 30px auto ;
+    padding-bottom: 3px;
 }
-h1{
-    margin: 30px 0px ;
-    border-bottom: solid 1px;
-    width: 230px;
-}
-.item {
-    display: flex;
-    margin-left: 30px;
-}
-.item2{
-    margin-left: 40px;
-    margin-top: 20px;
-}
-.merchandises{
-    margin-left: 30px;
-    width: fit-content;
-    display: flex;
-    flex-flow: column;
-    text-align:left;
-}
-.margin{
-    margin: 0;
-    padding: 0;
-}
+/*カートボタン*/
 .order{
     background-color: #4FDFFF;
     color: white;
     height: 40px;
     border: 0cm;
 }
+/*カートボタン画像*/
 .cart-image{
-   margin-right: 20px; 
+    margin-right: 20px;
+    width: 17px;
+}
+
+
+/*list-styleからコピペ*/
+
+/*１行の商品情報*/
+.item-row{
+    margin: 20px 133px;
+    width: auto;
+    display: flex;
+}
+
+/*１件の商品div*/
+div.merchandises{
+    margin-right: 17px;
+    margin-left: 17px;
+    width: fit-content;
+    display: flex;
+    flex-flow: column;
+    text-align:left;
+}
+
+div.item-hover:hover{
+    opacity: 0.6;
+    filter: brightness(110%);
+}
+
+/*商品画像*/
+img.item-img{
+    width: 200px;
+    height: 200px;
+    border: solid black 1px;
+}
+/*商品画像ホバー*/
+/*img.item-img:hover{*/
+/*    opacity: 0.6;*/
+/*    filter: brightness(110%);*/
+/*}*/
+
+/*画像ホバー白色アニメーション*/
+img {
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+/*商品名、価格*/
+div.info{
+    margin: 5px 0;
+    padding: 0;
+}
+
+/*商品名*/
+span.price{
+    text-align: right;
+}
+
+/*商品リンク*/
+a.item-link{
+    text-decoration:none;
+    color: black;
+}
+
+/*商品リンクホバー*/
+div.info:hover{
+    color: #f78230;
+}
+
+.price{
+    text-align: right;
+}
+
+/*見つからないときのメッセージ*/
+div.not-find{
+    width: 900px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px auto;
+    padding-top: 30px;
+    text-align: center;
+}
+
+div.not-login{
+    width: 900px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px auto;
+    padding-top: 30px;
+    text-align: center;
 }

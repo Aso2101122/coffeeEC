@@ -18,19 +18,26 @@ if (isset($_GET['id'])) {
     echo '<p>該当する商品が見つかりませんでした。</p>';
 }
 
-
-
-
-
 $user_id = null;
 $item_id = null;
-
-if(isset($_POST['insert']))
-
-
-
-
-
+if(isset($_POST['method'])){
+    $user_id = $_POST['user_id'];
+    $item_id = $_POST['item_id'];
+    //お気に入りを追加する
+    if($_POST['method'] == 0){
+        $sql = $pdo->prepare('INSERT INTO t_favorite_items(user_id,item_id) VALUES (?,?)');
+        $sql->bindValue(1,$user_id);
+        $sql->bindValue(2,$item_id);
+        $sql->execute();
+    }
+    //お気に入りを削除する
+    if($_POST['method'] == 1){
+        $sql = $pdo->prepare('DELETE FROM t_favorite_items WHERE user_id = ? AND item_id = ?');
+        $sql->bindValue(1,$user_id);
+        $sql->bindValue(2,$item_id);
+        $sql->execute();
+    }
+}
 
 $favorite_flag = null;
 //お気に入り情報取得
@@ -41,12 +48,44 @@ if(isset($_SESSION['user']['user_id'])){
     $sql->bindValue(1,$user_id);
     $sql->bindValue(2,$item_id);
     $sql->execute();
-    if($sql->rowCount() >= 1){
+    if($sql->rowCount() === 1){
         $favorite_flag = true;
     }else{
         $favorite_flag = false;
     }
+}
 
+//カート追加
+if(isset($_POST['cart-button'])){
+    if(isset($_SESSION['cart'])){
+        $cart = $_SESSION['cart'];
+        $count = count($cart);
+        //カートに挿入するセッション情報の連想配列を作る
+        $cart_add_info= array('item_id'=>$_GET['id'],'gram'=>$_POST['gram'],'quantity'=>$_POST['quantity']);
+        //重複フラグ
+        $duplicate_flag = false;
+        //重複がないかのチェック
+        foreach($cart as $key => $value){
+            //idが一致するかのチェック
+            if($value['item_id'] == $_GET['id']){
+                //グラムが一致するかどうかのチェック
+                if($value['gram'] == $_POST['gram']){
+                    //idとgram数が一致する場合は個数を増やす
+                    $_SESSION['cart'][$key]['quantity']++;
+                    $duplicate_flag = true;
+                }
+            }
+        }
+        //重複がない場合はcartに追加する
+        if(!$duplicate_flag){
+            $_SESSION['cart'][$count] = $cart_add_info;
+        }
+    }else{
+        //cartに商品が１つもなかった場合
+        //商品id,グラム数, 個数の情報を持った連想配列を作る
+        $cart_info = array('item_id'=>$_GET['id'], 'gram'=>$_POST['gram'], 'quantity'=>$_POST['quantity']);
+        $_SESSION['cart'][0] = $cart_info;
+    }
 }
 
 
@@ -61,22 +100,14 @@ $pdo= null;
     <link rel="stylesheet" href="css/sanitize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/item-detail.css">
+    <!-- フォント読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <?php require './global-menu.php'; ?>
     <div class="main-content">
-        <?php
-        //ポスト送信パラメーターチェック
-        $p_action=null; $p_method=null; $p_item_id=null; $p_user_id=null;
-        print("<div class='checkMsg'>POSTパラメータ：");
-        echo $_POST['method'];
-        echo $_POST['item_id'];
-        echo $_POST['user_id'];
-//            if(isset($_POST['method'])){ if($_POST['method']!=""){ $p_method = $_POST['method']; print("ポストメソッド： ".$p_method);} }
-//            if(isset($_POST['item_id'])){ if($_POST['item_id']!=""){ $p_item_id = $_POST['item_id']; print("アイテムID： ".$p_item_id); } }
-//            if(isset($_POST['user_id'])){ if($_POST['user_id']!=""){ $p_user_id = $_POST['user_id']; print("ユーザーID： ".$p_user_id); } }
-            print("</div>");
-        ?>
         <div class="item-detail">
             <div class="main-left">
                 <div class="merchandise1">
@@ -114,7 +145,7 @@ $pdo= null;
                         <?= $result[0]['item_description']?>
                     </p>
                 </div>
-                <form action="" method="post">
+                <form action="item-detail.php?id=<?= $result[0]['item_id'] ?>" method="post">
                     <div class="gram-container">
                         <span class="many-gram">グラム数</span>
                         <select name="gram" class="gramselect">
@@ -130,27 +161,29 @@ $pdo= null;
                         </div>
                     </div>
                     <br>
-                    <input type="nummber" value="1" name="many" class="many"/>
+                    <input type="nummber" value="1" name="quantity" class="many"/>
                     <span>個</span>
-                    <button class="order-button">
+                    <button type="submit" class="order-button" name="cart-button" value="add">
                         <img src="./img/cart_cart_icon.png" class="cart-image"/>
                         カートに入れる
                     </button>
-                    <br>
-                    <?php
-                    $page_url = (((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ) ? "https://" : "http://").$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-                    if(isset($favorite_flag)){
-                        if($favorite_flag){
-                            //お気に入り登録されていないとき
-                            echo '<button onclick="execPost(',$page_url,',INSERT,',$item_id,',',$user_id,')" class="favorite"><img src="img/heart_black.png" class="heart">お気に入り登録</button>';
-                        }else{
-                            //お気に入り登録されているとき
-                            echo '<button onclick="execPost(',$page_url,',DELETE,',$item_id,',',$user_id,')"class="favorite"><img src="img/heart_pink.png" class="heart">お気に入り削除</button>';
-                        }
-                    }
-                    ?>
-
                 </form>
+                <br>
+                <?php
+                if(isset($favorite_flag)){
+                    if(!$favorite_flag){
+                        //お気に入り登録されていないとき
+                        $method = 0;
+                        echo '<button type="button" onclick="execPost('.$method.','.$item_id.','.$user_id.')" class="favorite"><img src="img/heart_black.png" class="heart">お気に入り登録</button>';
+                    }else{
+                        //お気に入り登録されているとき
+                        $method = 1;
+                        echo '<button type="button" onclick="execPost('.$method.','.$item_id.','.$user_id.')" class="favorite"><img src="img/heart_pink.png" class="heart">お気に入り削除</button>';
+                    }
+                }else{
+                    echo '<button type="button" onclick="location.href=\'./menber-login.php?msg=01&page='.$result[0]['item_id'].'\'" class="favorite"><img src="img/heart_black.png" class="heart">お気に入り登録</button>';
+                }
+                ?>
             </div>
         </div>
         <div class="">

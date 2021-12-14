@@ -7,7 +7,11 @@ a{
     color: black;
 }
 
-span{
+h1{
+    margin-top: 45px;
+}
+
+span.heading{
     border-bottom:solid 2px black;
 }
 
@@ -71,13 +75,32 @@ div.merchandise{
     text-align:left;
 }
 
+.rank{
+    margin-bottom: 0;
+}
+
+.selling{
+    margin-top: 0;
+    margin-bottom: 45px;
+}
+
 button.merchandise-button{
     background-color: white;
     border-color: black;
     font-weight: bold;
     width: 300px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 45px;
+    margin-bottom: 100px;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+img.arrow-png{
+    margin-left: 60px;
+}
+
+.arrow-img-black{
+    width: 18px;
+    position: relative;
+    bottom: 2px;
+    left: 67px;
 }

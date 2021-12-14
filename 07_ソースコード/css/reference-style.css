@@ -9,7 +9,7 @@ body{
 
 h1.recommendation-reference{
     text-align: left;
-    margin-left: 200px;
+    margin-left: 300px;
     margin-bottom: 50px;
 }
 
@@ -38,4 +38,20 @@ span{
 }
 a{
     font-size: large;
+}
+
+a.text1{
+    margin-right: 235px;
+}
+
+a.text2{
+    margin-right: 220px;
+}
+
+a.text3{
+    margin-right: 285px;
+}
+
+a.text4{
+    margin-right: 260px;
 }

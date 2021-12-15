@@ -63,6 +63,19 @@ div.coffeedrip{
     background-color: #E5E5E5;
 }
 
+/*リンクをホバーで白くする*/
+div.main-content > div > div > a:hover{
+    opacity: 0.6;
+    filter: brightness(110%);
+}
+
+/*リンクをホバーで白くする*/
+div.main-content > div > a:hover{
+    opacity: 0.6;
+    filter: brightness(110%);
+}
+
+
 div.ranking{
     display: flex;
     margin-left: 152px;

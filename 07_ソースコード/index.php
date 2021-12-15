@@ -22,14 +22,14 @@ session_start();
 <body>
     <?php require './global-menu.php' ?>
     <div class="main-content">
-        <?php
+<!--        --><?php
             echo '<pre>';
             echo print_r($_SESSION['user']);
             echo '</pre>';
             echo '<pre>';
             echo print_r($_SESSION['cart']);
             echo '</pre>';
-        ?>
+//        ?>
         <img src=".\img\index_title_01.png" class="page-img">
         <h1><span class="heading">コーヒー豆を選ぶ</span></h1>
         <div class="chooseCoffee">

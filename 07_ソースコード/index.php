@@ -23,18 +23,18 @@ session_start();
     <?php require './global-menu.php' ?>
     <div class="main-content">
 <!--        --><?php
-            echo '<pre>';
-            echo print_r($_SESSION['user']);
-            echo '</pre>';
-            echo '<pre>';
-            echo print_r($_SESSION['cart']);
-            echo '</pre>';
+//            echo '<pre>';
+//            echo print_r($_SESSION['user']);
+//            echo '</pre>';
+//            echo '<pre>';
+//            echo print_r($_SESSION['cart']);
+//            echo '</pre>';
 //        ?>
         <img src=".\img\index_title_01.png" class="page-img">
         <h1><span class="heading">コーヒー豆を選ぶ</span></h1>
         <div class="chooseCoffee">
             <div class="recommend">
-                <a href="">
+                <a href="./product.php?recommend=1">
                     <img src="img/index_recommend_bn.png"><br>
                     <div class="text">入門者におすすめのコーヒー豆</div>
                 </a>

@@ -25,10 +25,10 @@ if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
             </ul>
         </li>
         <li>
-            <from action="" method="post">
-                <input type="text" placeholder="何をお探しですか" class="sarch-nav" />
-                <button type="submit" class="serch_btn"><img src="./img/global-memu_serch_icon.png" class="serch_img"></button>
-            </from>
+            <form action="./product.php" method="get">
+                <input type="text" name="keyword" placeholder="何をお探しですか" class="sarch-nav" />
+                <button type="submit" class="serch_btn"><img src="./img/global-memu_serch_icon.png" class="serch_img"/></button>
+            </form>
         </li>
         <?php if(!$login_flag) :?>
         <li>
@@ -38,9 +38,9 @@ if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
             <ul id="user-over">
                 <div>
                     <p>ゲスト様</p>
-                    <button type="submit" onclick="location.href='./menber-login.php'" class="black-button">ログイン</button>
+                    <button type="button" onclick="location.href='./menber-login.php'" class="black-button">ログイン</button>
                     <br>
-                    <button type="submit" onclick="location.href='./menber-add.php'" class="normal-button">新規会員登録</button>
+                    <button type="button" onclick="location.href='./menber-add.php'" class="normal-button">新規会員登録</button>
                 </div>
             </ul>
         </li>

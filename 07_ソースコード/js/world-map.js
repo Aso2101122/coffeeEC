@@ -11,6 +11,8 @@ var area_beans_th = document.getElementById('area-beans-th');
 var area_country = document.getElementById('area-country');
 //有名なブランドオブジェクト取得
 var area_beans = document.getElementById('area-beans');
+//もっと見るボタンオブジェクト取得
+var more_button = document.getElementById('more-button');
 
 // 商品1のオブジェクトを取得
 var item_name1 = document.getElementById('item-name1');
@@ -66,6 +68,8 @@ function selectArea(area_num) {
     item_img2.src = "./img/item-img/" + item_list[area_num][1]["item_img_url"];
     item_link2.href = "http://aso2101122.schoolbus.jp/Biginners-coffee/item-detail.php?id=" + item_list[area_num][1]["item_id"];
 
+    // もっと見るボタンのベントを設定
+    more_button.setAttribute('onclick', 'location.href=\'./product.php?area=' + '0' + area_num + '\'');
 
 
 

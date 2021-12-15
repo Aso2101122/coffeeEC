@@ -214,7 +214,7 @@ $pdo= null;
             </div>
         </div>
         <?php if($result[0]['category_id'] == '01'):?>
-        <div class="">
+        <div class="recommend-container">
             <span class="recommendation">入門者におすすめのコーヒー豆</span>
             <div class="item-row">
             <?php
@@ -226,12 +226,11 @@ $pdo= null;
                         echo '<span>'.$recommend_item[$i]['item_name'].'</span><br>';
                         echo '<div class="price">';
                             echo '<span>'.$recommend_item[$i]['price'].'円(税込)</span>';
-                            echo '</div>';
                         echo '</div>';
-                    echo '</a>';
-                echo '</div>';
-            }
+                    echo '</div>';
+                echo '</a>';
             echo '</div>';
+            }
             ?>
             </div>
         </div>

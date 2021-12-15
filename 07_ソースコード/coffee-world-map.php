@@ -128,7 +128,7 @@ $JsonLatainAmerica = json_encode($latin_america_item_list, JSON_UNESCAPED_UNICOD
                             </div>
                         </a>
                     </div>
-                    <button type="button" class="normal-button">もっと見る</button>
+                    <button type="button" class="normal-button" id="more-button">もっと見る</button>
                 </div>
             </div>
         </div>

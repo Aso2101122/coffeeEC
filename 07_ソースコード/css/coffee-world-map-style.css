@@ -38,6 +38,10 @@ div.main-2{
     width: 700px;
 }
 
+area{
+    cursor: pointer;
+}
+
 .origin-info{
     text-align: left;
     margin-top: 20px;

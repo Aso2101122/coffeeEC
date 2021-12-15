@@ -80,7 +80,6 @@ $pdo= null;
                 }
             }
             echo '</div>';
-
         }
     }
 

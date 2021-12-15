@@ -13,6 +13,23 @@ div.headder{
     margin: 20px auto;
 }
 
+div.heading-search{
+    width: 900px;
+    margin: 50px auto 0;
+
+}
+
+span.heading{
+    font-size: x-large;
+    font-weight: 700;
+    width: 100px;
+
+}
+
+span.search-count{
+    font-size: larger;
+    margin-left: 10px;
+}
 
 /*見出し画像スタイル*/
 img.headder-img{
@@ -111,4 +128,7 @@ div.not-find{
 
 hr.line{
 width: 900px;
+}
+
+div.item-container{
 }

@@ -239,6 +239,12 @@ span.recommendation{
     margin-right: 230px;
 }
 
+.recommend-container{
+    margin-bottom: 300px;
+}
+
+
+
 /*１行の商品情報*/
 .item-row{
     margin: 30px 133px 300px;

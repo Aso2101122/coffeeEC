@@ -109,7 +109,7 @@ $earned_point = 0;
             $postage_total = 550;
         }
         $amount_total = $item_total+$postage_total;
-        $earned_point = $amount_total/100;
+        $earned_point =floor( $amount_total/100);
         ?>
 
         <div class="main-right">

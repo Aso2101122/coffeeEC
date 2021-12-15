@@ -3,6 +3,8 @@ session_start();
 require("./dbmanager.php");
 $pdo = getDb();
 
+//検索文言保存
+$word = '';
 
 if (isset($_GET['category'])) {
     //カテゴリ別で商品を取得
@@ -14,8 +16,42 @@ if (isset($_GET['category'])) {
 } else if (isset($_GET['keyword'])){
     //検索用処理
     $keyword = $_GET['keyword'];
+    $sql = $pdo->prepare('select item_id, item_name, price, item_img_url from m_items where item_name LIKE "%'.$keyword.'%"');
+    $sql->execute();
+    $result = $sql->fetchALL(PDO::FETCH_ASSOC);
+    $resultcount = count($result);
+    $word = $keyword;
+} else if (isset($_GET['country'])){
+    $country_id = $_GET['country'];
+    $sql = $pdo->prepare('select item_id, item_name, price, item_img_url from m_items where country_id=?');
+    $sql->bindValue(1,$country_id);
+    $sql->execute();
+    $result = $sql->fetchALL(PDO::FETCH_ASSOC);
+    $resultcount = count($result);
+    $sql = $pdo->prepare('select country_name from m_country where country_id = ?');
+    $sql->bindValue(1,$country_id);
+    $sql->execute();
+    $country_name = $sql->fetchALL(PDO::FETCH_ASSOC);
+    $word = $country_name;
+} else if(isset($_GET['area'])){
+    $area_id = $_GET['area'];
+    $sql = $pdo->prepare('select i.item_id, item_name, i.price, i.item_img_url , c.area_id from m_items i,m_country c, m_area a where i.country_id = c.country_id AND c.area_id = a.area_id AND c.area_id = ?;');
+    $sql->bindValue(1,$area_id);
+    $sql->execute();
+    $result = $sql->fetchALL(PDO::FETCH_ASSOC);
+    $sql = $pdo->prepare('select country_name from m_country where country_id = ?');
+    $sql->bindValue(1,$area_id);
+    $sql->execute();
+    $area_name = $sql->fetchALL(PDO::FETCH_ASSOC);
+    $word = $area_name[0]['area_name'];
+    $resultcount = count($result);
+} else if(isset($_GET['recommend'])){
+    $sql = $pdo->prepare('select item_id, item_name, price, item_img_url from m_items where featured_flag=1');
+    $sql->execute();
+    $result = $sql->fetchALL(PDO::FETCH_ASSOC);
+    $resultcount = count($result);
+    $word = '入門者におすすめ';
 }
-
 $pdo= null;
 ?>
 
@@ -37,16 +73,22 @@ $pdo= null;
 <body>
 <?php require 'global-menu.php'; ?>
 <div class="main-content">
-    <div class="headder">
-        <?php
+    <?php
+    if(isset($_GET['category'])){
+        echo '<div class="headder">';
         if($_GET['category'] === '01'){
             echo '<img src="./img/item-list_beans-header_img.png" class="headder-img">';
         }else if($_GET['category'] === '02'){
             echo '<img src="./img/item-list_utensils-header_img.png" class="headder-img">';
         }
-        ?>
-    </div>
-
+        echo '</div>';
+    }else{
+        echo '<div class="heading-search">';
+        echo '<span class="heading">'.$word.'の検索結果</span>';
+        echo '<span class="search-count">（'.$resultcount.'件）</span>';
+        echo '</div>';
+    }
+    ?>
     <div class="sort">
         <span class="display">表示順:<span>
         <span class="example">
@@ -61,6 +103,7 @@ $pdo= null;
     if ($count === 0){
         echo '<div class="not-find">該当する商品がありません</div>';
     } else {
+        echo '<div class="item-container">';
         for ($i=0; $i < $count; $i+=4){
             echo '<div class="item-row">';
             for ($j=0; $j < 4; $j++){
@@ -81,6 +124,7 @@ $pdo= null;
             }
             echo '</div>';
         }
+        echo '</div>';
     }
 
     ?>

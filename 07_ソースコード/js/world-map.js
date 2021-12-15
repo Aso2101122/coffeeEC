@@ -70,7 +70,7 @@ function selectArea(area_num) {
 
 
     area_country_th.innerHTML = "主な生産国";
-    area_beans_th.innerHTML = "有名なブランド";
+    area_beans_th.innerHTML = "有名な銘柄";
     area_country.innerHTML = area_result[area_num - 1]["area_country"];
     area_beans.innerHTML = area_result[area_num - 1]["area_beans"];
 

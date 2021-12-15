@@ -28,7 +28,7 @@ var myRadarChart = new Chart(ctx, {
                 //結合点より外でマウスホバーを認識する範囲（ピクセル単位）
                 hitRadius: 15,
                 //グラフのデータ
-                data: [4,3,4,4,4]
+                data: taste
             }
         ]
     },

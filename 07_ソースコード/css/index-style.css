@@ -2,17 +2,17 @@ body{
     background-color: #f5f5f5;
 }
 
-a{
-    text-decoration:none;
-    color: black;
-}
-
 h1{
     margin-top: 45px;
 }
 
 span.heading{
     border-bottom:solid 2px black;
+}
+
+a{
+    text-decoration:none;
+    color: black;
 }
 
 a:hover{
@@ -62,6 +62,19 @@ div.coffeedrip{
     margin-right: auto;
     background-color: #E5E5E5;
 }
+
+/*リンクをホバーで白くする*/
+div.main-content > div > div > a:hover{
+    opacity: 0.6;
+    filter: brightness(110%);
+}
+
+/*リンクをホバーで白くする*/
+div.main-content > div > a:hover{
+    opacity: 0.6;
+    filter: brightness(110%);
+}
+
 
 div.ranking{
     display: flex;

@@ -8,13 +8,17 @@ body {
 
 div.heading-container{
     display: flex;
+    width: 900px;
+    border-bottom: solid 2px;
+    margin: 30px auto ;
+    padding-bottom: 3px;
 }
 
 
 span.heading{
     font-size: 2.4em;
     font-weight: 600;
-    margin: 30px 0 10px 50px;
+    margin: 30px 0 10px 0;
     width: 120px;
 }
 
@@ -34,8 +38,8 @@ div.flex-container{
 
 /*左の注文処理情報コンテナ*/
 div.main-left{
-    width: 50%;
-    margin-left: 50px;
+    width: 40%;
+    margin-left: 150px;
     margin-bottom: 200px;
 }
 
@@ -75,7 +79,7 @@ div.item-info{
 
 
 span.item-gram{
-    margin-right: 30px;
+    margin-right: 0;
 }
 
 /*商品価格*/
@@ -101,7 +105,7 @@ button.item-delete{
     border: solid 1px black;
     width: 50px;
     height: 30px;
-    margin: 40px 0 0 210px;
+    margin: 40px 0 0 114px;
 }
 
 
@@ -165,3 +169,12 @@ div.item-info-row{
     justify-content: space-between;
 }
 
+/*見つからないときのメッセージ*/
+div.not-find{
+    width: 900px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px auto;
+    padding-top: 30px;
+    text-align: center;
+}

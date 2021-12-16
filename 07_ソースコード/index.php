@@ -1,5 +1,10 @@
 <?php
 session_start();
+require("./dbmanager.php");
+$pdo = getDb();
+$sql = $pdo->prepare('select i.item_id , i.item_name, i.price, i.item_img_url ,sum(quantity) as seles_count from m_items i left outer join t_order_detail o on i.item_id = o.item_id where category_id = 01 group by i.item_id order by seles_count desc;');
+$sql->execute();
+$result = $sql->fetchALL(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -22,14 +27,6 @@ session_start();
 <body>
     <?php require './global-menu.php' ?>
     <div class="main-content">
-<!--        --><?php
-            echo '<pre>';
-            echo print_r($_SESSION['user']);
-            echo '</pre>';
-            echo '<pre>';
-            echo print_r($_SESSION['cart']);
-            echo '</pre>';
-//        ?>
         <img src=".\img\index_title_01.png" class="page-img">
         <h1><span class="heading">コーヒー豆を選ぶ</span></h1>
         <div class="chooseCoffee">
@@ -48,41 +45,31 @@ session_start();
         </div>
         <h1><span class="heading">コーヒー基礎知識</span></h1>
         <div class="coffeedrip">
-            <a href="">
+            <a href="./reference-page.php">
                 <img src="img/index_reference-page_bn.png" class="drip-img">
                 <div class="text">コーヒーの淹れ方と必要な道具</div>
             </a>
         </div>
         <h1 class="rank"><span>RANKING</span></h1>
         <p class ="selling">売れ筋商品</p>
-        <div class="ranking">
-            <div class="merchandise">
-                <img src="img/index_item_image.png">
-                <a>商品名</a>
-                <a>￥300</a>
-            </div>
-            <div class="merchandise">
-                <img src="img/index_item_image.png">
-                <a>商品名</a>
-                <a>￥300</a>
-            </div>
-            <div class="merchandise">
-                <img src="img/index_item_image.png">
-                <a>商品名</a>
-                <a>￥300</a>
-            </div>
-            <div class="merchandise">
-                <img src="img/index_item_image.png">
-                <a>商品名</a>
-                <a>￥300</a>
-            </div>
-            <div class="merchandise">
-                <img src="img/index_item_image.png">
-                <a>商品名</a>
-                <a>￥300</a>
-            </div>
-        </div>
-        <button class="merchandise-button">人気商品をもっと見る<img src="img/yazi3.png" class="arrow-img-black"></button>
+        <?php
+        echo '<div class="ranking">';
+        for ($i=0; $i < 5; $i++){
+            echo '<div class="merchandise">';
+                echo '<a href="item-detail.php?id='.$result[$i]['item_id'].'" class="item-link">';
+                echo '<img src="./img/item-img/'.$result[$i]['item_img_url'].'" class="item-img">';
+                echo '<div class="info">';
+                    echo '<span>'.$result[$i]['item_name'].'</span><br>';
+                    echo '<div class="price">';
+                        echo '<span>'.$result[$i]['price'].'円(税込)</span>';
+                    echo '</div>';
+                echo '</div>';
+            echo '</a>';
+        echo '</div>';
+        }
+        echo '</div>';
+        ?>
+        <button class="merchandise-button" onclick="location.href='./product.php?rank=1'">人気商品をもっと見る<img src="img/yazi3.png" class="arrow-img-black"></button>
     </div>
 </body>
 

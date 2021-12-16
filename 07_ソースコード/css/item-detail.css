@@ -310,3 +310,11 @@ div.not-find{
     padding: 30px ;
     text-align: center;
 }
+
+.arrow-img-black{
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: 5px;
+    left: 20px;
+}

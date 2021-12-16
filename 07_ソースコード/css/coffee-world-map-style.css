@@ -96,8 +96,11 @@ div.main-3{
 }
 
 
-h2.item-heading{
+span.item-heading{
     margin: 0;
+    font-size: x-large;
+    font-weight: 600;
+    display: block;
 }
 
 /*１件の商品div*/

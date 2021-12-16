@@ -115,3 +115,15 @@ input.input-text{
     width: 47%;
 }
 
+.error{
+    color: red;
+    font-size: x-small;
+}
+
+.arrow-img-black{
+    width: 13px;
+    height: 13px;
+    position: relative;
+    left: 60px;
+    bottom: 2px;
+}

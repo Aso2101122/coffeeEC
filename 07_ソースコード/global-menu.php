@@ -47,9 +47,9 @@ if(isset($_SESSION['cart'])){
             <ul id="user-over">
                 <div>
                     <p>ゲスト様</p>
-                    <button type="button" onclick="location.href='member-login.php'" class="black-button">ログイン</button>
+                    <button type="button" onclick="location.href='member-login.php'" class="black-button">ログイン<img src="img/yazi3_white.png" class="nav-arrow-img-white"/></button>
                     <br>
-                    <button type="button" onclick="location.href='./menber-add.php'" class="normal-button">新規会員登録</button>
+                    <button type="button" onclick="location.href='./menber-add.php'" class="normal-button">新規会員登録<img src="img/yazi3.png" class="nav-arrow-img-black"/></button>
                 </div>
             </ul>
         </li>

@@ -14,6 +14,9 @@ var area_beans = document.getElementById('area-beans');
 //もっと見るボタンオブジェクト取得
 var more_button = document.getElementById('more-button');
 
+//商品見出し
+var item_heading = document.getElementById('item-heading');
+
 // 商品1のオブジェクトを取得
 var item_name1 = document.getElementById('item-name1');
 var item_price1 = document.getElementById('item-price1');
@@ -52,21 +55,47 @@ function pictureChange(num) {
 }
 
 function selectArea(area_num) {
-    console.log(area_num);
+    console.log('エリアid'+area_num);
+
+    item_heading.innerHTML = area_result[area_num -1]["area_name"] + 'の商品';
     area_title.innerHTML = area_result[area_num - 1]["area_name"];
     area_feature.innerHTML = area_result[area_num - 1]["area_explanation"];
 
+    let count = Object.keys(item_list[area_num]).length -1;
+    console.log('長さ'+ count);
+    // 重複チェック用配列
+    let randoms = [];
+    // 最小値と最大値
+    let min = 0, max = count;
+
+    // 重複チェックしながら乱数作成
+    for(let i = min; i <= max; i++){
+        while(true){
+            let tmp = intRandom(min, max);
+            if(!randoms.includes(tmp)){
+                randoms.push(tmp);
+                break;
+            }
+        }
+    }
+
+    // min以上max以下の整数値の乱数を返す
+    function intRandom(min, max){
+        return Math.floor( Math.random() * (max - min + 1)) + min;
+    }
+
+    console.log(randoms[0] + ":"+ randoms[1]);
     // // 商品情報を変える
-    item_name1.innerHTML = item_list[area_num][0]["item_name"];
-    item_price1.innerHTML = item_list[area_num][0]["price"] + "円(税込み)";
-    item_img1.src = "./img/item-img/" + item_list[area_num][0]["item_img_url"];
-    item_link1.href = "http://aso2101122.schoolbus.jp/Biginners-coffee/item-detail.php?id=" + item_list[area_num][0]["item_id"];
+    item_name1.innerHTML = item_list[area_num][randoms[0]]["item_name"];
+    item_price1.innerHTML = item_list[area_num][randoms[0]]["price"] + "円(税込み)";
+    item_img1.src = "./img/item-img/" + item_list[area_num][randoms[0]]["item_img_url"];
+    item_link1.href = "http://aso2101122.schoolbus.jp/Biginners-coffee/item-detail.php?id=" + item_list[area_num][randoms[0]]["item_id"];
 
     // // 商品情報を変える2件目
-    item_name2.innerHTML = item_list[area_num][1]["item_name"];
-    item_price2.innerHTML = item_list[area_num][1]["price"] + "円(税込み)";
-    item_img2.src = "./img/item-img/" + item_list[area_num][1]["item_img_url"];
-    item_link2.href = "http://aso2101122.schoolbus.jp/Biginners-coffee/item-detail.php?id=" + item_list[area_num][1]["item_id"];
+    item_name2.innerHTML = item_list[area_num][randoms[1]]["item_name"];
+    item_price2.innerHTML = item_list[area_num][randoms[1]]["price"] + "円(税込み)";
+    item_img2.src = "./img/item-img/" + item_list[area_num][randoms[1]]["item_img_url"];
+    item_link2.href = "http://aso2101122.schoolbus.jp/Biginners-coffee/item-detail.php?id=" + item_list[area_num][randoms[1]]["item_id"];
 
     // もっと見るボタンのベントを設定
     more_button.setAttribute('onclick', 'location.href=\'./product.php?area=' + '0' + area_num + '\'');

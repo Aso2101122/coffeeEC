@@ -99,10 +99,22 @@ input.input-text{
 .normal-button{
     font-size:xx-small;
     margin: 30px;
-    padding: 0 70px;
+    padding: 0 50px;
 }
 
 .firstname{
     margin-left: 10px;
 }
 
+.error{
+    color: red;
+    font-size: x-small;
+}
+
+.arrow-img-black{
+    width: 13px;
+    height: 13px;
+    position: relative;
+    left: 40px;
+    bottom: 2px;
+}

@@ -27,6 +27,16 @@ a:hover{
     text-decoration: underline;;
 }
 
+/*写真をドラックできないようにする*/
+img {
+    user-drag: none;
+    -webkit-user-drag: none;
+    -moz-user-select: none;
+    user-select: none; /* CSS3 */
+    -moz-user-select: none; /* Firefox */
+    -webkit-user-select: none; /* Safari、Chromeなど */
+    -ms-user-select: none; /* IE10かららしい */
+}
 
 /* メインコンテンツの設定 */
 .main-content{
@@ -354,4 +364,20 @@ button.black-button{
     padding-top: 5px;
     padding-bottom: 5px;
     cursor: pointer;
+}
+
+.nav-arrow-img-black{
+    width: 13px;
+    height: 13px;
+    position: relative;
+    left: 45px;
+    bottom: 2px;
+}
+
+.nav-arrow-img-white{
+    width: 13px;
+    height: 13px;
+    position: relative;
+    left: 60px;
+    bottom: 2px;
 }

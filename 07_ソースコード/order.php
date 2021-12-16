@@ -38,7 +38,10 @@ $detail_result = $sql->fetchAll(PDO::FETCH_ASSOC);
     <div class="order-msg-container">
         <span class="order-msg">ご注文が確定しました。</span>
         <span class="order-msg">ご購入ありがとうございました。</span>
-        <button class="black-button">トップページに戻る</button>
+        <button class="black-button" onclick="location.href='./index.php'">トップページに戻る</button>
+    </div>
+    <div class="buy-item-container">
+        <span class="buy-item">購入した商品</span>
     </div>
 
     <div class="flex-container">
@@ -98,7 +101,7 @@ $detail_result = $sql->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="row">
                 <span class="use-point-text">使用ポイント数</span>
-                <span><?= $order_result[0]['use_point'] ?></span>
+                <span><?= $order_result[0]['use_point'] ?>P</span>
             </div>
             <div class="border"></div>
             <div class="row">

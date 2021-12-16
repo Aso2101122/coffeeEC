@@ -9,14 +9,14 @@ $resultcount = 0;
 if (isset($_GET['category'])) {
     //カテゴリ別で商品を取得
     $category = $_GET['category'];
-    $sql = $pdo->prepare('select item_id, item_name, price, item_img_url from m_items where category_id=?');
+    $sql = $pdo->prepare('select i.item_id , i.item_name, i.price, i.item_img_url from m_items i where category_id=?');
     $sql->bindValue(1,$category);
     $sql->execute();
     $result = $sql->fetchALL(PDO::FETCH_ASSOC);
 } else if (isset($_GET['keyword'])){
     //検索用処理
     $keyword = $_GET['keyword'];
-    $sql = $pdo->prepare('select item_id, item_name, price, item_img_url from m_items where item_name LIKE "%'.$keyword.'%"');
+    $sql = $pdo->prepare('select i.item_id , i.item_name, i.price, i.item_img_url from m_items i where item_name LIKE "%'.$keyword.'%"');
     $sql->execute();
     //エリア検索
     $result_item = $sql->fetchALL(PDO::FETCH_ASSOC);
@@ -49,12 +49,12 @@ if (isset($_GET['category'])) {
 } else if(isset($_GET['area'])){
     //エリアidで検索
     $area_id = $_GET['area'];
-    $sql = $pdo->prepare('select i.item_id, item_name, i.price, i.item_img_url , c.area_id from m_items i,m_country c, m_area a where i.country_id = c.country_id AND c.area_id = a.area_id AND c.area_id = ?;');
+    $sql = $pdo->prepare('select i.item_id, item_name, i.price, i.item_img_url , c.area_id from m_items i,m_country c, m_area a where i.country_id = c.country_id AND c.area_id = a.area_id AND a.area_id = ?;');
     $sql->bindValue(1,$area_id);
     $sql->execute();
     $result = $sql->fetchALL(PDO::FETCH_ASSOC);
-//    表示用の国名を取得
-    $sql = $pdo->prepare('select country_name from m_country where country_id = ?');
+//    表示用のエリア名を取得
+    $sql = $pdo->prepare('select area_name from m_area where area_id = ?');
     $sql->bindValue(1,$area_id);
     $sql->execute();
     $area_name = $sql->fetchALL(PDO::FETCH_ASSOC);
@@ -67,7 +67,69 @@ if (isset($_GET['category'])) {
     $result = $sql->fetchALL(PDO::FETCH_ASSOC);
     $resultcount = count($result);
     $word = '入門者におすすめ';
+} else if(isset($_GET['rank'])){
+    //ランキングを表示
+    $sql = $pdo->prepare('select i.item_id, i.item_name, i.price, i.item_img_url, sum(quantity) as seles_count from m_items i left outer join t_order_detail o on i.item_id = o.item_id where i.category_id = 01 group by i.item_id order by seles_count desc;');
+    $sql->execute();
+    $result = $sql->fetchALL(PDO::FETCH_ASSOC);
+    $resultcount = count($result);
+    $word = 'ランキング';
 }
+
+//ソートのセレクトボックスの初期値
+$selected0 = "";
+$selected1 = "";
+$selected2 = "";
+$selected3 = "";
+$selected4 = "";
+//ソートする
+if(isset($_POST['sort'])){
+    switch($_POST['sort']){
+        case 0:
+            $selected0 = 'selected';
+            break;
+        case 1:
+            //価格の降順
+            foreach ($result as $key => $value) {
+                $sort[$key] = $value['price'];
+            }
+            array_multisort($sort, SORT_ASC, $result);
+            $selected1 = 'selected';
+            break;
+        case 2:
+            //価格の昇順
+            foreach ($result as $key => $value) {
+                $sort[$key] = $value['price'];
+            }
+            array_multisort($sort, SORT_DESC, $result);
+            $selected2 = 'selected';
+            break;
+        case 3:
+            //名前の昇順
+            foreach ($result as $key => $value) {
+                $sort[$key] = $value['item_name'];
+            }
+            array_multisort($sort, SORT_ASC, $result);
+            $selected3 = 'selected';
+            break;
+        case 4:
+            //名前の降順
+            foreach ($result as $key => $value) {
+                $sort[$key] = $value['item_name'];
+            }
+            array_multisort($sort, SORT_DESC, $result);
+            $selected4 = 'selected';
+            break;
+    }
+}
+
+//ソートのformのurlを作成
+if(isset($_GET)){
+    $get = array_keys($_GET);
+    $get_key = $get[0];
+    $get_url = $get_key.'='.$_GET[$get_key] ;
+}
+
 $pdo= null;
 ?>
 
@@ -106,12 +168,16 @@ $pdo= null;
     }
     ?>
     <div class="sort">
-        <span class="display">表示順:<span>
-        <span class="example">
-            <select name="example" class="sort-select">
-                <option value="人気順">人気順</option>
-            </select>
-        </span>
+            <form action="./product.php?<?= $get_url ?>" method="post">
+                <span class="display">表示順:<span>
+                    <select name="sort" class="sort-select" onchange="submit(this.form)">
+                        <option value="0" <?= $selected0 ?>>指定なし</option>
+                        <option value="1" <?= $selected1 ?>>価格の安い順</option>
+                        <option value="2" <?= $selected2 ?>>価格の高い順</option>
+                        <option value="3" <?= $selected3 ?>>名前の昇順</option>
+                        <option value="4" <?= $selected4 ?>>名前の降順</option>
+                    </select>
+            </form>
     </div>
     <hr class="line">
     <?php

@@ -26,6 +26,11 @@ $JsonAsia = json_encode($asia_item_list, JSON_UNESCAPED_UNICODE);
 $stmt = $pdo->query('select i.item_id, item_name, i.price, i.item_img_url , c.area_id from m_items i,m_country c, m_area a where i.country_id = c.country_id AND c.area_id = a.area_id AND c.area_id = 03;');
 $latin_america_item_list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $JsonLatainAmerica = json_encode($latin_america_item_list, JSON_UNESCAPED_UNICODE);
+
+//売上順で表示
+$stmt = $pdo->prepare('select i.item_id , i.item_name, i.price, i.item_img_url ,sum(quantity) as seles_count from m_items i left outer join t_order_detail o on i.item_id = o.item_id where category_id = 01 group by i.item_id order by seles_count desc;');
+$stmt->execute();
+$result = $stmt->fetchALL(PDO::FETCH_ASSOC);
 ?>
 
 <script type="text/javascript">
@@ -103,26 +108,25 @@ $JsonLatainAmerica = json_encode($latin_america_item_list, JSON_UNESCAPED_UNICOD
             </div>
             <div class="main-3">
                 <div class="recommend-item">
-                    <h2 class="item-heading" id="item-heading">この産地のコーヒー豆</h2>
+                    <span class="item-heading" id="item-heading">おすすめのコーヒー豆</span>
                     <div class="merchandise">
-                        <a href="" class="item-link" id="item-link1">
-                            <img src="./img/item-img/" class="item-img" id="item-img1">
+                        <a href="./item-detail.php?id=<?= $result[0]['item_id'] ?>" class="item-link" id="item-link1">
+                            <img src="./img/item-img/<?= $result[0]['item_img_url'] ?>" class="item-img" id="item-img1">
                             <div class="info">
-                                <span id="item-name1">商品名</span><br>
+                                <span id="item-name1"><?= $result[0]['item_name'] ?></span><br>
                                 <div class="price">
-                                    <span id="item-price1">500円(税込み)
-                                    </span>
+                                    <span id="item-price1"><?= $result[0]['price'] ?>円(税込み)</span>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="merchandise">
-                        <a href="" class="item-link" id="item-link2">
-                            <img src="./img/item-img/" class="item-img" id="item-img2">
+                        <a href="./item-detail.php?id=<?= $result[1]['item_id'] ?>" class="item-link" id="item-link2">
+                            <img src="./img/item-img/<?= $result[1]['item_img_url'] ?>" class="item-img" id="item-img2">
                             <div class="info">
-                                <span id="item-name2">商品名</span><br>
+                                <span id="item-name2"><?= $result[1]['item_name'] ?></span><br>
                                 <div class="price">
-                                    <span id="item-price2">500円(税込み)
+                                    <span id="item-price2"><?= $result[1]['price'] ?>円(税込み)
                                     </span>
                                 </div>
                             </div>

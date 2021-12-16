@@ -1,13 +1,31 @@
 .order-msg-container{
     text-align: center;
+    margin-top:80px
 }
 
 .order-msg{
     font-size: large;
     font-weight: 500;
+    display: block;
+    margin-top: 15px;
 }
 
 .black-button{
-    
+    width: 250px;
+    height: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.buy-item{
+    display: block;
+    font-size: x-large;
+    font-weight: 700;
+    border-bottom: solid 3px black;
+}
+
+div.buy-item-container{
+    width: 920px;
+    margin: 20px 0 20px 150px;
 }
 

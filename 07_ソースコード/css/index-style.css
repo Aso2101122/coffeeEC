@@ -80,6 +80,13 @@ div.ranking{
     display: flex;
     margin-left: 152px;
 }
+
+/*商品一列*/
+.rank{
+    margin-bottom: 0;
+}
+
+/*商品一つ*/
 div.merchandise{
     margin-left: 20px;
     width: fit-content;
@@ -88,10 +95,25 @@ div.merchandise{
     text-align:left;
 }
 
-.rank{
-    margin-bottom: 0;
+/*商品画像*/
+img.item-img{
+    width: 155px;
+    height: 155px;
+    border: solid black 1px;
 }
 
+/*商品名、価格*/
+div.info{
+    margin: 5px 0;
+    padding: 0;
+}
+
+/*商品名*/
+div.price{
+    text-align: right;
+}
+
+/*売れ筋商品*/
 .selling{
     margin-top: 0;
     margin-bottom: 45px;

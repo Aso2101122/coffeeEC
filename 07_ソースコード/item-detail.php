@@ -146,11 +146,12 @@ $pdo= null;
                 <?php if($result[0]['category_id'] == '01'):?>
                 <a href="./product.php?country=<?= $result[0]['country_id']?>" class="country-button">生産国:<?= $result[0]['country_name']?>
                     <img src="img/country-flag_img/<?= $result[0]['country_img_url']?>" class="flag-img">
+                    <img src="img/yazi3.png" class="arrow-img-black">
                 </a>
                 <?php endif ?>
                 <h2 class="reference">参考記事</h2>
                 <div class="drip">
-                    <a href="">
+                    <a href="./reference-page.php">
                         <img src="img/index_reference-page_bn.png"/>
                         <div class="page-title">
                             コーヒーの淹れ方と必要な道具

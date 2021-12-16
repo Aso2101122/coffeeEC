@@ -40,7 +40,7 @@ if (!empty($_POST)) {
     <title>Biginners coffee</title>
     <link rel="stylesheet" href="./css/sanitize.css" />
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/menber-add-style.css" />
+    <link rel="stylesheet" href="./css/login-style.css" />
     <!-- フォント読み込み -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,19 +55,20 @@ if (!empty($_POST)) {
         <div class="form-parts">
             <span class="tag">メールアドレス</span>
             <input type="text" id="mail" name="mail" class="input-text"><br>
+            <?php if (!empty($error["mail"]) && $error['mail'] === 'blank') : ?>
+                <span class="error">＊メールアドレスを入力してください</span>
+            <?php endif ?>
         </div>
-        <?php if (!empty($error["mail"]) && $error['mail'] === 'blank') : ?>
-            <p class="error">＊メールアドレスを入力してください</p>
-        <?php endif ?>
+
         <div class="form-parts">
             <span class="tag">パスワード</span>
             <input type="password" id="password" name="password" class="input-text" /><br>
             <?php if (!empty($error["password"]) && $error['password'] === 'blank') : ?>
-                <p class="error">＊パスワードを入力してください</p>
+                <span class="error">＊パスワードを入力してください</span>
             <?php endif ?>
         </div>
         <?php if (!empty($error["result"]) && $error['result'] === 'mismatch') : ?>
-            <p class="error">＊メールアドレスかパスワードが間違っています。</p>
+            <span class="error">＊メールアドレスかパスワードが間違っています。</span>
         <?php endif ?>
         <div class="submit-button">
             <button class="black-button" value="ログイン">ログイン</button>
@@ -76,7 +77,7 @@ if (!empty($_POST)) {
 </div>
 <div class="transition-form">
     <h1>初めてのご利用の方はこちら</h1>
-    <button onclick="location.href='menber-add.php'" class="normal-button">新規会員登録へ</button>
+    <button onclick="location.href='menber-add.php'" class="normal-button">新規会員登録へ<img src="img/yazi3.png" class="arrow-img-black"></button>
 </div>
 </body>
 

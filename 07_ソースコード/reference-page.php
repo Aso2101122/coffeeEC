@@ -27,26 +27,26 @@ session_start();
             <div class="text1-1"><h2 class="text1-2">初心者の方は先ずはこの動画</h2></div>
             <iframe width="800" height="450" src="https://www.youtube-nocookie.com/embed/68rTkR7qabk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <br>
-            <div class="explanation"><a>基本的なペーパードリップでの淹れ方です。必要な道具や中細挽きがのコーヒー豆の粒子なども解説しているので、初心者さんにもわかりやすくなっています。</a></div>
+            <div class="explanation"><p>基本的なペーパードリップでの淹れ方です。必要な道具や中細挽きがのコーヒー豆の粒子なども解説しているので、初心者さんにもわかりやすくなっています。</p></div>
         </div>
         <div class="reference-page2">
             <div class="text1-1"><h2 class="text1-2">器具がないという方はこちらの動画</h2></div> 
             <iframe width="800" height="450" src="https://www.youtube-nocookie.com/embed/3OZkPfPqH-A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <br>
-            <div class="explanation"><a>美味しいコーヒーが飲みたいでも器具を持っていないそのような方向けの動画です。</a></div>
+            <div class="explanation"><p>美味しいコーヒーが飲みたいでも器具を持っていないそのような方向けの動画です。</p></div>
         </div>
         <div class="reference-page3">
             <div class="text1-1"><h2 class="text1-2">自宅で本格的なコーヒーが飲みたい方はこちらの動画</h2></div>
             <iframe width="800" height="450" src="https://www.youtube-nocookie.com/embed/o3eMg4DYLKo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <br>
-            <div class="explanation"><a>自宅でもお店で飲むような本格的なコーヒーを楽しみたいそのような方向けの動画です</a></div>
+            <div class="explanation"><p>自宅でもお店で飲むような本格的なコーヒーを楽しみたいそのような方向けの動画です</p></div>
         </div>
         
         <div class="reference-page4">
             <div class="text1-1"><h2 class="text1-2">新しくコーヒー生活を始める方はこちらの動画</h2></div>
             <iframe width="800" height="450" src="https://www.youtube-nocookie.com/embed/FNDnh7Zo7Ec" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <br>
-            <div class="explanation"><a>新しくコーヒー生活を始めたいけれど必要な器具がわからないそのよう方向けの動画です</a></div>
+            <div class="explanation"><p>新しくコーヒー生活を始めたいけれど必要な器具がわからないそのよう方向けの動画です</p></div>
         </div>
     </div>  
 </body>

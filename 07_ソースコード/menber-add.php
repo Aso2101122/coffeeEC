@@ -3,24 +3,30 @@ session_start();
 require("./dbmanager.php");
 $pdo = getDb();
 $error = null;
+$post_data[] = ['mail'=>'a','password'=>'a','first-name'=>'a','last-name'=>'a'];
+$post_key = array('mail', 'password', 'first-name', 'last-name');
 if (!empty($_POST)) {
     /* 入力情報の不備を検知 */
-    if(isset($_POST['mail'])){
-        if ($_POST['mail'] === "") {
-            $error['mail'] = "blank";
+    for ($i = 0; $i < 4; $i++) {
+        if (isset($_POST[$post_key[$i]])) {
+            if ($_POST[$post_key[$i]] === "") {
+                $error[$post_key[$i]] = "blank";
+            } else {
+                $post_data[0][$post_key[$i]] = $_POST[$post_key[$i]];
+            }
+        } else {
+            $error[$post_key[$i]] = "blank";
+            $post_data[0][$post_key[$i]] = "";
         }
     }
-    if(isset($_POST['password'])){
-        if ($_POST['password'] === "") {
-            $error['password'] = "blank";
-        }
-    }
+
+
     /* メールアドレスの重複を検知 */
     if (!isset($error)) {
         $sql = $pdo->prepare('SELECT COUNT(*) as cnt FROM m_user WHERE mail=?');
-        $sql->execute(array($_POST['mail'],$_POST['password']));
-        $record = $sql->fetchAll();
-        if ($record['cnt'] === 1) {
+        $sql->execute(array($_POST['mail']));
+        $record = $sql->fetchAll(PDO::FETCH_ASSOC);
+        if ($record[0]['cnt'] != 0) {
             $error['mail'] = 'mismatch';
         }
     }
@@ -37,6 +43,10 @@ if (!empty($_POST)) {
         $_SESSION['user'] = $user_info[0];
         header('Location: index.php');   // check.phpへ移動
         exit();
+    }
+}else {
+    for($i = 0; $i < 4; $i++) {
+        $post_data[0][$post_key[$i]] = "";
     }
 }
 ?>
@@ -65,19 +75,29 @@ if (!empty($_POST)) {
                 <span class="tag">お名前</span>
                 <span class="mandatory">必須</span><br>
                 <div class="name-contener">
-                    <input type="text" placeholder="山田" name="first-name" class="lastname" />
-                    <input type="text" placeholder="太郎" name="last-name" class="firstname" />
+                    <input type="text" placeholder="山田" name="first-name" class="lastname value="<?= $post_data[0]['first-name'] ?>" /><br>
+                    <input type="text" placeholder="太郎" name="last-name" class="firstname value="<?= $post_data[0]['last-name'] ?>" /><br>
                 </div>
-
+                <?php if (isset($error['last-name']) || isset($error['first-name'])){ ?>
+                    <span class="error">＊お名前が入力されていません</span>
+                <?php } ?>
             </div>
             <div class="form-parts">
                 <span class="tag">メールアドレス</span>
                 <span class="mandatory">必須</span><br>
-                <input type="mail" name="mail" class="input-text"/><br>
+                <input type="mail" name="mail" class="input-text" value="<?= $post_data[0]['mail'] ?>"/><br>
                 <?php if (isset($error['mail'])){
                     if($error['mail'] == 'mismatch'){
                 ?>
                     <span class="error">＊このメールアドレスはすでに登録済みです</span>
+                <?php
+                    }
+                }
+                ?>
+                <?php if (isset($error['mail'])){
+                    if($error['mail'] == 'blank'){
+                ?>
+                    <span class="error">＊メールアドレスが入力されていません</span>
                 <?php
                     }
                 }
@@ -87,7 +107,10 @@ if (!empty($_POST)) {
             <div class="form-parts">
                 <span class="tag">パスワード</span>
                 <span class="mandatory">必須</span><br>
-                <input type="password" name="password" class="input-text" /><br>
+                <input type="password" name="password" class="input-text" value="<?= $post_data[0]['password'] ?>"/>
+                <?php if (isset($error['password'])){ ?>
+                    <span class="error">＊パスワードが入力されていません</span>
+                <?php } ?>
             </div>
             <div class="submit-button">
                 <button type="submit" class="black-button">会員登録する</button>

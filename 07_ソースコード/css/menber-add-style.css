@@ -118,6 +118,7 @@ input.input-text{
 .error{
     color: red;
     font-size: x-small;
+    display: block;
 }
 
 .arrow-img-black{

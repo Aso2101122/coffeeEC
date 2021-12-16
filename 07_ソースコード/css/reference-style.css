@@ -59,3 +59,8 @@ span{
 a{
     font-size: large;
 }
+
+div.explanation{
+    margin-top: 5px;
+    background-color: rgb(150, 146, 147);
+}

@@ -11,8 +11,10 @@ if(isset($_POST['delete'])){
     //個数変更
     $_SESSION['cart'][$_POST['cart-num']]['quantity'] = $_POST['quantity-change'];
 }
+if(isset($_SESSION['cart'])){
+    $count = count($_SESSION['cart']);
+}
 
-$count = count($_SESSION['cart']);
 //金額計算
 $item_total = 0;
 $postage_total = 0;

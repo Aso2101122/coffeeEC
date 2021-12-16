@@ -18,10 +18,23 @@ if (isset($_GET['category'])) {
     $keyword = $_GET['keyword'];
     $sql = $pdo->prepare('select item_id, item_name, price, item_img_url from m_items where item_name LIKE "%'.$keyword.'%"');
     $sql->execute();
-    $result = $sql->fetchALL(PDO::FETCH_ASSOC);
+    //エリア検索
+    $result_item = $sql->fetchALL(PDO::FETCH_ASSOC);
+    $sql = $pdo->prepare('select i.item_id, item_name, i.price, i.item_img_url , c.area_id from m_items i,m_country c, m_area a where i.country_id = c.country_id AND c.area_id = a.area_id AND a.area_name LIKE "%'.$keyword.'%"');
+    $sql->bindValue(1,$keyword);
+    $sql->execute();
+    $result_area = $sql->fetchALL(PDO::FETCH_ASSOC);
+    //国名検索
+    $sql = $pdo->prepare('select i.item_id, item_name, i.price, i.item_img_url , c.area_id from m_items i,m_country c where i.country_id = c.country_id AND c.country_name LIKE "%'.$keyword.'%"');
+    $sql->bindValue(1,$keyword);
+    $sql->execute();
+    $result_country = $sql->fetchALL(PDO::FETCH_ASSOC);
+    $result = array_merge($result_item, $result_area, $result_country);
     $resultcount = count($result);
+
     $word = $keyword;
 } else if (isset($_GET['country'])){
+    //国idで検索
     $country_id = $_GET['country'];
     $sql = $pdo->prepare('select item_id, item_name, price, item_img_url from m_items where country_id=?');
     $sql->bindValue(1,$country_id);
@@ -32,13 +45,15 @@ if (isset($_GET['category'])) {
     $sql->bindValue(1,$country_id);
     $sql->execute();
     $country_name = $sql->fetchALL(PDO::FETCH_ASSOC);
-    $word = $country_name;
+    $word = $country_name[0]['country_name'];
 } else if(isset($_GET['area'])){
+    //エリアidで検索
     $area_id = $_GET['area'];
     $sql = $pdo->prepare('select i.item_id, item_name, i.price, i.item_img_url , c.area_id from m_items i,m_country c, m_area a where i.country_id = c.country_id AND c.area_id = a.area_id AND c.area_id = ?;');
     $sql->bindValue(1,$area_id);
     $sql->execute();
     $result = $sql->fetchALL(PDO::FETCH_ASSOC);
+//    表示用の国名を取得
     $sql = $pdo->prepare('select country_name from m_country where country_id = ?');
     $sql->bindValue(1,$area_id);
     $sql->execute();
@@ -46,6 +61,7 @@ if (isset($_GET['category'])) {
     $word = $area_name[0]['area_name'];
     $resultcount = count($result);
 } else if(isset($_GET['recommend'])){
+    //おすすめを表示
     $sql = $pdo->prepare('select item_id, item_name, price, item_img_url from m_items where featured_flag=1');
     $sql->execute();
     $result = $sql->fetchALL(PDO::FETCH_ASSOC);

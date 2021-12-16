@@ -21,7 +21,7 @@ if (isset($_SESSION['user'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Biginners coffee：カート</title>
+    <title>Biginners coffee：お気に入り</title>
     <link rel="stylesheet" href="css/sanitize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/favorite-style.css">
@@ -70,8 +70,8 @@ if (isset($_SESSION['user'])) {
         }
     }else{
         echo '<div class="not-login">商品をおすすめに追加するには会員登録もしくはログインしてください<br>';
-        echo '<a>ログイン</a><br>';
-        echo '<a>新規会員登録</a>';
+        echo '<button class="black-button" onclick="location.href=\'./member-login.php\'">ログイン<img src="img/yazi3_white.png" class="arrow-img-black"></button><br>';
+        echo '<button class="normal-button" onclick="location.href=\'./menber-add.php\'">新規会員登録<img src="img/yazi3.png" class="arrow-img-white"></button>';
         echo '</div>';
     }
     ?>

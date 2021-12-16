@@ -27,8 +27,16 @@ if (!empty($_POST)) {
  
 //    エラーがなければ登録する
     if (!isset($error)) {
-//        header('Location: index.php');   // check.phpへ移動
-//        exit();
+        $sql = $pdo->prepare('INSERT INTO m_user(mail, password, last_name, first_name) VALUES(?,?,?,?)');
+        $sql->execute(array($_POST['mail'],$_POST['password'],$_POST['first-name'],$_POST['last-name']));
+
+        //セッションに情報を追加
+        $sql = $pdo->prepare('SELECT * FROM m_user WHERE mail=?');
+        $sql->execute([$_POST['mail']]);
+        $user_info = $sql->fetchALL(PDO::FETCH_ASSOC);
+        $_SESSION['user'] = $user_info[0];
+        header('Location: index.php');   // check.phpへ移動
+        exit();
     }
 }
 ?>
@@ -57,18 +65,23 @@ if (!empty($_POST)) {
                 <span class="tag">お名前</span>
                 <span class="mandatory">必須</span><br>
                 <div class="name-contener">
-                    <input type="text" placeholder="山田" name="firstname" class="lastname" />
-                    <input type="text" placeholder="太郎" name="lastname" class="firstname" />
+                    <input type="text" placeholder="山田" name="first-name" class="lastname" />
+                    <input type="text" placeholder="太郎" name="last-name" class="firstname" />
                 </div>
 
             </div>
             <div class="form-parts">
                 <span class="tag">メールアドレス</span>
                 <span class="mandatory">必須</span><br>
-                <input type="mail" name="email" class="input-text"/><br>
-                <?php if ($error['mail'] == 'mismatch'): ?>
+                <input type="mail" name="mail" class="input-text"/><br>
+                <?php if (isset($error['mail'])){
+                    if($error['mail'] == 'mismatch'){
+                ?>
                     <span class="error">＊このメールアドレスはすでに登録済みです</span>
-                <?php endif ?>
+                <?php
+                    }
+                }
+                ?>
             </div>
 
             <div class="form-parts">

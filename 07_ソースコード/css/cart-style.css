@@ -33,6 +33,7 @@ span.item-count{
 /*左右のコンテナを横並びにする*/
 div.flex-container{
     display: flex;
+
 }
 
 
@@ -115,32 +116,73 @@ div.main-right{
     padding: 30px;
     margin: 10px 0 10px 80px;
     width: 30%;
-    height: 300px;
+    height: 100%;
     background-color: #F2F2F2;
 }
 
+/*カート情報の行コンテナ*/
 div.row{
     margin: 10px 0 0 0;
-}
-
-div.border{
-    margin-top: 10px;
-}
-
-span.total-text{
-    font-size: 1.1em;
-    font-weight: 600;
-}
-
-
-span.total-amount{
-    font-size: 1.1em;
-    font-weight: 600;
 }
 
 div.item-info-row{
     display: flex;
     justify-content: space-between;
+}
+
+/*線*/
+div.border{
+    margin-top: 10px;
+}
+
+
+/*合計金額*/
+span.total-amount{
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+/*合計金額テキスト*/
+span.total-text{
+    font-weight: 600;
+}
+
+/*合計金額以外の*/
+.item-total-text,
+.item-total-amount,
+.postage-total-text,
+.postage-total-amount,
+.owned_points-text,
+.owned_points,
+.use-point-text,
+.p-text,
+.total-text,
+.earned-points-text,
+.earned-points
+{
+    font-size: 0.85em;
+}
+
+
+/*使用ポイントボックス*/
+input.point-box{
+    width: 80px;
+    margin-right: -2px;
+    text-align: right;
+    padding: 3px 2px;
+
+}
+
+/*スピンボタンを消す(chrome)*/
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*スピンボタンを消す(FireFox,IE)*/
+input[type="number"] {
+    -moz-appearance:textfield;
 }
 
 

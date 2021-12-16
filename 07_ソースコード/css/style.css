@@ -16,9 +16,15 @@ body{
 
 a{
     cursor: pointer;
+    text-decoration:none;
+    color: black;
 }
 button{
     cursor: pointer;
+}
+
+a:hover{
+    text-decoration: underline;;
 }
 
 
@@ -229,11 +235,16 @@ img.user-info-logo-img{
     flex-wrap: wrap;
 }
 
-.available-points{
+.available-points1{
+    margin-top: 5px;
+}
+.available-points1,
+.available-points2{
     font-weight: lighter;
     color: #595959;
     font-size: x-small;
-    line-height: 0.7;
+    /*line-height: ;*/
+    display: block;
 }
 
 /*文字を中央ぞろえにする*/
@@ -253,7 +264,7 @@ span.point-many{
     font-size: large;
 }
 
-span.point{
+span.pt{
     margin-top: 13px;
 }
 
@@ -292,8 +303,17 @@ li.item-link{
     background-color: white;
 }
 
-
-
+/*カート内アイテム数*/
+span.cart-count{
+    color: white;
+    background-color: #4FDFFF;
+    font-size: xx-small;
+    border-radius: 100%;
+    padding: 0px 5px;
+    position: relative;
+    bottom: 15px;
+    right: 26px;
+}
 
 
 

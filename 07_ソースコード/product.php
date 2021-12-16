@@ -5,7 +5,7 @@ $pdo = getDb();
 
 //検索文言保存
 $word = '';
-
+$resultcount = 0;
 if (isset($_GET['category'])) {
     //カテゴリ別で商品を取得
     $category = $_GET['category'];
@@ -142,7 +142,6 @@ $pdo= null;
         }
         echo '</div>';
     }
-
     ?>
 </div>
 </body>

@@ -50,7 +50,7 @@ if (!empty($_POST)) {
 <body>
 <?php require './global-menu.php'; ?>
 <div class="menber-ship-form">
-    <form action="menber-login.php" method="post">
+    <form action="member-login.php" method="post">
         <h1>ログイン</h1>
         <div class="form-parts">
             <span class="tag">メールアドレス</span>

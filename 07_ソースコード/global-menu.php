@@ -8,6 +8,15 @@ if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
 }else{
     $login_flag = false;
 }
+//カートの商品数の変数
+$cart_count = 0;
+if(isset($_SESSION['cart'])){
+    foreach($_SESSION['cart'] as $item){
+        $cart_count += $item['quantity'];
+    }
+}
+
+
 
 ?>
 <!-- HTML部 -->
@@ -38,7 +47,7 @@ if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
             <ul id="user-over">
                 <div>
                     <p>ゲスト様</p>
-                    <button type="button" onclick="location.href='./menber-login.php'" class="black-button">ログイン</button>
+                    <button type="button" onclick="location.href='member-login.php'" class="black-button">ログイン</button>
                     <br>
                     <button type="button" onclick="location.href='./menber-add.php'" class="normal-button">新規会員登録</button>
                 </div>
@@ -59,11 +68,12 @@ if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
                     </a>
                     <div class="point-content">
                         <div class="point-text-content">
-                            <span class="available-points">ご利用可能<br>ポイント</span>
+                            <span class="available-points1">ご利用可能</span>
+                            <span class="available-points2">ポイント</span>
                         </div>
                         <div class="point-display">
                             <span class="point-many"><?= $point ?></span>
-                            <span class="point">pt</span>
+                            <span class="pt">pt</span>
                         </div>
                     </div>
                     <div class="border"></div>
@@ -82,7 +92,15 @@ if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
             <a href="./favorite.php" class="over"><img src="./img/nav-favorite_logo.png" width="60px" /></a>
         </li>
         <li>
-            <a href="./cart.php" class="over"><img src="./img/nav-cart_logo.png" width="60px" /></a>
+            <div>
+                <a href="./cart.php" class="over"><img src="./img/nav-cart_logo.png" width="60px" /></a>
+                <?php
+                if($cart_count >= 1){
+                    echo '<span class="cart-count">'.$cart_count.'</span>';
+                }
+                ?>
+            </div>
+
         </li>
     </ul>
 </header>

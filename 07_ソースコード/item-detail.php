@@ -5,7 +5,7 @@ $pdo = getDb();
 if (isset($_GET['id'])) {
     $item_id = $_GET['id'];
     if($item_id <= 20000){
-//        コーヒー豆の処理
+//        コーヒー豆の検索処理
         $sql = $pdo->prepare('SELECT * FROM m_items, m_country WHERE m_items.country_id = m_country.country_id AND item_id =? AND private_flag =0');
     }else{
         $sql = $pdo->prepare('SELECT * FROM m_items WHERE item_id =? AND private_flag =0');
@@ -57,49 +57,54 @@ if(isset($_SESSION['user']['user_id'])){
 
 //カート追加
 if(isset($_POST['cart-button'])){
-    if(isset($_SESSION['cart'])){
-        $cart = $_SESSION['cart'];
-        $count = 0;
-        //カート内の商品数を数える
+    //数が1以上かのチェック
+    if($_POST['quantity'] >= 1){
+        if(isset($_SESSION['cart'])){
+            $cart = $_SESSION['cart'];
+            $count = 0;
+            //カート内の商品数を数える
 //        foreach($_SESSION['cart'] as $key => $row){
 //            if(isset($_SESSION['cart'][$key]['item_id'])){
 //                $count++;
 //            }
 //        }
-        $count = count($_SESSION['cart']);
-        //カートに挿入するセッション情報の連想配列を作る
-        $cart_add_info= array('item_id'=>$_GET['id'],'gram'=>$_POST['gram'],'quantity'=>$_POST['quantity']);
-        //重複フラグ
-        $duplicate_flag = false;
-        //重複がないかのチェック
-        for($i=0; $i<= count($_SESSION['cart']); $i++){
-            if(isset($_SESSION['cart'][$i]['item_id']) && isset($_POST['item_id'])){
-                $value = $_SESSION['cart'][$i];
-                print_r($value);
-                //idが一致するかのチェック
-                if($value['item_id'] == $_POST['item_id']){
-                    //グラムが一致するかどうかのチェック
-                    if($value['gram'] == $_POST['gram']){
-                        //idとgram数が一致する場合は個数を増やす
-                        $_SESSION['cart'][$i]['quantity'] = $_SESSION['cart'][$i]['quantity'] + $_POST['quantity'];
-                        $duplicate_flag = true;
+            $count = count($_SESSION['cart']);
+            //カートに挿入するセッション情報の連想配列を作る
+            $cart_add_info= array('item_id'=>$_GET['id'],'gram'=>$_POST['gram'],'quantity'=>$_POST['quantity'], 'category'=>$result[0]['category_id']);
+            //重複フラグ
+            $duplicate_flag = false;
+            //重複がないかのチェック
+            for($i=0; $i<= count($_SESSION['cart']); $i++){
+                if(isset($_SESSION['cart'][$i]['item_id']) && isset($_POST['item_id'])){
+                    $value = $_SESSION['cart'][$i];
+                    print_r($value);
+                    //idが一致するかのチェック
+                    if($value['item_id'] == $_POST['item_id']){
+                        //グラムが一致するかどうかのチェック
+                        if($value['gram'] == $_POST['gram']){
+                            //idとgram数が一致する場合は個数を増やす
+                            $_SESSION['cart'][$i]['quantity'] = $_SESSION['cart'][$i]['quantity'] + $_POST['quantity'];
+                            $duplicate_flag = true;
+                        }
                     }
                 }
             }
+            echo $duplicate_flag;
+            //重複がない場合はcartに追加する
+            if(!$duplicate_flag){
+                $_SESSION['cart'][$count] = $cart_add_info;
+            }
+        }else{
+            //cartに商品が１つもなかった場合
+            //商品id,グラム数, 個数の情報を持った連想配列を作る
+            $cart_info = array('item_id'=>$_GET['id'], 'gram'=>$_POST['gram'], 'quantity'=>$_POST['quantity'], 'category'=>$result[0]['category_id']);
+            $_SESSION['cart'][0] = $cart_info;
         }
-        echo $duplicate_flag;
-        //重複がない場合はcartに追加する
-        if(!$duplicate_flag){
-            $_SESSION['cart'][$count] = $cart_add_info;
-        }
-    }else{
-        //cartに商品が１つもなかった場合
-        //商品id,グラム数, 個数の情報を持った連想配列を作る
-        $cart_info = array('item_id'=>$_GET['id'], 'gram'=>$_POST['gram'], 'quantity'=>$_POST['quantity']);
-        $_SESSION['cart'][0] = $cart_info;
     }
+
 }
 
+//豆の場合はjsに味の値を渡す
 if($result[0]['category_id'] == '01') {
     $taste = array($result[0]['bitter'], $result[0]['sweet'], $result[0]['acidity'], $result[0]['scent'], $result[0]['rich']);
     $Jsontaste = json_encode($taste, JSON_UNESCAPED_UNICODE);
@@ -208,7 +213,7 @@ $pdo= null;
                         echo '<button type="button" onclick="execPost('.$method.','.$item_id.','.$user_id.')" class="favorite"><img src="img/heart_pink.png" class="heart">お気に入り削除</button>';
                     }
                 }else{
-                    echo '<button type="button" onclick="location.href=\'./menber-login.php?msg=01&page='.$result[0]['item_id'].'\'" class="favorite"><img src="img/heart_black.png" class="heart">お気に入り登録</button>';
+                    echo '<button type="button" onclick="location.href=\'./member-login.php?msg=01&page='.$result[0]['item_id'].'\'" class="favorite"><img src="img/heart_black.png" class="heart">お気に入り登録</button>';
                 }
                 ?>
             </div>

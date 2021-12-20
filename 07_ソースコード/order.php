@@ -110,7 +110,7 @@ $detail_result = $sql->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="row">
                 <span class="earned-points-text">獲得ポイント</span>
-                <span class="earned-points"><?= $order_result[0]['total_fee']/100 ?>pt</span>
+                <span class="earned-points"><?= floor($order_result[0]['total_fee'] / 100); ?>pt</span>
             </div>
         </div>
 </div>
